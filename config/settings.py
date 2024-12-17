@@ -169,11 +169,27 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+CSRF_TRUSTED_ORIGINS = [
+    'http://backend.fati.uz',
+    'https://backend.fati.uz',
+]
+
+CSRF_COOKIE_DOMAIN = 'backend.fati.uz'
+
+# Agar SSL ishlatmasangiz, bu sozlamalarni False ga o'zgartiring
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
+
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_HEADERS = list(default_headers) + [
     'language-code',
 ]
+# CORS_ALLOWED_ORIGINS = [
+#     'https://backend.fati.uz',
+# ]
+
 
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
