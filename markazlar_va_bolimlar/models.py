@@ -44,8 +44,16 @@ class Xodimlar(models.Model):
     name = models.CharField(max_length=255)
     lavozim = models.CharField(max_length=255)
     ilmiy_daraja = models.CharField(max_length=255)
-    markazlar_bolimlar = models.ForeignKey(MarkazlarBolimlar, on_delete=models.CASCADE, related_name='xodimlar',
-                                           blank=True, null=True)
+
+    # MarkazlarBolimlar uchun default qiymatni belgilash
+    markazlar_bolimlar = models.ForeignKey(
+        MarkazlarBolimlar,
+        on_delete=models.CASCADE,
+        related_name='xodimlar',
+        blank=True,
+        null=True,
+        default=None  # Bu yerni default bilan to'ldirish kerak
+    )
 
     STATUS_CHOICES = [
         ('published', 'Published'),
@@ -66,3 +74,4 @@ class Xodimlar(models.Model):
     class Meta:
         verbose_name = 'Xodim'
         verbose_name_plural = 'Xodimlar'
+
