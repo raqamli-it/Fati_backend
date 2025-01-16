@@ -32,8 +32,7 @@ class MarkazlarBolimlar(models.Model):
 class Rasmlar(models.Model):
     fotogalereya = models.ImageField(upload_to='images', max_length=255, blank=True, null=True)
     silder = models.ImageField(upload_to='images', max_length=255, blank=True, null=True)
-    markazlar_bolimlar = models.ForeignKey(MarkazlarBolimlar, on_delete=models.CASCADE, related_name='rasmlar',
-                                           default='')
+    markazlar_bolimlar = models.ForeignKey(MarkazlarBolimlar, on_delete=models.CASCADE, related_name='rasmlar')
 
     class Meta:
         verbose_name = 'Rasmlar'
@@ -44,8 +43,7 @@ class Xodimlar(models.Model):
     name = models.CharField(max_length=255)
     lavozim = models.CharField(max_length=255)
     ilmiy_daraja = models.CharField(max_length=255)
-    markazlar_bolimlar = models.ForeignKey(MarkazlarBolimlar, on_delete=models.CASCADE, related_name='xodimlar',
-                                           default='')
+    markazlar_bolimlar = models.ForeignKey(MarkazlarBolimlar, on_delete=models.CASCADE, related_name='xodimlar')
 
     STATUS_CHOICES = [
         ('published', 'Published'),
