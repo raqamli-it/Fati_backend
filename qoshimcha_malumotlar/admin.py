@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from qoshimcha_malumotlar.models import Institut_tarixi, Aloqa, Karusel, Rahbariyat, \
-    Tashkiliy_tuzulma, Yangiliklar, Havolalar
+    Tashkiliy_tuzulma, Yangiliklar, Havolalar, picture, Kengash_rasm
 
 
 @admin.register(Institut_tarixi)
@@ -12,33 +12,22 @@ class Institut_tarixiAdmin(admin.ModelAdmin):
               'status', 'order',]
 
 
-# @admin.register(Memory_hujjatlar)
-# class Memory_hujjatlarAdmin(admin.ModelAdmin):
-#     list_display = ('title', 'status', 'created_at', 'updated_at', 'order')
-#     search_fields = ('title')
-#     fields = ['title_uz', 'title_ru', 'title_en', 'file', 'status', 'order',]
-#
-#
-# @admin.register(Elonlar)
-# class ElonlarAdmin(admin.ModelAdmin):
-#     list_display = ('title', 'status', 'created_at', 'updated_at', 'type', 'order')
-#     search_fields = ('title')
-#     fields = ['title_uz', 'title_ru', 'title_en', 'content_uz', 'content_ru', 'content_en', 'file', 'type', 'status',
-#               'order',]
-
-
 @admin.register(Aloqa)
 class AloqaAdmin(admin.ModelAdmin):
     list_display = ('phone', 'email', 'status', 'created_at', 'updated_at', 'order',)
     search_fields = ('title',)
+    fields = ('faks', 'email', 'phone', 'adress', 'lat', 'long', 'youtube', 'telegram', 'instagram',
+              'facebook', 'status', 'order', )
 
 
 @admin.register(Karusel)
 class KaruselAdmin(admin.ModelAdmin):
-    list_display = ('title', 'status', 'created_at', 'updated_at', 'order',)
-    search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'file', 'link', 'status', 'order']
+    fields = ['file', 'link', ]
 
+
+@admin.register(Kengash_rasm)
+class kengash_rasmAdmin(admin.ModelAdmin):
+    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'picture',]
 
 
 @admin.register(Rahbariyat)
@@ -69,3 +58,6 @@ class HavolalarAdmin(admin.ModelAdmin):
     list_display = ('title', 'status', 'created_at', 'updated_at', 'order',)
     search_fields = ('title',)
     fields = ['title_uz', 'title_en', 'file', 'link', 'status', 'order',]
+
+
+admin.site.register(picture)

@@ -2,12 +2,27 @@ from django.db import models
 from ckeditor.fields import RichTextField
 
 
+class Kengash_rasm(models.Model):
+    title = models.CharField(max_length=255)
+    picture = models.ImageField(upload_to='images', blank=True, null=True)
+    content = RichTextField(blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Kengash rasm'
+        verbose_name_plural = 'Kengash rasm'
+
+
+class picture(models.Model):
+    news = models.ImageField(upload_to='images', blank=True, null=True)
+    about_institute = models.ImageField(upload_to='images', blank=True, null=True)
+
+
 class Institut_tarixi(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
     subcontent = RichTextField(blank=True, null=True)
-    file = models.FileField(upload_to='media/institut_tarixi/files/', blank=True, null=True)
-    base_file = models.FileField(upload_to='media/institut_tarixi/base_files/', blank=True, null=True)
+    file = models.FileField(upload_to='images', blank=True, null=True)
+    base_file = models.ImageField(upload_to='images', blank=True, null=True)
     STATUS_CHOICES = [
         ('published', 'Published'),
         ('not_published', 'Not Published'),
@@ -28,65 +43,6 @@ class Institut_tarixi(models.Model):
         verbose_name = 'Institut tarixi'
         verbose_name_plural = 'Institut tarixi'
 
-
-# class Memory_hujjatlar(models.Model):
-#     title = models.CharField(max_length=255)
-#     file = models.FileField(upload_to='media/memory_hujjatlar/files/', blank=True, null=True)
-#     STATUS_CHOICES = [
-#         ('published', 'Published'),
-#         ('not_published', 'Not Published'),
-#     ]
-#     status = models.CharField(
-#         max_length=20,
-#         choices=STATUS_CHOICES,
-#         default='published',
-#     )
-#     order = models.IntegerField(default=0)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-#
-#     def __str__(self):
-#         return self.title
-#
-#     class Meta:
-#         verbose_name = 'Memory hujjat'
-#         verbose_name_plural = 'Memory hujjatlar'
-#
-#
-# class Elonlar(models.Model):
-#     title = models.CharField(max_length=255)
-#     content = RichTextField(blank=True, null=True)
-#     file = models.FileField(upload_to='media/elonlar/files/', blank=True, null=True)
-#     STATUS_CHOICES = [
-#         ('published', 'Published'),
-#         ('not_published', 'Not Published'),
-#     ]
-#     status = models.CharField(
-#         max_length=20,
-#         choices=STATUS_CHOICES,
-#         default='published',
-#     )
-#     TYPE_CHOICES = [
-#         ('KENGASH', 'Kengash'),
-#         ('DOKTORANTURA', 'Doktorantura'),
-#         ('SEMINAR', 'Seminar'),
-#     ]
-#     type = models.CharField(
-#         max_length=20,
-#         choices=TYPE_CHOICES,
-#         default='KENGASH',
-#     )
-#     order = models.IntegerField(default=0)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-#
-#     def __str__(self):
-#         return self.title
-#
-#     class Meta:
-#         verbose_name = 'Elon'
-#         verbose_name_plural = 'Elonlar'
-#
 
 class Aloqa(models.Model):
     faks = models.CharField(max_length=255, verbose_name='Faks', blank=True, null=True)
@@ -121,25 +77,8 @@ class Aloqa(models.Model):
 
 
 class Karusel(models.Model):
-    title = models.CharField(max_length=255)
-    content = RichTextField(blank=True, null=True)
-    file = models.FileField(upload_to='media/karusel/files/', blank=True, null=True)
-    STATUS_CHOICES = [
-        ('published', 'Published'),
-        ('not_published', 'Not Published'),
-    ]
-    status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='published',
-    )
+    file = models.ImageField(upload_to='images', blank=True, null=True)
     link = models.URLField(blank=True, null=True)
-    order = models.IntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.title
 
     class Meta:
         verbose_name = 'Karusel'
@@ -152,7 +91,7 @@ class Rahbariyat(models.Model):
     degree = models.CharField(max_length=255, blank=True, null=True)
     contact = models.CharField(max_length=255, blank=True, null=True)
     days = models.DateField(blank=True, null=True)
-    image = models.ImageField(upload_to='media/rahbariyat/images/', blank=True, null=True)
+    image = models.ImageField(upload_to='images', blank=True, null=True)
     STATUS_CHOICES = [
         ('published', 'Published'),
         ('not_published', 'Not Published'),
@@ -177,7 +116,7 @@ class Rahbariyat(models.Model):
 class Tashkiliy_tuzulma(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
-    file = models.FileField(upload_to='media/tashkiliy_tuzulma/files/', blank=True, null=True)
+    file = models.ImageField(upload_to='images', blank=True, null=True)
     STATUS_CHOICES = [
         ('published', 'Published'),
         ('not_published', 'Not Published'),
@@ -203,7 +142,7 @@ class Yangiliklar(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
     subcontent = RichTextField(blank=True, null=True)
-    file = models.FileField(upload_to='media/yangiliklar/files/', blank=True, null=True)
+    file = models.ImageField(upload_to='images', blank=True, null=True)
     STATUS_CHOICES = [
         ('published', 'Published'),
         ('not_published', 'Not Published'),
@@ -227,7 +166,7 @@ class Yangiliklar(models.Model):
 
 class Havolalar(models.Model):
     title = models.CharField(max_length=255)
-    file = models.FileField(upload_to='media/havolalar/files/', blank=True, null=True)
+    file = models.ImageField(upload_to='images', blank=True, null=True)
     link = models.URLField(blank=True, null=True)
     STATUS_CHOICES = [
         ('published', 'Published'),

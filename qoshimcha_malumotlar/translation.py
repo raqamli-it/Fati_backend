@@ -8,21 +8,6 @@ class Institut_tarixiTranslationOptions(TranslationOptions):
     fields = ('title', 'content', 'subcontent')
 
 
-# @register(Memory_hujjatlar)
-# class Memory_hujjatlarTranslationOptions(TranslationOptions):
-#     fields = ('title', )
-#
-#
-# @register(Elonlar)
-# class ElonlarTranslationOptions(TranslationOptions):
-#     fields = ('title', 'content',)
-
-
-@register(Karusel)
-class KaruselTranslationOptions(TranslationOptions):
-    fields = ('title', 'content',)
-
-
 @register(Rahbariyat)
 class RahbariyatTranslationOptions(TranslationOptions):
     fields = ('title', 'position', 'degree',)
@@ -41,5 +26,10 @@ class YangiliklarTranslationOptions(TranslationOptions):
 @register(Havolalar)
 class HavolalarTranslationOptions(TranslationOptions):
     fields = ('title',)
+
+
+@register(Kengash_rasm)
+class HavolalarTranslationOptions(TranslationOptions):
+    fields = ('title', 'content')
 
 

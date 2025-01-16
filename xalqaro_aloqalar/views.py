@@ -3,18 +3,16 @@ from rest_framework.generics import ListAPIView
 from rest_framework import filters
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
-from xalqaro_aloqalar.models import Xamkor_tashkilot, Xamkor_loihalar, Xalqaro_sayohatlar, Tadqiqot, Kelganlar, \
-    xamkor_loyihalar_data
+from xalqaro_aloqalar.models import Xamkor_tashkilot, Xamkor_loihalar, Xalqaro_sayohatlar, Tadqiqot, Kelganlar
 from xalqaro_aloqalar.pagination import ResultsSetPagination
-from xalqaro_aloqalar.serializers import Xamkor_tashkilotSerializer, Xamkor_loihalarSerializer, \
-    Xalqaro_sayohatlarSerializer, TadqiqotSerializer, KelganlarSerializer, xamkor_loyihalar_dataSerializer
+from xalqaro_aloqalar.serializers import (Xamkor_tashkilotSerializer, Xamkor_loihalarSerializer,
+     Xalqaro_sayohatlarSerializer, TadqiqotSerializer, KelganlarSerializer,)
 
 
 class Xamkor_tashkilotListView(ListAPIView):
     search_fields = ['title']
     filter_backends = (filters.SearchFilter,)
     serializer_class = Xamkor_tashkilotSerializer
-    pagination_class = ResultsSetPagination
 
     def get_queryset(self):
         return Xamkor_tashkilot.objects.all().order_by('order')
@@ -33,48 +31,13 @@ class Xamkor_loihalarListView(ListAPIView):
     serializer_class = Xamkor_loihalarSerializer
 
     def get_queryset(self):
-        return Xamkor_loihalar.objects.all().order_by('order')
-
+        return Xamkor_loihalar.objects.all().order_by('id')
 
 @api_view(['GET'])
 def xamkor_loihalardetail(request, pk):
     xamkor_loihalar = get_object_or_404(Xamkor_loihalar, pk=pk)
     serializer = Xamkor_loihalarSerializer(xamkor_loihalar, context={'request': request})
     return Response(serializer.data)
-
-
-class xamkor_loyihalar_dataListView(ListAPIView):
-    search_fields = ['title']
-    filter_backends = (filters.SearchFilter,)
-    serializer_class = xamkor_loyihalar_dataSerializer
-    pagination_class = ResultsSetPagination
-
-    def get_queryset(self):
-        return xamkor_loyihalar_data.objects.all().order_by('order')
-
-
-@api_view(['GET'])
-def xamkor_loyihalar_datadetail(request, pk):
-    xamkor_loiha = get_object_or_404(xamkor_loyihalar_data, pk=pk)
-    serializer = xamkor_loyihalar_dataSerializer(xamkor_loiha, context={'request': request})
-    return Response(serializer.data)
-
-
-# class Xalqaro_tadqiqotListView(ListAPIView):
-#     search_fields = ['title']
-#     filter_backends = (filters.SearchFilter,)
-#     serializer_class = Xalqaro_tadqiqotSerializer
-#     pagination_class = ResultsSetPagination
-#
-#     def get_queryset(self):
-#         return Xalqaro_tadqiqot.objects.all().order_by('order')
-#
-#
-# @api_view(['GET'])
-# def xalqaro_tadqiqotdetail(request, pk):
-#     xalqaro_tadqiqot = get_object_or_404(Xalqaro_tadqiqot, pk=pk)
-#     serializer = Xalqaro_tadqiqotSerializer(xalqaro_tadqiqot, context={'request': request})
-#     return Response(serializer.data)
 
 
 class Xalqaro_sayohatlarListView(ListAPIView):
