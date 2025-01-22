@@ -26,14 +26,19 @@ class MarkazlarBolimlar(models.Model):
         return f'{self.title}'
 
     def get_barcha_rasmlar(self):
-        return self.rasmlar_set.select_related("markazlar_bolimlar")
+        return self.rasmlar.all()
 
 
 class Rasmlar(models.Model):
     fotogalereya = models.ImageField(upload_to='images', max_length=255, blank=True, null=True)
     silder = models.ImageField(upload_to='images', max_length=255, blank=True, null=True)
-    markazlar_bolimlar = models.ForeignKey(MarkazlarBolimlar, on_delete=models.CASCADE, related_name='rasmlar',
-                                           blank=True, null=True)
+    markazlar_bolimlar = models.ForeignKey(
+        MarkazlarBolimlar,
+        on_delete=models.CASCADE,
+        related_name='rasmlar',
+        blank=True,
+        null=True
+    )
 
     class Meta:
         verbose_name = 'Rasmlar'
@@ -45,14 +50,13 @@ class Xodimlar(models.Model):
     lavozim = models.CharField(max_length=255)
     ilmiy_daraja = models.CharField(max_length=255)
 
-    # MarkazlarBolimlar uchun default qiymatni belgilash
+    # ForeignKey to'g'rilangan
     markazlar_bolimlar = models.ForeignKey(
         MarkazlarBolimlar,
         on_delete=models.CASCADE,
         related_name='xodimlar',
         blank=True,
-        null=True,
-        default=None  # Bu yerni default bilan to'ldirish kerak
+        null=True
     )
 
     STATUS_CHOICES = [
@@ -74,4 +78,3 @@ class Xodimlar(models.Model):
     class Meta:
         verbose_name = 'Xodim'
         verbose_name_plural = 'Xodimlar'
-
