@@ -49,8 +49,6 @@ class Xodimlar(models.Model):
     name = models.CharField(max_length=255)
     lavozim = models.CharField(max_length=255)
     ilmiy_daraja = models.CharField(max_length=255)
-
-    # ForeignKey to'g'rilangan
     markazlar_bolimlar = models.ForeignKey(
         MarkazlarBolimlar,
         on_delete=models.CASCADE,
