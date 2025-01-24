@@ -1,34 +1,28 @@
 from modeltranslation.translator import TranslationOptions
-from .models import Avtoreferat, Manba, Tahrirchi, ElektronKitob,Arxiv
+from .models import Avtoreferat, Category, Tahririyat, Arxiv, Talablar
 from modeltranslation.decorators import register
-from .models import Talablar
 
 
 @register(Arxiv)
 class ArchiveTranslationOptions(TranslationOptions):
-    fields = ('title', 'content',)
+    fields = ('title', 'content', 'sub_content')
 
 
 @register(Talablar)
 class RequirementsTranslationOptions(TranslationOptions):
-    fields = ('title', 'content',)
+    fields = ('title', 'content', 'sub_content')
 
 
 @register(Avtoreferat)
 class AvtoreferatTranslationOptions(TranslationOptions):
-    fields = ('title',)
+    fields = ('title', 'content')
 
 
-@register(Manba)
-class ManbaTranslationOptions(TranslationOptions):
-    fields = ('title',)
-
-
-@register(Tahrirchi)
+@register(Tahririyat)
 class TahrirchiTranslationOptions(TranslationOptions):
-    fields = ('title',)
+    fields = ('title', 'position', 'degree', 'sphere', 'content',)
 
 
-@register(ElektronKitob)
+@register(Category)
 class ArxivSonTranslationOptions(TranslationOptions):
     fields = ('title',)

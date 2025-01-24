@@ -1,28 +1,43 @@
 
 from rest_framework import serializers
-from .models import Xodimlar, MarkazlarBolimlar, Rasmlar
+from .models import Xodimlar, Markazlar_Bolimlar, Tadqiqot, Photo, Video
+
+
+class MarkazlarBolimlarSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Markazlar_Bolimlar
+        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'status', 'order']
+
+
+class Markazlar_BolimlarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Markazlar_Bolimlar
+        fields = ['id', 'title_uz', 'title_en',]
 
 
 class XodimlarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Xodimlar
-        fields = ('id', 'name_uz', 'name_en', 'lavozim_uz', 'lavozim_en', 'ilmiy_daraja_uz', 'ilmiy_daraja_en',
-                  'markazlar_bolimlar', 'status', 'order', 'created_at', 'updated_at')
+        fields = ['id', 'title_uz', 'title_en', 'birth', 'sphere_uz', 'sphere_en',
+                  'position_uz', 'position_en', 'academic_degree_uz', 'academic_degree_en',
+                  'email', 'image', 'about_uz', 'about_en', 'works_uz', 'works_en',
+                  'batafsil', 'status', 'order', 'center_id']
 
 
-class RasmlarSerializer(serializers.ModelSerializer):
+class Tadqiqot_Serializer(serializers.ModelSerializer):
     class Meta:
-        model = Rasmlar
-        fields = ('id', 'fotogalereya', 'silder')
+        model = Tadqiqot
+        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'center_id']
 
 
-class MarkazlarBolimlarSerializer(serializers.ModelSerializer):
-    rasmlar = RasmlarSerializer(many=True, read_only=True)
-    xodimlar = XodimlarSerializer(many=True)
-
+class PhotoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = MarkazlarBolimlar
-        fields = ('id', 'title_uz', 'title_en', 'tarix_uz', 'tarix_en', 'rasmlar', 'xodimlar', 'status',
-                  'order', 'created_at', 'updated_at')
+        model = Photo
+        fields = ['id', 'title_uz', 'title_en', 'image', 'center_id']
 
 
+class VideoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Video
+        fields = ['id', 'title_uz', 'title_en', 'video', 'link', 'center_id']

@@ -1,48 +1,37 @@
 
-from .models import Talablar
-from .models import Arxiv
 from rest_framework import serializers
-from . models import Tahrirchi, Avtoreferat, Manba, ElektronKitob
+from . models import Tahririyat, Avtoreferat, Category, Arxiv, Talablar
 
 
 class TalabalarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Talablar
-        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'img_url',
-                  'status', 'order', 'created_at', 'Updated_at')
+        fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'sub_content_uz', 'sub_content_en',
+                  'image', 'status', 'order',)
 
 
-class TahrirchiSerializer(serializers.ModelSerializer):
+class TahririyatSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Tahrirchi
-        fields = ['id', 'title_uz', 'title_en', 'ish_joyi', 'lavozimi', 'status', 'order', 'created_at', 'Updated_at',]
-
+        model = Tahririyat
+        fields = ['title_uz', 'title_en', 'position_uz', 'position_en', 'degree_uz', 'degree_en', 'sphere_uz',
+                  'sphere_en', 'email', 'content_uz', 'content_en', 'file', 'status', 'order', ]
 
 
 class AvtoreferatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Avtoreferat
-        fields = ['title_uz', 'title_en', 'cover_img', 'file', 'status', 'order', 'created_at', 'Updated_at']
+        fields = ['title_uz', 'title_en', 'image', 'file', 'content_uz', 'content_en', 'status', 'order', 'category']
 
 
-class ElektronKitobSerializer(serializers.ModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = ElektronKitob
-        fields = ['title_uz', 'title_en', 'cover_img', 'file', 'status', 'order', 'created_at', 'Updated_at']
-
-
-class ManbaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Manba
-        fields = ['title_uz', 'title_en', 'cover_img', 'file', 'status', 'order', 'created_at', 'Updated_at']
+        model = Category
+        fields = ['title_uz', 'title_en', 'status', 'order', ]
 
 
 class ArxivSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Arxiv
-        fields = ['id', 'title_uz', 'title_en', 'yil', 'nashr_raqami', 'content_uz', 'content_en', 'image', 'status',
-                  'order', 'created_at', 'Updated_at',]
-
-
-
+        fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'sub_content_uz', 'sub_content_en',
+                  'image', 'status', 'order',]

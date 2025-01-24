@@ -1,13 +1,28 @@
 from modeltranslation.translator import TranslationOptions
 from modeltranslation.decorators import register
-from markazlar_va_bolimlar.models import Xodimlar, MarkazlarBolimlar
+from markazlar_va_bolimlar.models import Xodimlar, Markazlar_Bolimlar, Tadqiqot, Video, Photo
+
+
+@register(Markazlar_Bolimlar)
+class Markazlar_bolimlarTranslationOptions(TranslationOptions):
+    fields = ('title', 'content',)
+
+
+@register(Tadqiqot)
+class TadqiqotTranslationOptions(TranslationOptions):
+    fields = ('title', 'content',)
 
 
 @register(Xodimlar)
 class XodimlarTranslationOptions(TranslationOptions):
-    fields = ('name', 'lavozim', 'ilmiy_daraja')
+    fields = ('title', 'sphere', 'position', 'academic_degree', 'about', 'works')
 
 
-@register(MarkazlarBolimlar)
-class MarkazlarBolimlarTranslationOptions(TranslationOptions):
-    fields = ('tarix', 'title')
+@register(Video)
+class VideoTranslationOptions(TranslationOptions):
+    fields = ('title',)
+
+
+@register(Photo)
+class RasmTranslationOptions(TranslationOptions):
+    fields = ('title',)

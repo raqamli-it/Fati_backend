@@ -16,8 +16,7 @@ class TadqiqotSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tadqiqot
-        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'img_file', 'status', 'order',
-                  'created_at', 'updated_at', 'kelganlar',]
+        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'img_file', 'status', 'order', 'kelganlar',]
 
 
 class Xamkor_tashkilotSerializer(serializers.ModelSerializer):

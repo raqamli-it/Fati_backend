@@ -1,37 +1,27 @@
 
 from django.urls import path
 from .views import (
-    TahrirchiListCreateView,
-    tahrirchi_detail_view,
+    TahririyatListCreateView,
+    Tahririyat_detail_view,
     AvtoreferatListCreateView,
     avtoreferat_detail_view,
-    ElektronKitobListCreateView,
-    elektron_kitob_detail_view,
-    ManbaListCreateView,
-    manba_detail_view,
     Talablar_detail,
-    TalablarListView
+    TalablarListView,
+    Arxiv_detail_view,
+    ArxivListCreateView,
+    CategoryKitobListCreateView
 
 )
-from .views import Arxiv_detail_view, ArxivListCreateView
-
-from django.urls import path
-from .views import TahrirchiListCreateView
-
 
 urlpatterns = [
 
-    path('tahrirchilar/', TahrirchiListCreateView.as_view(), name='tahrirchi-list'),
-    path('tahrirchilar/<int:pk>/', tahrirchi_detail_view, name='tahrirchi-detail'),
+    path('Category/', CategoryKitobListCreateView.as_view(), name='elektronKitob-list'),
 
     path('avtoreferat/', AvtoreferatListCreateView.as_view(), name='avtoreferat-list'),
     path('avtoreferat/<int:pk>/', avtoreferat_detail_view, name='avtoreferat-detail'),
 
-    path('elektronKitob/', ElektronKitobListCreateView.as_view(), name='elektronKitob-list'),
-    path('elektronKitob/<int:pk>/', elektron_kitob_detail_view, name='elektronKitob-detail'),
-
-    path('manbalar/', ManbaListCreateView.as_view(), name='manbalar-list'),
-    path('manbalar/<int:pk>/', manba_detail_view, name='manbalar-detail'),
+    path('Tahririyat/', TahririyatListCreateView.as_view(), name='tahrirchi-list'),
+    path('Tahririyat/<int:pk>/', Tahririyat_detail_view, name='tahrirchi-detail'),
 
     path('talablar/', TalablarListView.as_view(), name='talablar-list'),
     path('talablar/<int:pk>/', Talablar_detail, name='talablar-detail'),
