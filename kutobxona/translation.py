@@ -5,12 +5,12 @@ from modeltranslation.decorators import register
 
 @register(Arxiv)
 class ArchiveTranslationOptions(TranslationOptions):
-    fields = ('title', 'content', 'sub_content')
+    fields = ('title', 'content', 'sub_content',)
 
 
 @register(Talablar)
 class RequirementsTranslationOptions(TranslationOptions):
-    fields = ('title', 'content', 'sub_content')
+    fields = ('title', 'content', 'sub_content',)
 
 
 @register(Avtoreferat)
