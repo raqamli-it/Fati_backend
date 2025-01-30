@@ -55,7 +55,7 @@ class Seminar_majlislari(models.Model):
     content = RichTextField(blank=True, null=True)
     subcontent = RichTextField(blank=True, null=True)
     file = models.FileField(upload_to='media/Seminar_majlislari/files/', blank=True, null=True)
-    data = models.DateField()
+    data = models.DateField(blank=True, null=True)
     seminar_id = models.ForeignKey(Seminar_turlari, on_delete=models.CASCADE, blank=True, null=True)
     STATUS_CHOICES = [
         ('published', 'Published'),

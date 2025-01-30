@@ -10,7 +10,6 @@ from .views import (
     Arxiv_detail_view,
     ArxivListCreateView,
     CategoryKitobListCreateView
-
 )
 
 urlpatterns = [

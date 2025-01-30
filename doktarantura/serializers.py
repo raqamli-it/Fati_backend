@@ -19,8 +19,8 @@ class Malakaviy_imtihonSerializer(serializers.ModelSerializer):
 class DoktaranturaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Doktarantura
-        fields = ('id', 'title_uz', 'title_en', 'mehnat_faolyati_uz', 'mehnat_faolyati_en', 'ilimiy_faolyati_uz',
-                  'ilimiy_faolyati_en', 'asarlar_uz', 'asarlar_en', 'file', 'type', 'status', 'order')
+        fields = ('id', 'title_uz', 'title_en', 'labor_activity_uz', 'labor_activity_en', 'scientific_activity_uz',
+                  'scientific_activity_en', 'works_uz', 'works_en', 'file', 'type', 'status', 'order')
 
 
 

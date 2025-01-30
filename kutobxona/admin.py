@@ -16,7 +16,7 @@ class TahririyatAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at', 'Updated_at', 'order',)
     search_fields = ('title',)
     fields = ['title_uz', 'title_en', 'position_uz', 'position_en', 'degree_uz', 'degree_en', 'sphere_uz', 'sphere_en',
-              'email', 'content_uz', 'content_en', 'file', 'status', 'order',]
+              'content_uz', 'content_en', 'file', 'status', 'order',]
 
 
 @admin.register(Avtoreferat)
@@ -37,6 +37,6 @@ class CategoryAdmin(admin.ModelAdmin):
 class ArxivAdmin(admin.ModelAdmin):
     list_display = ('title', 'status', 'order', 'created_at', 'Updated_at')
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'sub_content_uz', 'sub_content_en',
-              'image', 'status', 'order',]
+    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'status', 'order',]
+
 

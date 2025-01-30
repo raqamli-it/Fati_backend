@@ -19,10 +19,10 @@ class Markazlar_BolimlarSerializer(serializers.ModelSerializer):
 class XodimlarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Xodimlar
-        fields = ['id', 'title_uz', 'title_en', 'birth', 'sphere_uz', 'sphere_en',
+        fields = ['id', 'title_uz', 'title_en', 'sphere_uz', 'sphere_en',
                   'position_uz', 'position_en', 'academic_degree_uz', 'academic_degree_en',
                   'email', 'image', 'about_uz', 'about_en', 'works_uz', 'works_en',
-                  'batafsil', 'status', 'order', 'center_id']
+                  'status', 'order', 'center_id']
 
 
 class Tadqiqot_Serializer(serializers.ModelSerializer):

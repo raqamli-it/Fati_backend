@@ -6,32 +6,32 @@ from . models import Tahririyat, Avtoreferat, Category, Arxiv, Talablar
 class TalabalarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Talablar
-        fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'sub_content_uz', 'sub_content_en',
+        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'sub_content_uz', 'sub_content_en',
                   'image', 'status', 'order',)
 
 
 class TahririyatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tahririyat
-        fields = ['title_uz', 'title_en', 'position_uz', 'position_en', 'degree_uz', 'degree_en', 'sphere_uz',
-                  'sphere_en', 'email', 'content_uz', 'content_en', 'file', 'status', 'order', ]
+        fields = ['id', 'title_uz', 'title_en', 'position_uz', 'position_en', 'degree_uz', 'degree_en', 'sphere_uz',
+                  'sphere_en', 'content_uz', 'content_en', 'file', 'status', 'order', ]
 
 
 class AvtoreferatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Avtoreferat
-        fields = ['title_uz', 'title_en', 'image', 'file', 'content_uz', 'content_en', 'status', 'order', 'category']
+        fields = ['id', 'title_uz', 'title_en', 'image', 'file', 'content_uz', 'content_en', 'status', 'order',
+                  'category']
 
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['title_uz', 'title_en', 'status', 'order', ]
+        fields = ['id', 'title_uz', 'title_en', 'status', 'order', ]
 
 
 class ArxivSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Arxiv
-        fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'sub_content_uz', 'sub_content_en',
-                  'image', 'status', 'order',]
+        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'status', 'order',]

@@ -1,7 +1,6 @@
 from django.urls import path
 from xalqaro_aloqalar.views import (Xamkor_tashkilotListView, xamkor_tashkilotdetail, Xamkor_loihalarListView,\
-     xamkor_loihalardetail, Xalqaro_sayohatlarListView, xalqaro_sayohatlardetail, TadqiqotListView, Tadqiqotdetail,
-                                    KelganlarListView, Kelganlardetail,)
+     xamkor_loihalardetail, Xalqaro_sayohatlarListView, xalqaro_sayohatlardetail, TadqiqotListView, Tadqiqotdetail,)
 
 
 urlpatterns = [
@@ -16,8 +15,5 @@ urlpatterns = [
 
     path('tadqiqot/', TadqiqotListView.as_view(), name='tadqiqot-list'),
     path('tadqiqot/<int:pk>/', Tadqiqotdetail, name='tadqiqot-detail'),
-
-    path('Kelganlar/', KelganlarListView.as_view(), name='Kelganlar-list'),
-    path('Kelganlar/<int:pk>/', Kelganlardetail, name='Kelganlar-detail'),
 
 ]

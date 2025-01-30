@@ -59,7 +59,6 @@ class Tadqiqot(models.Model):
 
 class Xodimlar(models.Model):
     title = models.CharField(max_length=255)
-    birth = models.DateField(blank=True, null=True)
     sphere = models.CharField(max_length=255, blank=True, null=True)
     position = models.CharField(max_length=255, blank=True, null=True)
     academic_degree = models.CharField(max_length=255, blank=True, null=True)
@@ -67,7 +66,6 @@ class Xodimlar(models.Model):
     image = models.ImageField(upload_to='media/Xodimlar', blank=True, null=True)
     about = RichTextField(blank=True, null=True)
     works = RichTextField(blank=True, null=True)
-    batafsil = models.FileField(upload_to='media/Xodimlar/file', blank=True, null=True)
     center_id = models.ForeignKey(
         Markazlar_Bolimlar,
         on_delete=models.CASCADE,

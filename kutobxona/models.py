@@ -35,7 +35,6 @@ class Tahririyat(models.Model):
     degree = models.CharField(max_length=255, blank=True, null=True)
     sphere = models.CharField(max_length=255, blank=True, null=True)
     content = RichTextField(blank=True, null=True)
-    email = models.EmailField(unique=True, blank=True, null=True)
     file = models.FileField(upload_to='media/tahririyat', blank=True, null=True)
     STATUS_CHOICES = [
         ('published', 'Published'),
@@ -111,7 +110,6 @@ class Avtoreferat(models.Model):
 class Arxiv(models.Model):
     title = models.CharField(max_length=255, null=True)
     content = RichTextField(blank=True, null=True)
-    sub_content = RichTextField(blank=True, null=True)
     image = models.FileField(upload_to='media/Arxiv/image', blank=True, null=True)
     STATUS_CHOICES = [
             ('published', 'Published'),

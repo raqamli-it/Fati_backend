@@ -1,31 +1,14 @@
-from kengashlar.models import Ilmiy_kengash_majlis, fon_picture, Yosh_olimlar
+from kengashlar.models import Ilmiy_kengash_majlis, Yosh_olimlar
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView
 from rest_framework import filters
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
-from kengashlar.serializers import fon_pictureSerializer, Ilmiy_kengash_majlisSerializer, Yosh_olimlarSerializer
+from kengashlar.serializers import Ilmiy_kengash_majlisSerializer, Yosh_olimlarSerializer
 from kengashlar.pagination import ResultsSetPagination
 from kengashlar.models import Azolar
 from kengashlar.serializers import AzolarSerializer
 from rest_framework import generics
-
-
-class fon_pictureListView(ListAPIView):
-    search_fields = ['title']
-    filter_backends = (filters.SearchFilter,)
-    serializer_class = fon_pictureSerializer
-    pagination_class = ResultsSetPagination
-
-    def get_queryset(self):
-        return fon_picture.objects.all().order_by('order')
-
-
-@api_view(['GET'])
-def fon_picturedetail(request, pk):
-    fon_pictur = get_object_or_404(fon_picture, pk=pk)
-    serializer = fon_pictureSerializer(fon_pictur, context={'request': request})
-    return Response(serializer.data)
 
 
 class Ilmiy_kengash_majlisListView(ListAPIView):
@@ -74,26 +57,4 @@ def Azolardetail(request, pk):
     serializer = AzolarSerializer(azolar, context={'request': request})
     return Response(serializer.data)
 
-#
-# class DissertatsiyaIshlarListView(ListAPIView):
-#     queryset = DissertatsiyaIshlar.objects.all()
-#     serializer_class = DissertatsiyaIshlarSerializer
-#
-#
-# @api_view(['GET'])
-# def DissertatsiyaIshlardetail(request, pk):
-#     azolar = get_object_or_404(DissertatsiyaIshlar, pk=pk)
-#     serializer = DissertatsiyaIshlarSerializer(azolar, context={'request': request})
-#     return Response(serializer.data)
-
-# class ContentListView(ListAPIView):
-#     queryset = Content.objects.all()
-#     serializer_class = ContentSerializer
-#
-#
-# @api_view(['GET'])
-# def Contentdetail(request, pk):
-#     content = get_object_or_404(Content, pk=pk)
-#     serializer = ContentSerializer(content, context={'request': request})
-#     return Response(serializer.data)
 #

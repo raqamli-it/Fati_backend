@@ -14,10 +14,10 @@ class Markazlar_Bolimlar(admin.ModelAdmin):
 class XodimlarAdmin(admin.ModelAdmin):
     list_display = ('title', 'status', 'order', 'created_at', 'updated_at')
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'birth', 'sphere_uz', 'sphere_en',
+    fields = ['title_uz', 'title_en', 'sphere_uz', 'sphere_en',
               'position_uz', 'position_en', 'academic_degree_uz', 'academic_degree_en',
               'email', 'image', 'about_uz', 'about_en', 'works_uz', 'works_en',
-              'batafsil', 'status', 'order', 'center_id']
+              'status', 'order', 'center_id']
 
 
 @admin.register(Tadqiqot)

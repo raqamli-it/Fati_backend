@@ -16,5 +16,3 @@ class SeminarTranslationOptions(TranslationOptions):
 @register(Seminar_majlislari)
 class Seminar_majlislariTranslationOptions(TranslationOptions):
     fields = ('title', 'content', 'subcontent')
-
-

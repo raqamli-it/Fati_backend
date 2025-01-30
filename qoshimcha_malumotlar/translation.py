@@ -3,9 +3,14 @@ from modeltranslation.decorators import register
 from .models import *
 
 
+@register(Direktorlar)
+class DerektorlarTranslationOptions(TranslationOptions):
+    fields = ('title', )
+
+
 @register(Institut_tarixi)
 class Institut_tarixiTranslationOptions(TranslationOptions):
-    fields = ('title', 'content', 'subcontent')
+    fields = ('title', 'content',)
 
 
 @register(Rahbariyat)
@@ -20,16 +25,10 @@ class Tashkiliy_tuzulmaTranslationOptions(TranslationOptions):
 
 @register(Yangiliklar)
 class YangiliklarTranslationOptions(TranslationOptions):
-    fields = ('title', 'content', 'subcontent',)
+    fields = ('title', 'content', )
 
 
 @register(Havolalar)
 class HavolalarTranslationOptions(TranslationOptions):
     fields = ('title',)
-
-
-@register(Kengash_rasm)
-class HavolalarTranslationOptions(TranslationOptions):
-    fields = ('title', 'content')
-
 

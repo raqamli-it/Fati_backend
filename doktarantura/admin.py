@@ -20,6 +20,5 @@ class Malakaviy_imtihonAdmin(admin.ModelAdmin):
 class DoktaranturaAdmin(admin.ModelAdmin):
     list_display = ('title', 'status', 'created_at', 'updated_at', 'order',)
     search_fields = ('title',)
-    fields = ('title_uz', 'title_en', 'mehnat_faolyati_uz', 'mehnat_faolyati_en', 'ilimiy_faolyati_uz',
-              'ilimiy_faolyati_en', 'asarlar_uz', 'asarlar_en', 'file', 'type', 'status', 'order')
-
+    fields = ('title_uz', 'title_en', 'labor_activity_uz', 'labor_activity_en', 'scientific_activity_uz',
+              'scientific_activity_en', 'works_uz', 'works_en', 'file', 'type', 'status', 'order')

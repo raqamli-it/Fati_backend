@@ -2,27 +2,10 @@ from django.db import models
 from ckeditor.fields import RichTextField
 
 
-class Kengash_rasm(models.Model):
-    title = models.CharField(max_length=255)
-    picture = models.ImageField(upload_to='images', blank=True, null=True)
-    content = RichTextField(blank=True, null=True)
-
-    class Meta:
-        verbose_name = 'Kengash rasm'
-        verbose_name_plural = 'Kengash rasm'
-
-
-class picture(models.Model):
-    news = models.ImageField(upload_to='images', blank=True, null=True)
-    about_institute = models.ImageField(upload_to='images', blank=True, null=True)
-
-
 class Institut_tarixi(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
-    subcontent = RichTextField(blank=True, null=True)
-    file = models.FileField(upload_to='images', blank=True, null=True)
-    base_file = models.ImageField(upload_to='images', blank=True, null=True)
+    image = models.ImageField(upload_to='images', blank=True, null=True)
     STATUS_CHOICES = [
         ('published', 'Published'),
         ('not_published', 'Not Published'),
@@ -42,6 +25,17 @@ class Institut_tarixi(models.Model):
     class Meta:
         verbose_name = 'Institut tarixi'
         verbose_name_plural = 'Institut tarixi'
+
+
+class Direktorlar(models.Model):
+    title = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='media/Direktorlar')
+    about = models.ForeignKey(Institut_tarixi, on_delete=models.CASCADE,
+                              related_name='Direktorlar', blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Direktor'
+        verbose_name_plural = 'Direktor'
 
 
 class Aloqa(models.Model):
@@ -141,8 +135,7 @@ class Tashkiliy_tuzulma(models.Model):
 class Yangiliklar(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
-    subcontent = RichTextField(blank=True, null=True)
-    file = models.ImageField(upload_to='images', blank=True, null=True)
+    image = models.ImageField(upload_to='images', blank=True, null=True)
     STATUS_CHOICES = [
         ('published', 'Published'),
         ('not_published', 'Not Published'),

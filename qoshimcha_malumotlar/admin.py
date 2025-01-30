@@ -1,15 +1,20 @@
 from django.contrib import admin
 
 from qoshimcha_malumotlar.models import Institut_tarixi, Aloqa, Karusel, Rahbariyat, \
-    Tashkiliy_tuzulma, Yangiliklar, Havolalar, picture, Kengash_rasm
+    Tashkiliy_tuzulma, Yangiliklar, Havolalar, Direktorlar
+
+
+class Derektorlaradmin(admin.TabularInline):
+    model = Direktorlar
+    fields = ['title_uz', 'title_en', 'image']
 
 
 @admin.register(Institut_tarixi)
 class Institut_tarixiAdmin(admin.ModelAdmin):
     list_display = ('title', 'status', 'created_at', 'updated_at', 'order',)
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'subcontent_uz', 'subcontent_en', 'file', 'base_file',
-              'status', 'order',]
+    inlines = [Derektorlaradmin]
+    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'status', 'order',]
 
 
 @admin.register(Aloqa)
@@ -23,11 +28,6 @@ class AloqaAdmin(admin.ModelAdmin):
 @admin.register(Karusel)
 class KaruselAdmin(admin.ModelAdmin):
     fields = ['file', 'link', ]
-
-
-@admin.register(Kengash_rasm)
-class kengash_rasmAdmin(admin.ModelAdmin):
-    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'picture',]
 
 
 @admin.register(Rahbariyat)
@@ -49,7 +49,7 @@ class Tashkiliy_tuzulmaAdmin(admin.ModelAdmin):
 class YangiliklarAdmin(admin.ModelAdmin):
     list_display = ('title', 'status', 'created_at', 'updated_at', 'order',)
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'subcontent_uz', 'subcontent_en', 'file',
+    fields = ['title_uz', 'title_en', 'content_uz', 'content_en',  'image',
               'status', 'order']
 
 
@@ -58,6 +58,3 @@ class HavolalarAdmin(admin.ModelAdmin):
     list_display = ('title', 'status', 'created_at', 'updated_at', 'order',)
     search_fields = ('title',)
     fields = ['title_uz', 'title_en', 'file', 'link', 'status', 'order',]
-
-
-admin.site.register(picture)

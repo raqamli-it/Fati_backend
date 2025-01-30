@@ -1,22 +1,13 @@
 from rest_framework import serializers
 from xalqaro_aloqalar.models import Xamkor_tashkilot, Xamkor_loihalar, Xalqaro_sayohatlar
-from xalqaro_aloqalar.models import Tadqiqot, Kelganlar
-
-
-class KelganlarSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Kelganlar
-        fields = ['id', 'kelgan_yil', 'ism_uz', 'ism_en', 'ish_joy_uz', 'ish_joy_en', 'status',
-                  'created_at', 'updated_at', 'order',]
+from xalqaro_aloqalar.models import Tadqiqot
 
 
 class TadqiqotSerializer(serializers.ModelSerializer):
-    kelganlar = KelganlarSerializer()
 
     class Meta:
         model = Tadqiqot
-        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'img_file', 'status', 'order', 'kelganlar',]
+        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'img_file', 'status', 'order', ]
 
 
 class Xamkor_tashkilotSerializer(serializers.ModelSerializer):

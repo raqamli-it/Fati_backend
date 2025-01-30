@@ -4,10 +4,10 @@ from rest_framework import filters
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from qoshimcha_malumotlar.models import Institut_tarixi, Aloqa, Karusel, Rahbariyat, \
-    Tashkiliy_tuzulma, Yangiliklar, Havolalar, picture, Kengash_rasm
+    Tashkiliy_tuzulma, Yangiliklar, Havolalar
 from qoshimcha_malumotlar.serializers import Institut_tarixiSerializer, \
     AloqaSerializer, KaruselSerializer, RahbariyatSerializer, Tashkiliy_tuzulmaSerializer, YangiliklarSerializer, \
-    HavolalarSerializer, pictureSerializer, Kengash_rasmSerializer
+    HavolalarSerializer
 from xalqaro_aloqalar.pagination import ResultsSetPagination
 
 
@@ -54,18 +54,6 @@ class KaruselListView(ListAPIView):
 def karuseldetail(request, pk):
     karusel = get_object_or_404(Karusel, pk=pk)
     serializer = KaruselSerializer(karusel, context={'request': request})
-    return Response(serializer.data)
-
-
-class Kengash_rasmListView(ListAPIView):
-    queryset = Kengash_rasm.objects.all()
-    serializer_class = Kengash_rasmSerializer
-
-
-@api_view(['GET'])
-def Kengash_rasmdetail(request, pk):
-    kengash_rasm = get_object_or_404(Karusel, pk=pk)
-    serializer = Kengash_rasmSerializer(kengash_rasm, context={'request': request})
     return Response(serializer.data)
 
 
@@ -136,14 +124,3 @@ def havolalardetail(request, pk):
     serializer = HavolalarSerializer(havolalar, context={'request': request})
     return Response(serializer.data)
 
-
-class pictureListView(ListAPIView):
-    queryset = picture.objects.all()
-    serializer_class = pictureSerializer
-
-
-@api_view(['GET'])
-def picturedetail(request, pk):
-    azolar = get_object_or_404(picture, pk=pk)
-    serializer = pictureSerializer(azolar, context={'request': request})
-    return Response(serializer.data)

@@ -3,10 +3,10 @@ from rest_framework.generics import ListAPIView
 from rest_framework import filters
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
-from xalqaro_aloqalar.models import Xamkor_tashkilot, Xamkor_loihalar, Xalqaro_sayohatlar, Tadqiqot, Kelganlar
+from xalqaro_aloqalar.models import Xamkor_tashkilot, Xamkor_loihalar, Xalqaro_sayohatlar, Tadqiqot
 from xalqaro_aloqalar.pagination import ResultsSetPagination
 from xalqaro_aloqalar.serializers import (Xamkor_tashkilotSerializer, Xamkor_loihalarSerializer,
-     Xalqaro_sayohatlarSerializer, TadqiqotSerializer, KelganlarSerializer,)
+     Xalqaro_sayohatlarSerializer, TadqiqotSerializer,)
 
 
 class Xamkor_tashkilotListView(ListAPIView):
@@ -73,22 +73,6 @@ def Tadqiqotdetail(request, pk):
     serializer = TadqiqotSerializer(tadqiqot, context={'request': request})
     return Response(serializer.data)
 
-
-class KelganlarListView(ListAPIView):
-    search_fields = ['title']
-    filter_backends = (filters.SearchFilter,)
-    serializer_class = KelganlarSerializer
-    pagination_class = ResultsSetPagination
-
-    def get_queryset(self):
-        return Kelganlar.objects.all().order_by('order')
-
-
-@api_view(['GET'])
-def Kelganlardetail(request, pk):
-    kelganlar = get_object_or_404(Kelganlar, pk=pk)
-    serializer = KelganlarSerializer(kelganlar, context={'request': request})
-    return Response(serializer.data)
 
 
 
