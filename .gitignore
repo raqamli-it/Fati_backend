@@ -6,3 +6,4 @@ env
 .env
 media
 __pycache__
+staticfiles
