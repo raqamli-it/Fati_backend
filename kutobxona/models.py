@@ -134,4 +134,4 @@ class Arxiv(models.Model):
 
 class elon(models.Model):
     title = models.CharField(max_length=255, null=True)
-    content = RichTextField(blank=True, null=True)
+    image = models.ImageField(upload_to='image')
