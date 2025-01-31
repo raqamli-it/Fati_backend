@@ -1,5 +1,5 @@
 
-from .models import Tahririyat, Avtoreferat, Talablar, Category, Arxiv
+from .models import Tahririyat, Avtoreferat, Talablar, Category, Arxiv, elon
 from django.contrib import admin
 
 
@@ -40,3 +40,4 @@ class ArxivAdmin(admin.ModelAdmin):
     fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'status', 'order',]
 
 
+admin.site.register(elon)
