@@ -21,9 +21,10 @@ class TahririyatAdmin(admin.ModelAdmin):
 
 @admin.register(Avtoreferat)
 class AvtoreferatAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'Updated_at', 'order',)
+    list_display = ('title', 'category', 'created_at', 'Updated_at', 'order',)
     search_fields = ('title',)
     fields = ['title_uz', 'title_en', 'image', 'file', 'content_uz', 'content_en', 'status', 'order', 'category']
+    list_filter = ['category']
 
 
 @admin.register(Category)
