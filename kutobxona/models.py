@@ -131,7 +131,3 @@ class Arxiv(models.Model):
         verbose_name = 'Arxiv'
         verbose_name_plural = 'Arxivlar'
 
-
-class elon(models.Model):
-    title = models.CharField(max_length=255, null=True)
-    image = models.ImageField(upload_to='image')
