@@ -31,4 +31,4 @@ class Xalqaro_sayohatlarAdmin(admin.ModelAdmin):
 class TadqiqotAdmin(admin.ModelAdmin):
     list_display = ('title', 'status', 'created_at', 'updated_at', 'order',)
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'img_file', 'kelganlar', 'status', 'order', ]
+    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'img_file', 'status', 'order', ]
