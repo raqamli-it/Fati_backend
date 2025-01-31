@@ -130,3 +130,8 @@ class Arxiv(models.Model):
     class Meta:
         verbose_name = 'Arxiv'
         verbose_name_plural = 'Arxivlar'
+
+
+class elon(models.Model):
+    title = models.CharField(max_length=255, null=True)
+    content = RichTextField(blank=True, null=True)
