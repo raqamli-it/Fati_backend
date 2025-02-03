@@ -38,7 +38,7 @@ class MarkazlarBolimlarSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Markazlar_Bolimlar
-        fields = ['id', 'title', 'content', 'image', 'status', 'order', 'created_at', 'updated_at', 'xodimlar',
+        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'status', 'order', 'xodimlar',
                   'tadqiqotlar', 'photos', 'videos']
 
 
