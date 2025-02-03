@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from qoshimcha_malumotlar.models import Institut_tarixi, Aloqa, Karusel, Rahbariyat, \
+from .models import Institut_tarixi, Aloqa, Karusel, Rahbariyat, \
     Tashkiliy_tuzulma, Yangiliklar, Havolalar, Direktorlar
 
 

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from seminar.views import Seminar_turlariListView, seminar_turlaridetail, SeminarListView, seminardetail, \
+from .views import Seminar_turlariListView, seminar_turlaridetail, SeminarListView, seminardetail, \
     Seminar_majlislariListView, seminar_majlislaridetail
 
 urlpatterns = [

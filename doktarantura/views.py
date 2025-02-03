@@ -4,10 +4,10 @@ from rest_framework import filters
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 
-from doktarantura.models import Qabul_tartibi, Malakaviy_imtihon, Doktarantura
-from xalqaro_aloqalar.pagination import ResultsSetPagination
+from .models import Qabul_tartibi, Malakaviy_imtihon, Doktarantura
+from .pagination import ResultsSetPagination
 
-from doktarantura.serializers import Qabul_tartibiSerializer, Malakaviy_imtihonSerializer, DoktaranturaSerializer
+from .serializers import Qabul_tartibiSerializer, Malakaviy_imtihonSerializer, DoktaranturaSerializer
 
 
 class Qabul_tartibiListView(ListAPIView):

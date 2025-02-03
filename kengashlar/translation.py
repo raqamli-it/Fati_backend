@@ -1,7 +1,7 @@
 from modeltranslation.translator import TranslationOptions
 from modeltranslation.decorators import register
-from kengashlar.models import Ilmiy_kengash_majlis, Yosh_olimlar
-from kengashlar.models import Azolar
+from .models import Ilmiy_kengash_majlis, Yosh_olimlar
+from .models import Azolar
 
 
 @register(Ilmiy_kengash_majlis)

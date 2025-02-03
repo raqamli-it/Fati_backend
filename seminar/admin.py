@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from seminar.models import Seminar_turlari, Seminar, Seminar_majlislari
+from .models import Seminar_turlari, Seminar, Seminar_majlislari
 
 
 @admin.register(Seminar_turlari)

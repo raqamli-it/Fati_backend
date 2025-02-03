@@ -3,19 +3,6 @@ from rest_framework import serializers
 from .models import Xodimlar, Markazlar_Bolimlar, Tadqiqot, Photo, Video
 
 
-class MarkazlarBolimlarSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Markazlar_Bolimlar
-        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'status', 'order']
-
-
-class Markazlar_BolimlarSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Markazlar_Bolimlar
-        fields = ['id', 'title_uz', 'title_en',]
-
-
 class XodimlarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Xodimlar
@@ -41,3 +28,22 @@ class VideoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Video
         fields = ['id', 'title_uz', 'title_en', 'video', 'link', 'center_id']
+
+
+class MarkazlarBolimlarSerializer(serializers.ModelSerializer):
+    xodimlar = XodimlarSerializer(many=True, read_only=True)
+    tadqiqotlar = Tadqiqot_Serializer(many=True, read_only=True, source="Tadqiqot")
+    photos = PhotoSerializer(many=True, read_only=True, source="Photo")
+    videos = VideoSerializer(many=True, read_only=True, source="Video")
+
+    class Meta:
+        model = Markazlar_Bolimlar
+        fields = ['id', 'title', 'content', 'image', 'status', 'order', 'created_at', 'updated_at', 'xodimlar',
+                  'tadqiqotlar', 'photos', 'videos']
+
+
+class Markazlar_BolimlarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Markazlar_Bolimlar
+        fields = ['id', 'title_uz', 'title_en',]
+

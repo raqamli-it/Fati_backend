@@ -1,8 +1,8 @@
 from django.urls import path
-from qoshimcha_malumotlar.views import Institut_tarixiListView, institut_tarixidetail, \
+from .views import Institut_tarixiListView, institut_tarixidetail, \
     AloqaListView, aloqadetail, KaruselListView, karuseldetail,\
     RahbariyatListView, rahbariyatdetail, Tashkiliy_tuzulmaListView, tashkiliy_tuzulmadetail, YangiliklarListView, \
-    yangiliklardetail, HavolalarListView, havolalardetail
+    yangiliklardetail, HavolalarListView, havolalardetail, YangiliklarList
 
 urlpatterns = [
     path('institut-tarixi/', Institut_tarixiListView.as_view(), name='institut_tarixi-list'),
@@ -21,6 +21,7 @@ urlpatterns = [
     path('tashkiliy-tuzulma/<int:pk>/', tashkiliy_tuzulmadetail, name='tashkiliy_tuzulma-detail'),
 
     path('yangiliklar/', YangiliklarListView.as_view(), name='yangiliklar-list'),
+    path('home/yangiliklar/', YangiliklarList.as_view(), name='yangiliklar-home'),
     path('yangiliklar/<int:pk>/', yangiliklardetail, name='yangiliklar-detail'),
 
     path('havolalar/', HavolalarListView.as_view(), name='havolalar-list'),

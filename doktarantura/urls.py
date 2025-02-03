@@ -1,6 +1,6 @@
 from django.urls import path
 
-from doktarantura.views import Qabul_tartibiListView, qabul_tartibidetail, Malakaviy_imtihonListView, \
+from .views import Qabul_tartibiListView, qabul_tartibidetail, Malakaviy_imtihonListView, \
     malakaviy_imtihondetail, DoktaranturaListView, doktaranturadetail
 
 urlpatterns = [

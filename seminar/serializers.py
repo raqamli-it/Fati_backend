@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from seminar.models import Seminar_turlari, Seminar, Seminar_majlislari
+from .models import Seminar_turlari, Seminar, Seminar_majlislari
 
 
 class Seminar_turlariSerializer(serializers.ModelSerializer):

@@ -1,7 +1,7 @@
 from modeltranslation.translator import TranslationOptions
 from modeltranslation.decorators import register
 
-from xalqaro_aloqalar.models import Xamkor_tashkilot, Xamkor_loihalar, Tadqiqot, Xalqaro_sayohatlar
+from .models import Xamkor_tashkilot, Xamkor_loihalar, Tadqiqot, Xalqaro_sayohatlar
 
 
 @register(Xamkor_tashkilot)

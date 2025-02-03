@@ -3,12 +3,12 @@ from rest_framework.generics import ListAPIView
 from rest_framework import filters
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
-from qoshimcha_malumotlar.models import Institut_tarixi, Aloqa, Karusel, Rahbariyat, \
+from .models import Institut_tarixi, Aloqa, Karusel, Rahbariyat, \
     Tashkiliy_tuzulma, Yangiliklar, Havolalar
-from qoshimcha_malumotlar.serializers import Institut_tarixiSerializer, \
+from .serializers import Institut_tarixiSerializer, \
     AloqaSerializer, KaruselSerializer, RahbariyatSerializer, Tashkiliy_tuzulmaSerializer, YangiliklarSerializer, \
     HavolalarSerializer
-from xalqaro_aloqalar.pagination import ResultsSetPagination
+from .pagination import ResultsSetPagination
 
 
 class Institut_tarixiListView(ListAPIView):
@@ -99,6 +99,11 @@ class YangiliklarListView(ListAPIView):
 
     def get_queryset(self):
         return Yangiliklar.objects.all().order_by('order')
+
+
+class YangiliklarList(ListAPIView):
+    queryset = Yangiliklar.objects.all().order_by('-created_at')[:6]
+    serializer_class = YangiliklarSerializer
 
 
 @api_view(['GET'])

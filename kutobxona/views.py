@@ -3,7 +3,7 @@ from rest_framework.generics import ListAPIView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.generics import get_object_or_404
-from kutobxona.models import Tahririyat, Avtoreferat, Talablar, Category, Arxiv
+from .models import Tahririyat, Avtoreferat, Talablar, Category, Arxiv
 from .serializers import (TahririyatSerializer, AvtoreferatSerializer, TalabalarSerializer, CategorySerializer,
                           ArxivSerializer)
 from .pagination import ResultsSetPagination

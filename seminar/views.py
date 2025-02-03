@@ -4,9 +4,9 @@ from rest_framework import filters
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 
-from seminar.models import Seminar_turlari, Seminar, Seminar_majlislari
-from seminar.serializers import Seminar_turlariSerializer, SeminarSerializer, Seminar_majlislariSerializer
-from xalqaro_aloqalar.pagination import ResultsSetPagination
+from .models import Seminar_turlari, Seminar, Seminar_majlislari
+from .serializers import Seminar_turlariSerializer, SeminarSerializer, Seminar_majlislariSerializer
+from .pagination import ResultsSetPagination
 
 
 class Seminar_turlariListView(ListAPIView):

@@ -1,6 +1,6 @@
 from modeltranslation.translator import TranslationOptions
 from modeltranslation.decorators import register
-from markazlar_va_bolimlar.models import Xodimlar, Markazlar_Bolimlar, Tadqiqot, Video, Photo
+from .models import Xodimlar, Markazlar_Bolimlar, Tadqiqot, Video, Photo
 
 
 @register(Markazlar_Bolimlar)

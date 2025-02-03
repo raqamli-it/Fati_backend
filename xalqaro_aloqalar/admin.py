@@ -1,6 +1,6 @@
 from django.contrib import admin
-from xalqaro_aloqalar.models import Xamkor_tashkilot, Xamkor_loihalar, Xalqaro_sayohatlar
-from xalqaro_aloqalar.models import Tadqiqot
+from .models import Xamkor_tashkilot, Xamkor_loihalar, Xalqaro_sayohatlar
+from .models import Tadqiqot
 
 
 @admin.register(Xamkor_tashkilot)

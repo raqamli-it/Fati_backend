@@ -3,9 +3,9 @@ from rest_framework.generics import ListAPIView
 from rest_framework import filters
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
-from xalqaro_aloqalar.models import Xamkor_tashkilot, Xamkor_loihalar, Xalqaro_sayohatlar, Tadqiqot
-from xalqaro_aloqalar.pagination import ResultsSetPagination
-from xalqaro_aloqalar.serializers import (Xamkor_tashkilotSerializer, Xamkor_loihalarSerializer,
+from .models import Xamkor_tashkilot, Xamkor_loihalar, Xalqaro_sayohatlar, Tadqiqot
+from .pagination import ResultsSetPagination
+from .serializers import (Xamkor_tashkilotSerializer, Xamkor_loihalarSerializer,
      Xalqaro_sayohatlarSerializer, TadqiqotSerializer,)
 
 

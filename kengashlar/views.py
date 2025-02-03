@@ -1,13 +1,13 @@
-from kengashlar.models import Ilmiy_kengash_majlis, Yosh_olimlar
+from .models import Ilmiy_kengash_majlis, Yosh_olimlar
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView
 from rest_framework import filters
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
-from kengashlar.serializers import Ilmiy_kengash_majlisSerializer, Yosh_olimlarSerializer
-from kengashlar.pagination import ResultsSetPagination
-from kengashlar.models import Azolar
-from kengashlar.serializers import AzolarSerializer
+from.serializers import Ilmiy_kengash_majlisSerializer, Yosh_olimlarSerializer
+from .pagination import ResultsSetPagination
+from .models import Azolar
+from .serializers import AzolarSerializer
 from rest_framework import generics
 
 

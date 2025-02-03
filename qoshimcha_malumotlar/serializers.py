@@ -1,7 +1,7 @@
 
 from rest_framework import serializers
 
-from qoshimcha_malumotlar.models import Institut_tarixi, Aloqa, Karusel, Rahbariyat, Tashkiliy_tuzulma, Yangiliklar, \
+from .models import Institut_tarixi, Aloqa, Karusel, Rahbariyat, Tashkiliy_tuzulma, Yangiliklar, \
      Havolalar, Direktorlar
 
 
@@ -12,11 +12,11 @@ class DirektorSerializer(serializers.ModelSerializer):
 
 
 class Institut_tarixiSerializer(serializers.ModelSerializer):
-    Direktor = DirektorSerializer(many=True, read_only=True)
+    direktorlar = DirektorSerializer(many=True, read_only=True, source='Direktorlar')
 
     class Meta:
         model = Institut_tarixi
-        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'status', 'order', 'Direktor')
+        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'status', 'order', 'direktorlar')
 
 
 class AloqaSerializer(serializers.ModelSerializer):
