@@ -22,7 +22,7 @@ class AvtoreferatSerializer(serializers.ModelSerializer):
         model = Avtoreferat
         fields = ['id', 'title_uz', 'title_en', 'image', 'file', 'content_uz', 'content_en', 'status', 'order',
                   'category']
-
+ 
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:

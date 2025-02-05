@@ -2,7 +2,7 @@
 from rest_framework import serializers
 
 from .models import Institut_tarixi, Aloqa, Karusel, Rahbariyat, Tashkiliy_tuzulma, Yangiliklar, \
-     Havolalar, Direktorlar
+     Havolalar, Direktorlar, Xabarlar
 
 
 class DirektorSerializer(serializers.ModelSerializer):
@@ -22,8 +22,14 @@ class Institut_tarixiSerializer(serializers.ModelSerializer):
 class AloqaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aloqa
-        fields = ('id', 'faks', 'email', 'phone', 'adress', 'lat', 'long', 'youtube', 'telegram', 'instagram',
+        fields = ('id', 'phone', 'email', 'adress', 'lat', 'long', 'youtube', 'telegram', 'instagram',
                   'facebook', 'status', 'order',)
+
+
+class XabarlarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Xabarlar
+        fields = ['id', 'name', 'phone', 'content']
 
 
 class KaruselSerializer(serializers.ModelSerializer):

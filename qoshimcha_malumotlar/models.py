@@ -39,9 +39,8 @@ class Direktorlar(models.Model):
 
 
 class Aloqa(models.Model):
-    faks = models.CharField(max_length=255, verbose_name='Faks', blank=True, null=True)
-    email = models.EmailField(blank=True, null=True, verbose_name='Email')
     phone = models.CharField(max_length=255, verbose_name='Telefon', blank=True, null=True)
+    email = models.EmailField(blank=True, null=True, verbose_name='Email')
     adress = models.CharField(max_length=255, verbose_name='Manzil', blank=True, null=True)
     lat = models.FloatField(blank=True, null=True, verbose_name='Latitude')
     long = models.FloatField(blank=True, null=True, verbose_name='Longitude')
@@ -68,6 +67,19 @@ class Aloqa(models.Model):
     class Meta:
         verbose_name = 'Aloqa'
         verbose_name_plural = 'Aloqalar'
+
+
+class Xabarlar(models.Model):
+    name = models.CharField(max_length=255, verbose_name='Ism')
+    phone = models.CharField(max_length=255, verbose_name='Telefon')
+    content = models.TextField(verbose_name='Xabar')
+
+    def __str__(self):
+        return f"{self.name} - {self.phone}"
+
+    class Meta:
+        verbose_name = 'Xabarlar'
+        verbose_name_plural = 'Xabarlar'
 
 
 class Karusel(models.Model):

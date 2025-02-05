@@ -29,7 +29,7 @@ class TadqiqotAdmin(admin.ModelAdmin):
 
 @admin.register(Photo)
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = ('title', 'image', 'status', 'order', 'created_at', 'updated_at')
+    list_display = ('title', 'status', 'order', 'created_at', 'updated_at')
     search_fields = ('title',)
     fields = ('title_uz', 'title_en', 'image', 'status', 'order', 'center_id',)
 

@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import Institut_tarixi, Aloqa, Karusel, Rahbariyat, \
-    Tashkiliy_tuzulma, Yangiliklar, Havolalar, Direktorlar
+    Tashkiliy_tuzulma, Yangiliklar, Havolalar, Direktorlar, Xabarlar
 
 
 class Derektorlaradmin(admin.TabularInline):
@@ -21,7 +21,7 @@ class Institut_tarixiAdmin(admin.ModelAdmin):
 class AloqaAdmin(admin.ModelAdmin):
     list_display = ('phone', 'email', 'status', 'created_at', 'updated_at', 'order',)
     search_fields = ('title',)
-    fields = ('faks', 'email', 'phone', 'adress', 'lat', 'long', 'youtube', 'telegram', 'instagram',
+    fields = ('phone', 'email', 'adress', 'lat', 'long', 'youtube', 'telegram', 'instagram',
               'facebook', 'status', 'order', )
 
 
@@ -58,3 +58,9 @@ class HavolalarAdmin(admin.ModelAdmin):
     list_display = ('title', 'status', 'created_at', 'updated_at', 'order',)
     search_fields = ('title',)
     fields = ['title_uz', 'title_en', 'file', 'link', 'status', 'order',]
+
+
+@admin.register(Xabarlar)
+class XabarlarAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone', 'content')  # Admin panelda ko'rinishi
+    search_fields = ('name', 'phone')  # Qidiruv

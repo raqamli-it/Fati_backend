@@ -1,21 +1,19 @@
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView
-from rest_framework import filters
+from rest_framework import filters, generics
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from .models import Institut_tarixi, Aloqa, Karusel, Rahbariyat, \
-    Tashkiliy_tuzulma, Yangiliklar, Havolalar
+    Tashkiliy_tuzulma, Yangiliklar, Havolalar, Xabarlar
 from .serializers import Institut_tarixiSerializer, \
     AloqaSerializer, KaruselSerializer, RahbariyatSerializer, Tashkiliy_tuzulmaSerializer, YangiliklarSerializer, \
-    HavolalarSerializer
-from .pagination import ResultsSetPagination
+    HavolalarSerializer, XabarlarSerializer
 
 
 class Institut_tarixiListView(ListAPIView):
     search_fields = ['title']
     filter_backends = (filters.SearchFilter,)
     serializer_class = Institut_tarixiSerializer
-    pagination_class = ResultsSetPagination
 
     def get_queryset(self):
         return Institut_tarixi.objects.all().order_by('order')
@@ -32,7 +30,6 @@ class AloqaListView(ListAPIView):
     search_fields = ['phone']
     filter_backends = (filters.SearchFilter,)
     serializer_class = AloqaSerializer
-    pagination_class = ResultsSetPagination
 
     def get_queryset(self):
         return Aloqa.objects.all().order_by('order')
@@ -45,23 +42,20 @@ def aloqadetail(request, pk):
     return Response(serializer.data)
 
 
+class XabarlarCreateView(generics.CreateAPIView):  # Faqat POST uchun
+    queryset = Xabarlar.objects.all()
+    serializer_class = XabarlarSerializer
+
+
 class KaruselListView(ListAPIView):
     queryset = Karusel.objects.all()
     serializer_class = KaruselSerializer
-
-
-@api_view(['GET'])
-def karuseldetail(request, pk):
-    karusel = get_object_or_404(Karusel, pk=pk)
-    serializer = KaruselSerializer(karusel, context={'request': request})
-    return Response(serializer.data)
 
 
 class RahbariyatListView(ListAPIView):
     search_fields = ['title']
     filter_backends = (filters.SearchFilter,)
     serializer_class = RahbariyatSerializer
-    pagination_class = ResultsSetPagination
 
     def get_queryset(self):
         return Rahbariyat.objects.all().order_by('order')
@@ -78,7 +72,6 @@ class Tashkiliy_tuzulmaListView(ListAPIView):
     search_fields = ['title']
     filter_backends = (filters.SearchFilter,)
     serializer_class = Tashkiliy_tuzulmaSerializer
-    pagination_class = ResultsSetPagination
 
     def get_queryset(self):
         return Tashkiliy_tuzulma.objects.all().order_by('order')
@@ -95,7 +88,6 @@ class YangiliklarListView(ListAPIView):
     search_fields = ['title']
     filter_backends = (filters.SearchFilter,)
     serializer_class = YangiliklarSerializer
-    pagination_class = ResultsSetPagination
 
     def get_queryset(self):
         return Yangiliklar.objects.all().order_by('order')
@@ -117,7 +109,6 @@ class HavolalarListView(ListAPIView):
     search_fields = ['title']
     filter_backends = (filters.SearchFilter,)
     serializer_class = HavolalarSerializer
-    pagination_class = ResultsSetPagination
 
     def get_queryset(self):
         return Havolalar.objects.all().order_by('order')
