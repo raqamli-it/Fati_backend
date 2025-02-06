@@ -22,12 +22,24 @@ class AvtoreferatSerializer(serializers.ModelSerializer):
         model = Avtoreferat
         fields = ['id', 'title_uz', 'title_en', 'image', 'file', 'content_uz', 'content_en', 'status', 'order',
                   'category']
- 
 
-class CategorySerializer(serializers.ModelSerializer):
+
+class CategoryListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['id', 'title_uz', 'title_en', 'status', 'order', ]
+        fields = ['id', 'title_uz', 'title_en', 'status', 'order']
+
+
+class CategoryDetailSerializer(serializers.ModelSerializer):
+    avtoreferatlar = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Category
+        fields = ['id', 'title_uz', 'title_en', 'status', 'order', 'avtoreferatlar']
+
+    def get_avtoreferatlar(self, obj):
+        # Bu qism endi ishlatilmaydi, chunki paginatsiya viewda bo‘ladi
+        return []
 
 
 class ArxivSerializer(serializers.ModelSerializer):

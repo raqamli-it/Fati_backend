@@ -9,12 +9,14 @@ from .views import (
     TalablarListView,
     Arxiv_detail_view,
     ArxivListCreateView,
-    CategoryKitobListCreateView
+    CategoryKitobListCreateView,
+    CategoryKitobDetailView
 )
 
 urlpatterns = [
 
-    path('Category/', CategoryKitobListCreateView.as_view(), name='elektronKitob-list'),
+    path('category/', CategoryKitobListCreateView.as_view(), name='elektronKitob-list'),
+    path('category/<int:id>/', CategoryKitobDetailView.as_view(), name='category-detail'),
 
     path('avtoreferat/', AvtoreferatListCreateView.as_view(), name='avtoreferat-list'),
     path('avtoreferat/<int:pk>/', avtoreferat_detail_view, name='avtoreferat-detail'),
