@@ -1,19 +1,3 @@
-"""
-URL configuration for config project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, include
 from drf_yasg.views import get_schema_view
@@ -46,7 +30,7 @@ urlpatterns = [
     path('doktarantura/', include('doktarantura.urls')),
     path('kengashlar/', include('kengashlar.urls')),
     path('kutobxona/', include('kutobxona.urls')),
-    path('markazlar-va-bolimlar/', include('markazlar_va_bolimlar.urls')),
+    path('markazlar-bolimlar/', include('markazlar_va_bolimlar.urls')),
     path('qoshimcha-malumotlar/', include('qoshimcha_malumotlar.urls')),
     path('seminar/', include('seminar.urls')),
     path('xalqaro-aloqalar/', include('xalqaro_aloqalar.urls')),

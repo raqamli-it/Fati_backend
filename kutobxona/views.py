@@ -61,7 +61,7 @@ class CategoryKitobListCreateView(ListAPIView):
 
 
 class ResultsSetPagination(PageNumberPagination):
-    page_size = 9
+    page_size = 1
     page_size_query_param = 'page_size'
     max_page_size = 100
 
@@ -111,5 +111,3 @@ def Arxiv_detail_view(request, pk):
     manba = get_object_or_404(Arxiv, pk=pk)
     serializer = ArxivSerializer(manba, context={'request': request})
     return Response(serializer.data)
-
-

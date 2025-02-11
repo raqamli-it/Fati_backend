@@ -1,9 +1,14 @@
 from modeltranslation.translator import TranslationOptions
 from modeltranslation.decorators import register
-from .models import Xodimlar, Markazlar_Bolimlar, Tadqiqot, Video, Photo
+from .models import Xodimlar, Markazlar, Bolimlar, Tadqiqot, Video, Photo
 
 
-@register(Markazlar_Bolimlar)
+@register(Markazlar)
+class Markazlar_bolimlarTranslationOptions(TranslationOptions):
+    fields = ('title', 'content',)
+
+
+@register(Bolimlar)
 class Markazlar_bolimlarTranslationOptions(TranslationOptions):
     fields = ('title', 'content',)
 
@@ -15,7 +20,7 @@ class TadqiqotTranslationOptions(TranslationOptions):
 
 @register(Xodimlar)
 class XodimlarTranslationOptions(TranslationOptions):
-    fields = ('title', 'sphere', 'position', 'academic_degree', 'about', 'works')
+    fields = ('ful_name', 'activity', 'about', 'works')
 
 
 @register(Video)

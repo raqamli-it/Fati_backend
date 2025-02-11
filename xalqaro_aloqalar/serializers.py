@@ -39,7 +39,7 @@ class Xamkor_loihalarGroupedSerializer(serializers.Serializer):
         return Xamkor_loihalarSerializer(unpublished_projects, many=True).data
 
 
-class Xalqaro_sayohatlarSerializer(serializers.ModelSerializer):
+class Ilmiy_safarlarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Xalqaro_sayohatlar
         fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'subcontent_uz',

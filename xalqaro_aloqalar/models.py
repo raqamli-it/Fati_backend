@@ -74,8 +74,8 @@ class Xalqaro_sayohatlar(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Xalqaro sayohat'
-        verbose_name_plural = 'Xalqaro sayohatlar'
+        verbose_name = 'Ilmiy safarlar'
+        verbose_name_plural = 'Ilmiy safarlar'
 
 
 class Tadqiqot(models.Model):

@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from .models import Xamkor_tashkilot, Xamkor_loihalar, Xalqaro_sayohatlar, Tadqiqot
 from .pagination import ResultsSetPagination
 from .serializers import (Xamkor_tashkilotSerializer, Xamkor_loihalarSerializer,
-     Xalqaro_sayohatlarSerializer, TadqiqotSerializer,)
+     Ilmiy_safarlarSerializer, TadqiqotSerializer,)
 
 
 class Xamkor_tashkilotListView(ListAPIView):
@@ -43,7 +43,7 @@ def xamkor_loihalardetail(request, pk):
 class Xalqaro_sayohatlarListView(ListAPIView):
     search_fields = ['title']
     filter_backends = (filters.SearchFilter,)
-    serializer_class = Xalqaro_sayohatlarSerializer
+    serializer_class = Ilmiy_safarlarSerializer
     pagination_class = ResultsSetPagination
 
     def get_queryset(self):
@@ -53,7 +53,7 @@ class Xalqaro_sayohatlarListView(ListAPIView):
 @api_view(['GET'])
 def xalqaro_sayohatlardetail(request, pk):
     xalqaro_sayohatlar = get_object_or_404(Xalqaro_sayohatlar, pk=pk)
-    serializer = Xalqaro_sayohatlarSerializer(xalqaro_sayohatlar, context={'request': request})
+    serializer = Ilmiy_safarlarSerializer(xalqaro_sayohatlar, context={'request': request})
     return Response(serializer.data)
 
 
