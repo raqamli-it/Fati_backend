@@ -6,15 +6,6 @@ class Institut_tarixi(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
     image = models.ImageField(upload_to='images', blank=True, null=True)
-    STATUS_CHOICES = [
-        ('published', 'Published'),
-        ('not_published', 'Not Published'),
-    ]
-    status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='published',
-    )
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -48,16 +39,6 @@ class Aloqa(models.Model):
     telegram = models.CharField(max_length=255, verbose_name='Telegram', blank=True, null=True)
     instagram = models.CharField(max_length=255, verbose_name='Instagram', blank=True, null=True)
     facebook = models.CharField(max_length=255, verbose_name='Facebook', blank=True, null=True)
-    STATUS_CHOICES = [
-        ('published', 'Published'),
-        ('not_published', 'Not Published'),
-    ]
-    status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='published',
-    )
-    order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -98,15 +79,6 @@ class Rahbariyat(models.Model):
     contact = models.CharField(max_length=255, blank=True, null=True)
     days = models.DateField(blank=True, null=True)
     image = models.ImageField(upload_to='images', blank=True, null=True)
-    STATUS_CHOICES = [
-        ('published', 'Published'),
-        ('not_published', 'Not Published'),
-    ]
-    status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='published',
-    )
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -123,15 +95,6 @@ class Tashkiliy_tuzulma(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
     file = models.ImageField(upload_to='images', blank=True, null=True)
-    STATUS_CHOICES = [
-        ('published', 'Published'),
-        ('not_published', 'Not Published'),
-    ]
-    status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='published',
-    )
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -148,15 +111,6 @@ class Yangiliklar(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
     image = models.ImageField(upload_to='images', blank=True, null=True)
-    STATUS_CHOICES = [
-        ('published', 'Published'),
-        ('not_published', 'Not Published'),
-    ]
-    status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='published',
-    )
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -173,15 +127,6 @@ class Havolalar(models.Model):
     title = models.CharField(max_length=255)
     file = models.ImageField(upload_to='images', blank=True, null=True)
     link = models.URLField(blank=True, null=True)
-    STATUS_CHOICES = [
-        ('published', 'Published'),
-        ('not_published', 'Not Published'),
-    ]
-    status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='published',
-    )
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

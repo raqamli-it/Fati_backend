@@ -10,9 +10,4 @@ class Seminar_turlariTranslationOptions(TranslationOptions):
 
 @register(Seminar)
 class SeminarTranslationOptions(TranslationOptions):
-    fields = ('title', 'subcontent')
-
-
-@register(Seminar_majlislari)
-class Seminar_majlislariTranslationOptions(TranslationOptions):
-    fields = ('title', 'content', 'subcontent')
+    fields = ('title', 'content')

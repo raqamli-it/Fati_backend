@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView
-from .models import Xodimlar, Markazlar, Bolimlar, Tadqiqot, Photo, Video
-from .serializers import (XodimlarSerializer, BolimlarSerializer, TadqiqotSerializer, PhotoSerializer,
+from .models import Xodimlar, Markazlar, Bolimlar, Photo, Video
+from .serializers import (XodimlarSerializer, BolimlarSerializer, PhotoSerializer,
                           VideoSerializer, MarkazlarSerializer, BolimlarListSerializers, MarkazlarListSerializers)
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
@@ -42,4 +42,11 @@ def PhotoDetail(request, pk):
 def VideoDetail(request, pk):
     video = get_object_or_404(Video, pk=pk)
     serializer = VideoSerializer(video, context={'request': request})
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def XodimlarDetail(request, pk):
+    xodim = get_object_or_404(Xodimlar, pk=pk)
+    serializer = XodimlarSerializer(xodim, context={'request': request})
     return Response(serializer.data)

@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (BolimlarList, BolimlarDetail, MarkazlarList, MarkazlarDetail,
-                    PhotoDetail, VideoDetail)
+                    PhotoDetail, VideoDetail, XodimlarDetail)
 
 urlpatterns = [
     path('bolimlar-list', BolimlarList.as_view(), name='markazlar_title-list'),
@@ -11,4 +11,7 @@ urlpatterns = [
 
     path('Photo/<int:pk>', PhotoDetail, name='Photo-detail'),
     path('Video/<int:pk>', VideoDetail, name='video-detail'),
+
+    path('Xodimlar/<int:pk>', XodimlarDetail, name='xodimlar-detail'),
+
 ]

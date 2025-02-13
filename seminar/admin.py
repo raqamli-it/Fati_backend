@@ -1,28 +1,18 @@
 from django.contrib import admin
 
-from .models import Seminar_turlari, Seminar, Seminar_majlislari
+from .models import Seminar_turlari, Seminar
 
 
 @admin.register(Seminar_turlari)
 class Seminar_turlariAdmin(admin.ModelAdmin):
-    list_display = ('title', 'status', 'created_at', 'updated_at', 'order',)
+    list_display = ('title',)
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'status', 'order',]
+    fields = ['title_uz', 'title_en',]
 
 
 @admin.register(Seminar)
 class SeminarAdmin(admin.ModelAdmin):
-    list_display = ('title', 'status', 'created_at', 'updated_at', 'order',)
+    list_display = ('title',)
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'subcontent_uz', 'subcontent_en', 'seminar_id',
-              'status', 'order',]
-
-
-@admin.register(Seminar_majlislari)
-class Seminar_majlislariAdmin(admin.ModelAdmin):
-    list_display = ('title', 'status', 'created_at', 'updated_at', 'order',)
-    search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'content_en', 'content_uz', 'subcontent_uz',
-              'subcontent_en', 'file', 'data', 'seminar_id', 'status', 'order',]
-
+    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'seminar_id',]
 

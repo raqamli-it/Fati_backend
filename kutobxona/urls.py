@@ -1,34 +1,31 @@
 
 from django.urls import path
 from .views import (
-    TahririyatListCreateView,
-    Tahririyat_detail_view,
-    AvtoreferatListCreateView,
-    avtoreferat_detail_view,
-    Talablar_detail,
-    TalablarListView,
-    Arxiv_detail_view,
-    ArxivListCreateView,
-    CategoryKitobListCreateView,
-    CategoryKitobDetailView
+    RequirementsListView,
+    EditorialListCreateView,
+    ArchiveListCreateView,
+    Archive_documentListCreateView,
+    AbstractListCreateView,
+    MatbuotListView,
+    FilteredBooksListView,
+    PeriodListCreateView,
+    FilteredPressListView, FilteredArchiveDocumentsListView,
+    Commentcreate
 )
-
 urlpatterns = [
 
-    path('category/', CategoryKitobListCreateView.as_view(), name='elektronKitob-list'),
-    path('category/<int:id>/', CategoryKitobDetailView.as_view(), name='category-detail'),
+    path('tahririyat/', EditorialListCreateView.as_view(), name='tahririyat-list'),
+    path('talablar/', RequirementsListView.as_view(), name='talablar-list'),
+    path('arxivlar/', ArchiveListCreateView.as_view(), name='arxiv-list'),
+    path('avtoreferat/', AbstractListCreateView.as_view(), name='tahrirchi-list'),
 
-    path('avtoreferat/', AvtoreferatListCreateView.as_view(), name='avtoreferat-list'),
-    path('avtoreferat/<int:pk>/', avtoreferat_detail_view, name='avtoreferat-detail'),
+    path('books/list', PeriodListCreateView.as_view(), name='period-list'),
+    path('books/filter/', FilteredBooksListView.as_view(), name='periods-filter'),
+    path('Comment/', Commentcreate.as_view(), name='Comment-post'),
 
-    path('Tahririyat/', TahririyatListCreateView.as_view(), name='tahrirchi-list'),
-    path('Tahririyat/<int:pk>/', Tahririyat_detail_view, name='tahrirchi-detail'),
+    path('archive_documents/list/', Archive_documentListCreateView.as_view(), name='archive-list'),
+    path('archive_documents/filter/', FilteredArchiveDocumentsListView.as_view(), name='filtered-archive_documents'),
 
-    path('talablar/', TalablarListView.as_view(), name='talablar-list'),
-    path('talablar/<int:pk>/', Talablar_detail, name='talablar-detail'),
-
-    path('arxiv/', ArxivListCreateView.as_view(), name='arxiv-list'),
-    path('arxiv/<int:pk>/', Arxiv_detail_view, name='arxiv-detail'),
-
+    path('matbuot/list/', MatbuotListView.as_view(), name='matbuot-list'),
+    path('matbuot/filter/', FilteredPressListView.as_view(), name='matbuot-filter'),
 ]
-

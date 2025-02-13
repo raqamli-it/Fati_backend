@@ -1,42 +1,90 @@
 
-from .models import Tahririyat, Avtoreferat, Talablar, Category, Arxiv
+from .models import *
 from django.contrib import admin
 
 
-@admin.register(Talablar)
+@admin.register(Requirements)
 class RequirementsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'status', 'created_at', 'Updated_at', 'order',)
+    list_display = ('title',)
     search_fields = ('title',)
-    fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'sub_content_uz', 'sub_content_en',
-              'image', 'status', 'order',)
+    fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'sub_content_uz', 'sub_content_en',
+              'image', 'order')
 
 
-@admin.register(Tahririyat)
-class TahririyatAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'Updated_at', 'order',)
+@admin.register(Editorial)
+class EditorialAdmin(admin.ModelAdmin):
+    list_display = ('title',)
     search_fields = ('title',)
     fields = ['title_uz', 'title_en', 'position_uz', 'position_en', 'degree_uz', 'degree_en', 'sphere_uz', 'sphere_en',
-              'content_uz', 'content_en', 'file', 'status', 'order',]
+              'content_uz', 'content_en', 'file', 'order']
 
 
-@admin.register(Avtoreferat)
-class AvtoreferatAdmin(admin.ModelAdmin):
-    list_display = ('title', 'category', 'created_at', 'Updated_at', 'order',)
+@admin.register(Archive)
+class ArchiveAdmin(admin.ModelAdmin):
+    list_display = ('title', 'order')
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'image', 'file', 'content_uz', 'content_en', 'status', 'order', 'category']
-    list_filter = ['category']
+    fields = ['title_uz', 'title_en', 'year', 'image', 'file', 'order']
 
 
-@admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'updated_at', 'order',)
+@admin.register(Period)
+class PeriodAdmin(admin.ModelAdmin):
+    list_display = ('title',)
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'status', 'order',]
+    fields = ['title_uz', 'title_en',]
 
 
-@admin.register(Arxiv)
-class ArxivAdmin(admin.ModelAdmin):
-    list_display = ('title', 'status', 'order', 'created_at', 'Updated_at')
+@admin.register(Books)
+class BooksAdmin(admin.ModelAdmin):
+    list_display = ('title', 'order')
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'status', 'order',]
+    fields = ['title_uz', 'title_en', 'image', 'file', 'period', 'order']
 
+
+@admin.register(Period_filter)
+class Period_filterAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    search_fields = ('title',)
+    fields = ['title_uz', 'title_en', ]
+
+
+@admin.register(archive_documents)
+class archive_documentsAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    search_fields = ('title',)
+    fields = ['title_uz', 'title_en', 'image', 'file', 'period_filter', 'order']
+
+
+@admin.register(Abstract)
+class AbstractAdmin(admin.ModelAdmin):
+    list_display = ('title', )
+    search_fields = ('title',)
+    fields = ['title_uz', 'title_en', 'image', 'file', 'order']
+    # list_filter = ['category']
+
+
+@admin.register(Mat_category)
+class Mat_categoryAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    search_fields = ('title',)
+    fields = ['title_uz', 'title_en',]
+
+
+@admin.register(Year_filter)
+class Year_filterAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    search_fields = ('title',)
+    fields = ['title_uz', 'title_en',]
+
+
+@admin.register(Region_filter)
+class Region_filterAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    search_fields = ('title',)
+    fields = ['title_uz', 'title_en']
+
+
+@admin.register(the_press)
+class the_pressAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    search_fields = ('title',)
+    fields = ['title_uz', 'title_en', 'image', 'file', 'mat_cotegory', 'year_id', 'region_id', 'order']

@@ -16,14 +16,14 @@ class Institut_tarixiSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Institut_tarixi
-        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'status', 'order', 'direktorlar')
+        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order', 'direktorlar')
 
 
 class AloqaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aloqa
         fields = ('id', 'phone', 'email', 'adress', 'lat', 'long', 'youtube', 'telegram', 'instagram',
-                  'facebook', 'status', 'order',)
+                  'facebook',)
 
 
 class XabarlarSerializer(serializers.ModelSerializer):
@@ -41,25 +41,22 @@ class KaruselSerializer(serializers.ModelSerializer):
 class RahbariyatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rahbariyat
-        fields = ('id', 'title_uz', 'title_en', 'position', 'degree', 'contact', 'days', 'image', 'status', 'order',)
+        fields = ('id', 'title_uz', 'title_en', 'position', 'degree', 'contact', 'days', 'image', 'order',)
 
 
 class Tashkiliy_tuzulmaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tashkiliy_tuzulma
-        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'file', 'status', 'order', )
+        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'file', 'order', )
 
 
 class YangiliklarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Yangiliklar
-        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'status', 'order', 'created_at',
-                  'updated_at', )
+        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order',)
 
 
 class HavolalarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Havolalar
-        fields = ('id', 'title_uz', 'title_en', 'file', 'link', 'status', 'order',)
-
-
+        fields = ('id', 'title_uz', 'title_en', 'file', 'link', 'order',)

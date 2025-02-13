@@ -1,24 +1,16 @@
 from rest_framework import serializers
 
-from .models import Seminar_turlari, Seminar, Seminar_majlislari
+from .models import Seminar_turlari, Seminar
 
 
 class Seminar_turlariSerializer(serializers.ModelSerializer):
     class Meta:
         model = Seminar_turlari
-        fields = ('id', 'title_uz', 'title_en', 'status', 'order', 'created_at', 'updated_at',)
+        fields = ('id', 'title_uz', 'title_en',)
 
 
 class SeminarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Seminar
-        fields = ('id', 'title_uz', 'title_en', 'subcontent_uz', 'subcontent_en', 'seminar_id', 'status', 'order',
-                  'created_at', 'updated_at',)
-
-
-class Seminar_majlislariSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Seminar_majlislari
-        fields = ('id', 'title_uz', 'title_en', 'content_en', 'content_uz', 'subcontent_uz', 'subcontent_en', 'file',
-                  'data', 'seminar_id', 'status', 'order', 'created_at', 'updated_at',)
+        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'seminar_id', )
 

@@ -7,16 +7,6 @@ class Ilmiy_kengash_majlis(models.Model):
     content = RichTextField(blank=True, null=True)
     file = models.FileField(upload_to='images', blank=True, null=True)
     date = models.DateField(blank=True, null=True)
-    STATUS_CHOICES = [
-        ('published', 'Published'),
-        ('not_published', 'Not Published'),
-    ]
-    status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='published',
-    )
-    order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -32,16 +22,6 @@ class Yosh_olimlar(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
     file = models.FileField(upload_to='images', blank=True, null=True)
-    STATUS_CHOICES = [
-        ('published', 'Published'),
-        ('not_published', 'Not Published'),
-    ]
-    status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='published',
-    )
-    order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -59,15 +39,6 @@ class Azolar(models.Model):
     degree = models.CharField(max_length=255)
     contact = models.CharField(max_length=255)
     email = models.EmailField(blank=True, null=True)
-    STATUS_CHOICES = [
-        ('published', 'Published'),
-        ('not_published', 'Not Published'),
-    ]
-    status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='published',
-    )
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

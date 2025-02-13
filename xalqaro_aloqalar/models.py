@@ -6,15 +6,6 @@ class Xamkor_tashkilot(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
     file = models.FileField(upload_to='images', blank=True, null=True)
-    STATUS_CHOICES = [
-        ('published', 'Published'),
-        ('not_published', 'Not Published'),
-    ]
-    status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='published',
-    )
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -31,15 +22,6 @@ class Xamkor_loihalar(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     content = RichTextField(blank=True, null=True)
     img_file = models.ImageField(upload_to='images', blank=True, null=True)
-    STATUS_CHOICES = [
-        ('published', 'Published'),
-        ('not_published', 'Not Published'),
-    ]
-    status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='published',
-    )
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -57,15 +39,6 @@ class Xalqaro_sayohatlar(models.Model):
     content = RichTextField(blank=True, null=True)
     subcontent = RichTextField(blank=True, null=True)
     file = models.FileField(upload_to='images', blank=True, null=True)
-    STATUS_CHOICES = [
-        ('published', 'Published'),
-        ('not_published', 'Not Published'),
-    ]
-    status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='published',
-    )
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -82,15 +55,6 @@ class Tadqiqot(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
     img_file = models.ImageField(upload_to='images', blank=True, null=True)
-    STATUS_CHOICES = [
-        ('published', 'Published'),
-        ('not_published', 'Not Published'),
-    ]
-    status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='published',
-    )
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

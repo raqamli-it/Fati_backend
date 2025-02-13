@@ -11,18 +11,18 @@ class Derektorlaradmin(admin.TabularInline):
 
 @admin.register(Institut_tarixi)
 class Institut_tarixiAdmin(admin.ModelAdmin):
-    list_display = ('title', 'status', 'created_at', 'updated_at', 'order',)
+    list_display = ('title', 'created_at', 'updated_at', 'order',)
     search_fields = ('title',)
     inlines = [Derektorlaradmin]
-    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'status', 'order',]
+    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order',]
 
 
 @admin.register(Aloqa)
 class AloqaAdmin(admin.ModelAdmin):
-    list_display = ('phone', 'email', 'status', 'created_at', 'updated_at', 'order',)
+    list_display = ('phone', 'email', 'created_at', 'updated_at', )
     search_fields = ('title',)
-    fields = ('phone', 'email', 'adress', 'lat', 'long', 'youtube', 'telegram', 'instagram',
-              'facebook', 'status', 'order', )
+    fields = ('phone', 'email', 'adress', 'lat', 'long', 'youtube', 'telegram', 'instagram', 'facebook',)
+
 
 
 @admin.register(Karusel)
@@ -32,32 +32,31 @@ class KaruselAdmin(admin.ModelAdmin):
 
 @admin.register(Rahbariyat)
 class RahbariyatAdmin(admin.ModelAdmin):
-    list_display = ('title', 'position', 'status', 'created_at', 'updated_at', 'order',)
+    list_display = ('title', 'position', 'created_at', 'updated_at', 'order',)
     search_fields = ('title',)
     fields = ['title_uz', 'title_en', 'position_uz', 'position_en', 'degree_uz', 'degree_en', 'contact', 'days',
-              'image', 'status', 'order',]
+              'image', 'order',]
 
 
 @admin.register(Tashkiliy_tuzulma)
 class Tashkiliy_tuzulmaAdmin(admin.ModelAdmin):
-    list_display = ('title', 'status', 'created_at', 'updated_at', 'order',)
+    list_display = ('title', 'created_at', 'updated_at', 'order',)
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'file', 'order', 'status',]
+    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'file', 'order',]
 
 
 @admin.register(Yangiliklar)
 class YangiliklarAdmin(admin.ModelAdmin):
-    list_display = ('title', 'status', 'created_at', 'updated_at', 'order',)
+    list_display = ('title', 'created_at', 'updated_at', 'order',)
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'content_uz', 'content_en',  'image',
-              'status', 'order']
+    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order']
 
 
 @admin.register(Havolalar)
 class HavolalarAdmin(admin.ModelAdmin):
-    list_display = ('title', 'status', 'created_at', 'updated_at', 'order',)
+    list_display = ('title', 'created_at', 'updated_at', 'order',)
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'file', 'link', 'status', 'order',]
+    fields = ['title_uz', 'title_en', 'file', 'link', 'order',]
 
 
 @admin.register(Xabarlar)
