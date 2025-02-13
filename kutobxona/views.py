@@ -47,7 +47,7 @@ class FilteredBooksListView(generics.ListAPIView):
     pagination_class = CustomPagination  # Maxsus paginatsiya klassi ishlatiladi
 
     def get_queryset(self):
-        queryset = Books.objects.all().order_by("id")
+        queryset = Books.objects.all().order_by("order")
         period_ids = self.request.GET.getlist('period_id')  # Bir nechta `period_id` olish
         search_query = self.request.GET.get('search', '')  # Kitob nomi bo‘yicha qidiruv
 
@@ -88,20 +88,20 @@ class FilteredArchiveDocumentsListView(generics.ListAPIView):
     pagination_class = CustomPagination  # Paginatsiya qo‘shildi
 
     def get_queryset(self):
-        queryset = archive_documents.objects.all().order_by("id")
+        queryset = archive_documents.objects.all().order_by("order")
         period_filter_ids = self.request.GET.getlist('period_filter_id')  # Bir nechta ID olish
         search_query = self.request.GET.get('search', '')  # Qidiruv uchun so‘rov
 
         filters = Q()  # Dinamik filter
 
         if period_filter_ids:
-            filters &= Q(period_filter_id__in=period_filter_ids)  # Bir nechta ID bo‘yicha filter
+            filters &= Q(period_filter__id__in=period_filter_ids)  # ManyToMany uchun filter
 
         if search_query:
             filters &= Q(title__icontains=search_query)  # Qidiruv funksiyasi
 
         if filters:
-            queryset = queryset.filter(filters).distinct()
+            queryset = queryset.filter(filters).distinct()  # ManyToMany uchun distinct()
 
         return queryset
 
@@ -139,28 +139,28 @@ class MatbuotListView(APIView):
 
 class FilteredPressListView(generics.ListAPIView):
     serializer_class = the_pressSerializer
-    pagination_class = CustomPagination  # Paginatsiya qo‘shildi
+    pagination_class = CustomPagination
 
     def get_queryset(self):
-        queryset = the_press.objects.all()
+        queryset = the_press.objects.all().order_by("order")
         mat_cotegory_ids = self.request.GET.getlist('mat_cotegory_id')
         year_ids = self.request.GET.getlist('year_id')
         region_ids = self.request.GET.getlist('region_id')
-        search_query = self.request.GET.get('search', '')  # Qo‘shimcha qidiruv
+        search_query = self.request.GET.get('search', '')
 
         q_objects = Q()
 
         if mat_cotegory_ids:
-            q_objects &= Q(mat_cotegory_id__in=mat_cotegory_ids)
+            q_objects |= Q(mat_cotegory_id__in=mat_cotegory_ids)  # OR sharti qo‘llandi
         if year_ids:
-            q_objects &= Q(year_id__in=year_ids)
+            q_objects |= Q(year_id__in=year_ids)
         if region_ids:
-            q_objects &= Q(region_id__in=region_ids)
+            q_objects |= Q(region_id__in=region_ids)
         if search_query:
-            q_objects &= Q(title__icontains=search_query)  # Matbuot nomi bo‘yicha qidirish
+            q_objects |= Q(title__icontains=search_query)
 
         if q_objects:
-            queryset = queryset.filter(q_objects).distinct()
+            queryset = queryset.filter(q_objects).distinct().order_by("order")
 
         return queryset
 
@@ -169,7 +169,7 @@ class FilteredPressListView(generics.ListAPIView):
         if not queryset.exists():
             return Response({"message": "Hech qanday natija topilmadi", "data": []}, status=status.HTTP_200_OK)
 
-        # Paginatsiya qo‘shildi
+        # Paginatsiya
         page = self.paginate_queryset(queryset)
         if page is not None:
             serializer = the_pressSerializer(page, many=True)
