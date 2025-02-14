@@ -7,7 +7,7 @@ from django.contrib import admin
 class RequirementsAdmin(admin.ModelAdmin):
     list_display = ('title',)
     search_fields = ('title',)
-    fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'sub_content_uz', 'sub_content_en',
+    fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'sub_content_uz', 'sub_content_en',
               'image', 'order')
 
 
