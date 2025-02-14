@@ -71,10 +71,10 @@ class FilteredBooksListView(generics.ListAPIView):
         # Paginatsiya qo‘shildi
         page = self.paginate_queryset(queryset)
         if page is not None:
-            serializer = BooksSerializer(page, many=True)
+            serializer = BooksSerializer(page, many=True, context={'request': request})
             return self.get_paginated_response(serializer.data)
 
-        serializer = BooksSerializer(queryset, many=True)
+        serializer = BooksSerializer(queryset, many=True, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
@@ -113,10 +113,10 @@ class FilteredArchiveDocumentsListView(generics.ListAPIView):
         # Paginatsiya
         page = self.paginate_queryset(queryset)
         if page is not None:
-            serializer = archive_documentsSerializer(page, many=True)
+            serializer = archive_documentsSerializer(page, many=True, context={'request': request})
             return self.get_paginated_response(serializer.data)
 
-        serializer = archive_documentsSerializer(queryset, many=True)
+        serializer = archive_documentsSerializer(queryset, many=True, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
@@ -172,10 +172,10 @@ class FilteredPressListView(generics.ListAPIView):
         # Paginatsiya
         page = self.paginate_queryset(queryset)
         if page is not None:
-            serializer = the_pressSerializer(page, many=True)
+            serializer = self.get_serializer(page, many=True, context={'request': request})
             return self.get_paginated_response(serializer.data)
 
-        serializer = the_pressSerializer(queryset, many=True)
+        serializer = self.get_serializer(queryset, many=True, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 

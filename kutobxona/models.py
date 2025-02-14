@@ -164,7 +164,7 @@ class Region_filter(models.Model):
 class the_press(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='matbuot/image', blank=True, null=True)
-    file = models.FileField(blank=True, null=True)
+    file = models.FileField(upload_to='matbuot/file', blank=True, null=True)
     mat_cotegory = models.ForeignKey(Mat_category, on_delete=models.SET_NULL, null=True, related_name='cotegory')
     year_id = models.ManyToManyField(Year_filter, related_name='year', )
     region_id = models.ForeignKey(Region_filter, on_delete=models.SET_NULL, null=True, related_name='region', )

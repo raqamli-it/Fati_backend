@@ -53,10 +53,24 @@ class Period_filterSerializer(serializers.ModelSerializer):
 
 
 class archive_documentsSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+    file = serializers.SerializerMethodField()
 
     class Meta:
         model = archive_documents
         fields = ['id', 'title_uz', 'title_en', 'image', 'file']
+
+    def get_image(self, obj):
+        request = self.context.get('request')
+        if obj.image:
+            return request.build_absolute_uri(obj.image.url) if request else obj.image.url
+        return None
+
+    def get_file(self, obj):
+        request = self.context.get('request')
+        if obj.file:
+            return request.build_absolute_uri(obj.file.url) if request else obj.file.url
+        return None
 
 
 class abstractSerializer(serializers.ModelSerializer):
@@ -91,10 +105,24 @@ class the_pressSerializer(serializers.ModelSerializer):
     mat_category = Mat_categorySerializer(read_only=True)
     year_filter = Year_filterSerializer(read_only=True)
     region_filter = Region_filterSerializer(read_only=True)
+    image = serializers.SerializerMethodField()
+    file = serializers.SerializerMethodField()
 
     class Meta:
         model = the_press
         fields = ['id', 'title_uz', 'title_en', 'image', 'file', 'mat_category', 'year_filter', 'region_filter']
+
+    def get_image(self, obj):
+        request = self.context.get('request')
+        if obj.image:
+            return request.build_absolute_uri(obj.image.url) if request else obj.image.url
+        return None
+
+    def get_file(self, obj):
+        request = self.context.get('request')
+        if obj.file:
+            return request.build_absolute_uri(obj.file.url) if request else obj.file.url
+        return None
 
 
 class CommentSerializer(serializers.ModelSerializer):
