@@ -13,11 +13,6 @@ class RequirementsTranslationOptions(TranslationOptions):
     fields = ('title', 'content', 'sub_content',)
 
 
-@register(Period_filter)
-class Period_filterTranslationOptions(TranslationOptions):
-    fields = ('title',)
-
-
 @register(Abstract)
 class AvtoreferatTranslationOptions(TranslationOptions):
     fields = ('title',)
@@ -28,36 +23,16 @@ class TahrirchiTranslationOptions(TranslationOptions):
     fields = ('title', 'position', 'degree', 'sphere', 'content',)
 
 
-@register(Period)
-class ArxivSonTranslationOptions(TranslationOptions):
+@register(Sources)
+class SourcesTranslationOptions(TranslationOptions):
     fields = ('title',)
 
 
-@register(Books)
-class ArchiveTranslationOptions(TranslationOptions):
+@register(Literature)
+class LiteratureTranslationOptions(TranslationOptions):
     fields = ('title',)
 
 
-@register(archive_documents)
-class ArchiveTranslationOptions(TranslationOptions):
-    fields = ('title',)
-
-
-@register(Mat_category)
-class ArchiveTranslationOptions(TranslationOptions):
-    fields = ('title',)
-
-
-@register(Year_filter)
-class ArchiveTranslationOptions(TranslationOptions):
-    fields = ('title',)
-
-
-@register(Region_filter)
-class ArchiveTranslationOptions(TranslationOptions):
-    fields = ('title',)
-
-
-@register(the_press)
+@register(Archive_documents)
 class ArchiveTranslationOptions(TranslationOptions):
     fields = ('title',)
