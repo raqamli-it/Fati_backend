@@ -8,7 +8,7 @@ from rest_framework.pagination import PageNumberPagination
 
 
 class CustomPagination(PageNumberPagination):
-    page_size = 1
+    page_size = 3
     page_size_query_param = 'page_size'
     max_page_size = 100
 
@@ -32,7 +32,16 @@ class ArchiveListCreateView(ListAPIView):
         search_query = self.request.GET.get('search', '')
 
         if search_query:
-            queryset = queryset.filter(Q(title__icontains=search_query))
+            search_words = search_query.split()  # Har bitta so‘zni ajratish
+            q_objects = Q()
+
+            for word in search_words:
+                if word.isdigit():  # Agar bu faqat son bo‘lsa ("123" kabi)
+                    q_objects |= Q(year__icontains=word)
+                else:  # Agar bu matn bo‘lsa ("Toshkent" kabi)
+                    q_objects |= Q(title__icontains=word) | Q(year__icontains=word)
+
+            queryset = queryset.filter(q_objects)
 
         return queryset
 
