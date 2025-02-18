@@ -21,7 +21,7 @@ class XodimlarAdmin(admin.ModelAdmin):
     list_display = ('ful_name', 'order', 'created_at', 'updated_at')
     search_fields = ('ful_name',)
     fields = ['ful_name_uz', 'ful_name_en', 'activity_uz', 'activity_en',
-              'image', 'about_uz', 'about_en', 'works_uz', 'works_en',
+              'about_uz', 'about_en', 'works_uz', 'works_en', 'image', 'file'
               'order', 'bolimlar', 'markazlar']
 
 

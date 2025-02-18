@@ -58,6 +58,7 @@ class Xodimlar(models.Model):
     works = RichTextField(blank=True, null=True)
     bolimlar = models.ForeignKey(Bolimlar, on_delete=models.CASCADE, related_name='xodimlar', blank=True, null=True)
     markazlar = models.ForeignKey(Markazlar, on_delete=models.CASCADE, related_name='xodim', blank=True, null=True)
+    file = models.FileField(upload_to='xodimlar/file', blank=True, null=True)
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
