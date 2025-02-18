@@ -20,16 +20,15 @@ class Bolimlaradmin(admin.ModelAdmin):
 class XodimlarAdmin(admin.ModelAdmin):
     list_display = ('ful_name', 'order', 'created_at', 'updated_at')
     search_fields = ('ful_name',)
-    fields = ['ful_name_uz', 'ful_name_en', 'activity_uz', 'activity_en',
-              'about_uz', 'about_en', 'works_uz', 'works_en', 'image', 'file'
-              'order', 'bolimlar', 'markazlar']
+    fields = ['ful_name_uz', 'ful_name_en', 'activity_uz', 'activity_en', 'about_uz', 'about_en', 'works_uz',
+              'works_en', 'image', 'file', 'bolimlar', 'markazlar', 'order']
 
 
 @admin.register(Tadqiqot)
 class TadqiqotAdmin(admin.ModelAdmin):
     list_display = ('title', 'order', 'created_at', 'updated_at')
     search_fields = ('title',)
-    fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order', 'bolimlar', 'markazlar')
+    fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'bolimlar', 'markazlar', 'order')
 
 
 @admin.register(Photo)

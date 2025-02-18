@@ -53,7 +53,7 @@ class Tadqiqot(models.Model):
 class Xodimlar(models.Model):
     image = models.ImageField(upload_to='media/Xodimlar', blank=True, null=True)
     ful_name = models.CharField(max_length=50)
-    activity = models.TextField(max_length=1000, blank=True, null=True)
+    activity = RichTextField(blank=True, null=True)
     about = RichTextField(blank=True, null=True)
     works = RichTextField(blank=True, null=True)
     bolimlar = models.ForeignKey(Bolimlar, on_delete=models.CASCADE, related_name='xodimlar', blank=True, null=True)
