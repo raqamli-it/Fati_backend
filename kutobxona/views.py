@@ -13,14 +13,45 @@ class CustomPagination(PageNumberPagination):
     max_page_size = 100
 
 
+class RequirementsListCreateView(ListAPIView):
+    queryset = Requirements.objects.all().order_by('order')
+    serializer_class = RequirementsSerializer
+
+
 class AbstractListCreateView(ListAPIView):
-    queryset = Abstract.objects.all().order_by('order')
     serializer_class = abstractSerializer
+    pagination_class = CustomPagination
+
+    def get_queryset(self):
+        queryset = Abstract.objects.all().order_by('order')
+        search_query = self.request.GET.get('search', '')
+
+        if search_query:
+            queryset = queryset.filter(
+                Q(title__icontains=search_query) |
+                Q(title_uz__icontains=search_query) |
+                Q(title_en__icontains=search_query)
+            )
+
+        return queryset
 
 
 class EditorialListCreateView(ListAPIView):
-    queryset = Editorial.objects.all().order_by('order')
     serializer_class = EditorialSerializer
+    pagination_class = CustomPagination
+
+    def get_queryset(self):
+        queryset = Editorial.objects.all().order_by('order')
+        search_query = self.request.GET.get('search', '')
+
+        if search_query:
+            queryset = queryset.filter(
+                Q(title__icontains=search_query) |
+                Q(title_uz__icontains=search_query) |
+                Q(title_en__icontains=search_query)
+            )
+
+        return queryset
 
 
 class ArchiveListCreateView(ListAPIView):
@@ -32,30 +63,21 @@ class ArchiveListCreateView(ListAPIView):
         search_query = self.request.GET.get('search', '')
 
         if search_query:
-            search_words = search_query.split()  # Har bitta so‘zni ajratish
+            search_words = search_query.split()  # So‘zlarni ajratish
             q_objects = Q()
 
             for word in search_words:
-                if word.isdigit():  # Agar bu faqat son bo‘lsa ("123" kabi)
+                if word.isdigit():  # Agar faqat son bo‘lsa (masalan: "123")
                     q_objects |= Q(year__icontains=word)
-                else:  # Agar bu matn bo‘lsa ("Toshkent" kabi)
-                    q_objects |= Q(title__icontains=word) | Q(year__icontains=word)
+                else:  # Matn bo‘lsa (masalan: "Toshkent")
+                    q_objects |= (
+                        Q(title__icontains=word) |
+                        Q(title_uz__icontains=word) |
+                        Q(title_en__icontains=word) |
+                        Q(year__icontains=word)
+                    )
 
             queryset = queryset.filter(q_objects)
-
-        return queryset
-
-
-class RequirementsListCreateView(ListAPIView):
-    serializer_class = RequirementsSerializer
-    pagination_class = CustomPagination
-
-    def get_queryset(self):
-        queryset = Requirements.objects.all()
-        search_query = self.request.GET.get('search', '')
-
-        if search_query:
-            queryset = queryset.filter(Q(title__icontains=search_query))
 
         return queryset
 
@@ -69,7 +91,11 @@ class LiteratureListCreateView(ListAPIView):
         search_query = self.request.GET.get('search', '')
 
         if search_query:
-            queryset = queryset.filter(Q(title__icontains=search_query))
+            queryset = queryset.filter(
+                Q(title__icontains=search_query) |
+                Q(title_uz__icontains=search_query) |
+                Q(title_en__icontains=search_query)
+            )
 
         return queryset
 
@@ -83,7 +109,11 @@ class SourcesSListCreateView(ListAPIView):
         search_query = self.request.GET.get('search', '')
 
         if search_query:
-            queryset = queryset.filter(Q(title__icontains=search_query))
+            queryset = queryset.filter(
+                Q(title__icontains=search_query) |
+                Q(title_uz__icontains=search_query) |
+                Q(title_en__icontains=search_query)
+            )
 
         return queryset
 
@@ -97,7 +127,10 @@ class Archive_documentsListCreateView(ListAPIView):
         search_query = self.request.GET.get('search', '')
 
         if search_query:
-            queryset = queryset.filter(Q(title__icontains=search_query))
+            queryset = queryset.filter(
+                Q(title__icontains=search_query) |
+                Q(title_uz__icontains=search_query) |
+                Q(title_en__icontains=search_query)
+            )
 
         return queryset
-

@@ -53,7 +53,7 @@ class Tashkiliy_tuzulmaSerializer(serializers.ModelSerializer):
 class YangiliklarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Yangiliklar
-        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order',)
+        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order', 'created_at', 'updated_at')
 
 
 class HavolalarSerializer(serializers.ModelSerializer):

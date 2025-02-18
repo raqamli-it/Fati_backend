@@ -6,8 +6,7 @@ class XodimlarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Xodimlar
         fields = ['id', 'ful_name_uz', 'ful_name_en', 'activity_uz', 'activity_en',
-                  'about_uz', 'about_en', 'works_uz', 'works_en',
-                  'order', ]
+                  'about_uz', 'about_en', 'works_uz', 'works_en', 'image', 'order',]
 
 
 class TadqiqotSerializer(serializers.ModelSerializer):
