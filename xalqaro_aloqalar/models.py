@@ -30,7 +30,7 @@ class Xamkor_loihalar(models.Model):
         ('Amaldagi loyihalar', 'Amaldagi loyihalar'),
     ]
     status = models.CharField(
-        max_length=20,
+        max_length=30,
         choices=STATUS_CHOICES,
         default='Bajarilgan loyihalar',
     )
