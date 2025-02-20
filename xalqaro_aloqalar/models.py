@@ -25,6 +25,15 @@ class Xamkor_loihalar(models.Model):
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    STATUS_CHOICES = [
+        ('Bajarilgan loyihalar', 'Bajarilgan loyihalar'),
+        ('Amaldagi loyihalar', 'Amaldagi loyihalar'),
+    ]
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='Bajarilgan loyihalar',
+    )
 
     def __str__(self):
         return self.title

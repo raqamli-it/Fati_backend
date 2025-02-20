@@ -38,14 +38,14 @@ class LiteratureAdmin(admin.ModelAdmin):
     list_display = ('title', 'order')
     search_fields = ('title',)
     fields = ['title_uz', 'title_en', 'image', 'file', 'order']
-
-
-@admin.register(Archive_documents)
-class Archive_documentsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'order')
-    search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'image', 'file', 'order']
-
+#
+#
+# @admin.register(Archive_documents)
+# class Archive_documentsAdmin(admin.ModelAdmin):
+#     list_display = ('title', 'order')
+#     search_fields = ('title',)
+#     fields = ['title_uz', 'title_en', 'image', 'file', 'order']
+#
 
 @admin.register(Abstract)
 class AbstractAdmin(admin.ModelAdmin):

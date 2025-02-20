@@ -21,7 +21,7 @@ class Xamkor_loihalarSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Xamkor_loihalar
-        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en',  'img_file',
+        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en',  'img_file', 'status',
                   'order',)
 
 

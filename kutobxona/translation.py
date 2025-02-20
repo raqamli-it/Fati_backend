@@ -31,8 +31,8 @@ class SourcesTranslationOptions(TranslationOptions):
 @register(Literature)
 class LiteratureTranslationOptions(TranslationOptions):
     fields = ('title',)
-
-
-@register(Archive_documents)
-class ArchiveTranslationOptions(TranslationOptions):
-    fields = ('title',)
+#
+#
+# @register(Archive_documents)
+# class ArchiveTranslationOptions(TranslationOptions):
+#     fields = ('title',)

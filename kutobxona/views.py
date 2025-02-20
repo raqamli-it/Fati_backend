@@ -1,7 +1,7 @@
 from rest_framework.generics import ListAPIView
-from .models import (Requirements, Editorial, Archive, Abstract, Literature, Sources, Archive_documents)
+from .models import (Requirements, Editorial, Archive, Abstract, Literature, Sources)
 from .serializers import (RequirementsSerializer, EditorialSerializer, ArchiveSerializer, abstractSerializer,
-                          LiteratureSerializer, SourcesSerializer, Archive_documentsSerializer)
+                          LiteratureSerializer, SourcesSerializer)
 
 from django.db.models import Q
 from rest_framework.pagination import PageNumberPagination
@@ -116,21 +116,21 @@ class SourcesSListCreateView(ListAPIView):
             )
 
         return queryset
-
-
-class Archive_documentsListCreateView(ListAPIView):
-    serializer_class = Archive_documentsSerializer
-    pagination_class = CustomPagination
-
-    def get_queryset(self):
-        queryset = Archive_documents.objects.all().order_by('order')
-        search_query = self.request.GET.get('search', '')
-
-        if search_query:
-            queryset = queryset.filter(
-                Q(title__icontains=search_query) |
-                Q(title_uz__icontains=search_query) |
-                Q(title_en__icontains=search_query)
-            )
-
-        return queryset
+#
+#
+# class Archive_documentsListCreateView(ListAPIView):
+#     serializer_class = Archive_documentsSerializer
+#     pagination_class = CustomPagination
+#
+#     def get_queryset(self):
+#         queryset = Archive_documents.objects.all().order_by('order')
+#         search_query = self.request.GET.get('search', '')
+#
+#         if search_query:
+#             queryset = queryset.filter(
+#                 Q(title__icontains=search_query) |
+#                 Q(title_uz__icontains=search_query) |
+#                 Q(title_en__icontains=search_query)
+#             )
+#
+#         return queryset

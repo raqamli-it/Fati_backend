@@ -36,27 +36,27 @@ class LiteratureSerializer(serializers.ModelSerializer):
     class Meta:
         model = Literature
         fields = ['id', 'title_uz', 'title_en', 'image', 'file',]
-
-
-class Archive_documentsSerializer(serializers.ModelSerializer):
-    image = serializers.SerializerMethodField()
-    file = serializers.SerializerMethodField()
-
-    class Meta:
-        model = Archive_documents
-        fields = ['id', 'title_uz', 'title_en', 'image', 'file']
-
-    def get_image(self, obj):
-        request = self.context.get('request')
-        if obj.image:
-            return request.build_absolute_uri(obj.image.url) if request else obj.image.url
-        return None
-
-    def get_file(self, obj):
-        request = self.context.get('request')
-        if obj.file:
-            return request.build_absolute_uri(obj.file.url) if request else obj.file.url
-        return None
+#
+#
+# class Archive_documentsSerializer(serializers.ModelSerializer):
+#     image = serializers.SerializerMethodField()
+#     file = serializers.SerializerMethodField()
+#
+#     class Meta:
+#         model = Archive_documents
+#         fields = ['id', 'title_uz', 'title_en', 'image', 'file']
+#
+#     def get_image(self, obj):
+#         request = self.context.get('request')
+#         if obj.image:
+#             return request.build_absolute_uri(obj.image.url) if request else obj.image.url
+#         return None
+#
+#     def get_file(self, obj):
+#         request = self.context.get('request')
+#         if obj.file:
+#             return request.build_absolute_uri(obj.file.url) if request else obj.file.url
+#         return None
 
 
 class abstractSerializer(serializers.ModelSerializer):

@@ -8,7 +8,7 @@ from .views import (
     AbstractListCreateView,
     LiteratureListCreateView,
     SourcesSListCreateView,
-    Archive_documentsListCreateView,
+    # Archive_documentsListCreateView,
 )
 urlpatterns = [
 
@@ -19,5 +19,5 @@ urlpatterns = [
 
     path('manbalar/', SourcesSListCreateView.as_view(), name='manbalar-list'),
     path('adabiyotlar/', LiteratureListCreateView.as_view(), name='adabiyot-list'),
-    path('archive_documents/list/', Archive_documentsListCreateView.as_view(), name='archive-list'),
+    # path('archive_documents/list/', Archive_documentsListCreateView.as_view(), name='archive-list'),
 ]

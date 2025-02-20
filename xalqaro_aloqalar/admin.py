@@ -10,12 +10,12 @@ class Xamkor_tashkilotAdmin(admin.ModelAdmin):
     fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'file', 'order',]
 
 
-
 @admin.register(Xamkor_loihalar)
 class Xamkor_loihalarAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at', 'updated_at', 'order',)
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'img_file', 'order',]
+    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'img_file', 'status', 'order',]
+    list_filter = ('status',)
 
 
 @admin.register(Xalqaro_sayohatlar)

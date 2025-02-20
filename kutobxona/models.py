@@ -90,19 +90,19 @@ class Literature(models.Model):
 #         verbose_name = 'Comment'
 #         verbose_name_plural = 'Comments'
 
-
-class Archive_documents(models.Model):
-    title = models.CharField(max_length=255, blank=True, null=True)
-    image = models.ImageField(upload_to='archive/image', blank=True, null=True)
-    file = models.FileField(blank=True, null=True)
-    order = models.IntegerField(default=0)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = 'arxiv hujjat'
-        verbose_name_plural = 'arxiv hujjatlar'
+#
+# class Archive_documents(models.Model):
+#     title = models.CharField(max_length=255, blank=True, null=True)
+#     image = models.ImageField(upload_to='archive/image', blank=True, null=True)
+#     file = models.FileField(blank=True, null=True)
+#     order = models.IntegerField(default=0)
+#
+#     def __str__(self):
+#         return self.title
+#
+#     class Meta:
+#         verbose_name = 'arxiv hujjat'
+#         verbose_name_plural = 'arxiv hujjatlar'
 
 
 class Abstract(models.Model):
