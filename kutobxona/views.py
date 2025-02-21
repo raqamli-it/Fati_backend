@@ -5,6 +5,7 @@ from .serializers import (RequirementsSerializer, EditorialSerializer, ArchiveSe
 
 from django.db.models import Q
 from rest_framework.pagination import PageNumberPagination
+import re
 
 
 class CustomPagination(PageNumberPagination):
@@ -63,14 +64,15 @@ class ArchiveListCreateView(ListAPIView):
         search_query = self.request.GET.get('search', '').strip()
 
         if search_query:
+            # Maxsus belgilarni olib tashlash (masalan, `'`, `-`, `#`, `.`)
+            search_query = re.sub(r"[^\w\s]", "", search_query)
             search_words = search_query.split()  # So‘zlarni ajratish
             q_objects = Q()
 
             for word in search_words:
                 q_objects |= Q(title_uz__icontains=word)
                 q_objects |= Q(title_en__icontains=word)
-                q_objects |= Q(year__icontains=word)  # Year maydonini ham to‘liq qidirish
-                q_objects |= Q(title__icontains=word)
+                q_objects |= Q(year__icontains=word)
 
             queryset = queryset.filter(q_objects)
 
