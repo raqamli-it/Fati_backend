@@ -64,11 +64,28 @@ class ArchiveListCreateView(ListAPIView):
         search_query = self.request.GET.get('search', '').strip()
 
         if search_query:
-            # Maxsus belgilarni olib tashlash (masalan, `'`, `-`, `#`, `.`)
+            # 1️⃣ **Barcha maxsus belgilarni olib tashlash** (`'`, `-`, `.`, `,`, `@`, `#` va h.k.)
             search_query = re.sub(r"[^\w\s]", "", search_query)
-            search_words = search_query.split()  # So‘zlarni ajratish
-            q_objects = Q()
 
+            # 2️⃣ **O'zbekcha maxsus harflarni normallashtirish**
+            replacements = {
+                "O'": "Oʻ", "o'": "oʻ",  # Oʻzbekiston, o‘zbek
+                "G'": "Gʻ", "g'": "gʻ",  # Gʻarb, gʻisht
+                "Sh": "Sh", "sh": "sh",  # Shahar, shart (bularni almashtirmaslik kerak)
+                "Ch": "Ch", "ch": "ch",  # Chiroy, chipta (bularni almashtirmaslik kerak)
+            }
+            for old, new in replacements.items():
+                search_query = search_query.replace(old, new)
+
+            # 3️⃣ **Qidiruv so‘zlarini ajratish va bo‘sh stringlarni oldini olish**
+            search_words = [word for word in search_query.split() if word]
+
+            # 4️⃣ **Juda qisqa (1 harfli) so‘zlarni e'tiborga olmaslik**
+            if not search_words or all(len(word) < 2 for word in search_words):
+                return queryset  # Bo‘sh yoki juda qisqa so‘zlar uchun natija cheklangan
+
+            # 5️⃣ **Qidirish shartlarini yaratish**
+            q_objects = Q()
             for word in search_words:
                 q_objects |= Q(title_uz__icontains=word)
                 q_objects |= Q(title_en__icontains=word)
