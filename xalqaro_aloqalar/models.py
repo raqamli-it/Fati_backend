@@ -32,7 +32,7 @@ class Xamkor_loihalar(models.Model):
     status = models.CharField(
         max_length=30,
         choices=STATUS_CHOICES,
-        default='Bajarilgan loyihalar',
+        default='Amaldagi loyihalar',
     )
 
     def __str__(self):

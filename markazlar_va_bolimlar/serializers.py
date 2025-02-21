@@ -31,16 +31,15 @@ class VideoSerializer(serializers.ModelSerializer):
 class BolimlarListSerializers(serializers.ModelSerializer):
     class Meta:
         model = Bolimlar
-        fields = ['id', 'title_uz', 'title_en', ]
+        fields = ['id', 'title_uz', 'title_en', 'image']
 
 
 class MarkazlarListSerializers(serializers.ModelSerializer):
     class Meta:
         model = Markazlar
-        fields = ['id', 'title_uz', 'title_en', ]
+        fields = ['id', 'title_uz', 'title_en', 'image']
 
 
-# detail
 class MarkazlarSerializer(serializers.ModelSerializer):
     xodim = XodimlarSerializer(many=True, read_only=True)
     tadqiqotlar = TadqiqotSerializer(many=True, read_only=True)

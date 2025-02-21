@@ -7,7 +7,7 @@ from .views import (
     RequirementsListCreateView,
     AbstractListCreateView,
     LiteratureListCreateView,
-    SourcesSListCreateView,
+    SourcesListCreateView,
     # Archive_documentsListCreateView,
 )
 urlpatterns = [
@@ -17,7 +17,7 @@ urlpatterns = [
     path('arxivlar/', ArchiveListCreateView.as_view(), name='arxiv-list'),
     path('avtoreferat/', AbstractListCreateView.as_view(), name='tahrirchi-list'),
 
-    path('manbalar/', SourcesSListCreateView.as_view(), name='manbalar-list'),
+    path('manbalar/', SourcesListCreateView.as_view(), name='manbalar-list'),
     path('adabiyotlar/', LiteratureListCreateView.as_view(), name='adabiyot-list'),
     # path('archive_documents/list/', Archive_documentsListCreateView.as_view(), name='archive-list'),
 ]
