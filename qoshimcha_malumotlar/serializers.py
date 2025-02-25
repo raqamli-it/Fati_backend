@@ -2,7 +2,7 @@
 from rest_framework import serializers
 
 from .models import Institut_tarixi, Aloqa, Karusel, Rahbariyat, Tashkiliy_tuzulma, Yangiliklar, \
-     Havolalar, Direktorlar, Xabarlar
+     Havolalar, Direktorlar, Xabarlar, Kadirlar_bolim, Category
 
 
 class DirektorSerializer(serializers.ModelSerializer):
@@ -60,3 +60,17 @@ class HavolalarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Havolalar
         fields = ('id', 'title_uz', 'title_en', 'file', 'link', 'order',)
+
+
+class Kadirlar_bolimiSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Kadirlar_bolim
+        fields = ('id', 'full_name', 'position', 'image', 'category')
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    kadirlar = Kadirlar_bolimiSerializer(many=True,)
+
+    class Meta:
+        model = Category
+        fields = ('id', 'title', 'kadirlar')

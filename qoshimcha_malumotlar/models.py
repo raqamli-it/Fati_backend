@@ -137,3 +137,25 @@ class Havolalar(models.Model):
     class Meta:
         verbose_name = 'Havola'
         verbose_name_plural = 'Havolalar'
+
+
+class Category(models.Model):
+    title = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Category'
+
+
+class Kadirlar_bolim(models.Model):
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    position = models.CharField(max_length=255, blank=True, null=True)
+    image = models.ImageField(upload_to='Kadirlar/image', blank=True, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='kadirlar', blank=True)
+
+    class Meta:
+        verbose_name = 'Kadirlar_bolimi'
+        verbose_name_plural = 'Kadirlar_bolimi'

@@ -1,17 +1,18 @@
+
+
 from rest_framework.generics import ListAPIView
 from .models import (Requirements, Editorial, Archive, Abstract, Literature, Sources)
 from .serializers import (RequirementsSerializer, EditorialSerializer, ArchiveSerializer, abstractSerializer,
                           LiteratureSerializer, SourcesSerializer)
-
-from django.db.models import Q
+from django.db.models import Q, Value
 from rest_framework.pagination import PageNumberPagination
 import re
 
 
 class CustomPagination(PageNumberPagination):
-    page_size = 3
+    page_size = 16
     page_size_query_param = 'page_size'
-    max_page_size = 100
+    max_page_size = 1000
 
 
 class RequirementsListCreateView(ListAPIView):
@@ -64,37 +65,34 @@ class ArchiveListCreateView(ListAPIView):
         search_query = self.request.GET.get('search', '').strip()
 
         if search_query:
-            # 1️⃣ **Barcha maxsus belgilarni olib tashlash** (`'`, `-`, `.`, `,`, `@`, `#` va h.k.)
-            search_query = re.sub(r"[^\w\s]", "", search_query)
+            # 1️⃣ **Barcha maxsus belgilarni olib tashlash**
+            search_query = re.sub(r"[^\w\s'-]", "", search_query)
 
             # 2️⃣ **O'zbekcha maxsus harflarni normallashtirish**
             replacements = {
-                "O'": "Oʻ", "o'": "oʻ",  # Oʻzbekiston, o‘zbek
-                "G'": "Gʻ", "g'": "gʻ",  # Gʻarb, gʻisht
-                "Sh": "Sh", "sh": "sh",  # Shahar, shart (bularni almashtirmaslik kerak)
-                "Ch": "Ch", "ch": "ch",  # Chiroy, chipta (bularni almashtirmaslik kerak)
+                "O'": "Oʻ", "o'": "oʻ",
+                "G'": "Gʻ", "g'": "gʻ"
             }
             for old, new in replacements.items():
                 search_query = search_query.replace(old, new)
 
-            # 3️⃣ **Qidiruv so‘zlarini ajratish va bo‘sh stringlarni oldini olish**
-            search_words = [word for word in search_query.split() if word]
+            # 3️⃣ **Qidiruv so‘zlarini ajratish**
+            search_words = [word.strip() for word in search_query.split() if word.strip()]
+            if len(search_words) < 2:
+                return queryset  # Kamida 2 so‘z bo‘lishi kerak (title va year uchun)
 
-            # 4️⃣ **Juda qisqa (1 harfli) so‘zlarni e'tiborga olmaslik**
-            if not search_words or all(len(word) < 2 for word in search_words):
-                return queryset  # Bo‘sh yoki juda qisqa so‘zlar uchun natija cheklangan
+            # 4️⃣ **Bazadagi 'year' maydonini bo‘sh joylarsiz qilish**
+            from django.db.models.functions import Replace
+            queryset = queryset.annotate(cleaned_year=Replace("year", Value(" "), Value("")))
 
-            # 5️⃣ **Qidirish shartlarini yaratish**
+            # 5️⃣ **Qidiruv shartlarini yaratish**
             q_objects = Q()
-            for word in search_words:
-                q_objects |= Q(title_uz__icontains=word)
-                q_objects |= Q(title_en__icontains=word)
-                q_objects |= Q(year__icontains=word)
+            for i in range(len(search_words) - 1):
+                q_objects |= (Q(title_uz__icontains=search_words[i]) & Q(cleaned_year__icontains=search_words[i + 1]))
 
             queryset = queryset.filter(q_objects)
 
         return queryset
-
 
 class LiteratureListCreateView(ListAPIView):
     serializer_class = LiteratureSerializer
