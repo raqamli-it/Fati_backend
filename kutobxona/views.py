@@ -7,6 +7,8 @@ from .serializers import (RequirementsSerializer, EditorialSerializer, ArchiveSe
 from django.db.models import Q, Value
 from rest_framework.pagination import PageNumberPagination
 import re
+from django.db.models.functions import Replace, Coalesce
+from django.db.models import F
 
 
 class CustomPagination(PageNumberPagination):
@@ -56,43 +58,64 @@ class EditorialListCreateView(ListAPIView):
         return queryset
 
 
-class ArchiveListCreateView(ListAPIView):
+class ArchiveListView(ListAPIView):
+    queryset = Archive.objects.all().order_by(F('order').asc(nulls_last=True))
     serializer_class = ArchiveSerializer
-    pagination_class = CustomPagination
 
     def get_queryset(self):
-        queryset = Archive.objects.all().order_by('order')
+        queryset = Archive.objects.all().order_by(F('order').asc(nulls_last=True))
         search_query = self.request.GET.get('search', '').strip()
 
         if search_query:
-            # 1️⃣ **Barcha maxsus belgilarni olib tashlash**
+            # 1️⃣ Maxsus belgilarni olib tashlash
             search_query = re.sub(r"[^\w\s'-]", "", search_query)
 
-            # 2️⃣ **O'zbekcha maxsus harflarni normallashtirish**
-            replacements = {
-                "O'": "Oʻ", "o'": "oʻ",
-                "G'": "Gʻ", "g'": "gʻ"
-            }
-            for old, new in replacements.items():
-                search_query = search_query.replace(old, new)
+            # 2️⃣ O'zbekcha maxsus harflarni ikkala variantda ham tekshirish
+            original_query = search_query
+            transformed_query = search_query.replace("O'", "Oʻ").replace("o'", "oʻ")
 
-            # 3️⃣ **Qidiruv so‘zlarini ajratish**
-            search_words = [word.strip() for word in search_query.split() if word.strip()]
-            if len(search_words) < 2:
-                return queryset  # Kamida 2 so‘z bo‘lishi kerak (title va year uchun)
+            # 3️⃣ To‘liq matn bo‘yicha qidirish (ikkala variant bilan)
+            full_text_query = Q(title_uz__icontains=original_query) | Q(title_uz__icontains=transformed_query)
 
-            # 4️⃣ **Bazadagi 'year' maydonini bo‘sh joylarsiz qilish**
-            from django.db.models.functions import Replace
-            queryset = queryset.annotate(cleaned_year=Replace("year", Value(" "), Value("")))
+            # 4️⃣ Qidiruv so‘zlarini ajratish
+            search_words = search_query.split()
+            if not search_words:
+                return queryset.filter(full_text_query)
 
-            # 5️⃣ **Qidiruv shartlarini yaratish**
+            # 5️⃣ Bazadagi 'year' maydonini bo‘sh joylarsiz qilish (123 -yil -> 123yil)
+            queryset = queryset.annotate(
+                cleaned_year=Replace(
+                    Replace(Coalesce(F("year"), Value("")), Value(" "), Value("")),
+                    Value("-"), Value("")
+                )
+            )
+
+            # 6️⃣ Qidirish shartlarini yaratish
             q_objects = Q()
-            for i in range(len(search_words) - 1):
-                q_objects |= (Q(title_uz__icontains=search_words[i]) & Q(cleaned_year__icontains=search_words[i + 1]))
+            title_words = []
+            year_words = []
 
-            queryset = queryset.filter(q_objects)
+            for word in search_words:
+                cleaned_word = word.replace(" ", "").replace("-", "")
+                if cleaned_word.isdigit() or "yil" in cleaned_word.lower():
+                    year_words.append(cleaned_word)
+                else:
+                    title_words.append(word)
+
+            if title_words and year_words:
+                title_query = Q(title_uz__icontains=" ".join(title_words)) | Q(title_uz__iexact=" ".join(title_words))
+                year_query = Q(cleaned_year__icontains="".join(year_words))
+                q_objects = title_query & year_query
+            elif title_words:
+                q_objects = Q(title_uz__icontains=" ".join(title_words)) | Q(title_uz__iexact=" ".join(title_words))
+            elif year_words:
+                q_objects = Q(cleaned_year__icontains="".join(year_words))
+
+            # 🔥 FULL_TEXT_QUERY ni ham qo‘shamiz
+            queryset = queryset.filter(full_text_query | q_objects)
 
         return queryset
+
 
 class LiteratureListCreateView(ListAPIView):
     serializer_class = LiteratureSerializer
