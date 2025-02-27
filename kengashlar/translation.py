@@ -20,7 +20,7 @@ class AzolarTranslationOptions(TranslationOptions):
 
 
 @register(Elonlar)
-class AzolarTranslationOptions(TranslationOptions):
+class ElonlarTranslationOptions(TranslationOptions):
     fields = ('title', 'content',)
 
 
