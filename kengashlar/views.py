@@ -6,6 +6,13 @@ from rest_framework import generics
 from rest_framework.decorators import api_view
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
+from rest_framework.pagination import PageNumberPagination
+
+
+class CustomPagination(PageNumberPagination):
+    page_size = 16
+    page_size_query_param = 'page_size'
+    max_page_size = 1000
 
 
 class Ilmiy_kengash_majlisListView(generics.ListAPIView):
@@ -26,6 +33,7 @@ class AzolarListView(generics.ListAPIView):
 class ElonlarListView(generics.ListAPIView):
     queryset = Elonlar.objects.all()
     serializer_class = ElonlarSerializer
+    pagination_class = CustomPagination
 
 
 @api_view(['GET'])
