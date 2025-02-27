@@ -28,6 +28,6 @@ class AzolarAdmin(admin.ModelAdmin):
 class AzolarAdmin(admin.ModelAdmin):
     list_display = ['title', 'created_at', 'updated_at',]
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', ]
+    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'image']
 
 

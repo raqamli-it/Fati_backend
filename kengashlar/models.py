@@ -48,6 +48,7 @@ class Azolar(models.Model):
 class Elonlar(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     content = RichTextField(blank=True, null=True)
+    image = models.ImageField(upload_to='Elonlar/image', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
