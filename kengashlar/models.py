@@ -3,10 +3,8 @@ from django.db import models
 
 
 class Ilmiy_kengash_majlis(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, blank=True, null=True)
     content = RichTextField(blank=True, null=True)
-    file = models.FileField(upload_to='images', blank=True, null=True)
-    date = models.DateField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -34,19 +32,28 @@ class Yosh_olimlar(models.Model):
 
 
 class Azolar(models.Model):
-    name = models.CharField(max_length=255)
-    position = models.CharField(max_length=255)
-    degree = models.CharField(max_length=255)
-    contact = models.CharField(max_length=255)
-    email = models.EmailField(blank=True, null=True)
-    order = models.IntegerField(default=0)
+    title = models.CharField(max_length=255, blank=True, null=True)
+    content = RichTextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return self.title
 
     class Meta:
         verbose_name = 'Azolar'
         verbose_name_plural = 'Azolar'
 
+
+class Elonlar(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+    content = RichTextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Elonlar'
+        verbose_name_plural = 'Elonlar'

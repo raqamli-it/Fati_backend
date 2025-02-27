@@ -157,5 +157,5 @@ class Kadirlar_bolim(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='kadirlar', blank=True)
 
     class Meta:
-        verbose_name = 'Kadirlar_bolimi'
-        verbose_name_plural = 'Kadirlar_bolimi'
+        verbose_name = 'Kadirlar bolimi'
+        verbose_name_plural = 'Kadirlar bolimi'

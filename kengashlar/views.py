@@ -1,7 +1,7 @@
 from .models import Ilmiy_kengash_majlis, Yosh_olimlar
 from .serializers import Ilmiy_kengash_majlisSerializer, Yosh_olimlarSerializer
-from kengashlar.models import Azolar
-from .serializers import AzolarSerializer
+from .models import Azolar, Elonlar
+from .serializers import AzolarSerializer, ElonlarSerializer
 from rest_framework import generics
 
 
@@ -16,5 +16,10 @@ class Yosh_olimlarListView(generics.ListAPIView):
 
 
 class AzolarListView(generics.ListAPIView):
-    queryset = Azolar.objects.all().order_by('order')
+    queryset = Azolar.objects.all()
     serializer_class = AzolarSerializer
+
+
+class ElonlarListView(generics.ListAPIView):
+    queryset = Elonlar.objects.all()
+    serializer_class = ElonlarSerializer
