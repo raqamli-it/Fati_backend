@@ -19,11 +19,8 @@ class Requirements(models.Model):
 
 class Editorial(models.Model):
     title = models.CharField(max_length=255, null=True)
-    position = models.CharField(max_length=255, blank=True, null=True)
-    degree = models.CharField(max_length=255, blank=True, null=True)
-    sphere = models.CharField(max_length=255, blank=True, null=True)
     content = RichTextField(blank=True, null=True)
-    file = models.FileField(upload_to='media/tahririyat', blank=True, null=True)
+    image = models.ImageField(upload_to='media/tahririyat', blank=True, null=True)
     order = models.IntegerField(default=0)
 
     def __str__(self):
@@ -76,33 +73,6 @@ class Literature(models.Model):
     class Meta:
         verbose_name = 'Adabiyot'
         verbose_name_plural = 'Adabiyotlar'
-#
-#
-# class Comment(models.Model):
-#     title = models.CharField(max_length=255, blank=True, null=True)
-#     text = models.TextField(blank=True, null=True)
-#     file = models.FileField(upload_to='Comment/file', blank=True, null=True)
-#
-#     def __str__(self):
-#         return self.title
-#
-#     class Meta:
-#         verbose_name = 'Comment'
-#         verbose_name_plural = 'Comments'
-
-#
-# class Archive_documents(models.Model):
-#     title = models.CharField(max_length=255, blank=True, null=True)
-#     image = models.ImageField(upload_to='archive/image', blank=True, null=True)
-#     file = models.FileField(blank=True, null=True)
-#     order = models.IntegerField(default=0)
-#
-#     def __str__(self):
-#         return self.title
-#
-#     class Meta:
-#         verbose_name = 'arxiv hujjat'
-#         verbose_name_plural = 'arxiv hujjatlar'
 
 
 class Abstract(models.Model):

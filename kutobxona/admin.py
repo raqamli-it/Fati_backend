@@ -15,8 +15,7 @@ class RequirementsAdmin(admin.ModelAdmin):
 class EditorialAdmin(admin.ModelAdmin):
     list_display = ('title', 'order')
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'position_uz', 'position_en', 'degree_uz', 'degree_en', 'sphere_uz', 'sphere_en',
-              'content_uz', 'content_en', 'file', 'order']
+    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order']
 
 
 @admin.register(Archive)
@@ -38,14 +37,7 @@ class LiteratureAdmin(admin.ModelAdmin):
     list_display = ('title', 'order')
     search_fields = ('title',)
     fields = ['title_uz', 'title_en', 'image', 'file', 'order']
-#
-#
-# @admin.register(Archive_documents)
-# class Archive_documentsAdmin(admin.ModelAdmin):
-#     list_display = ('title', 'order')
-#     search_fields = ('title',)
-#     fields = ['title_uz', 'title_en', 'image', 'file', 'order']
-#
+
 
 @admin.register(Abstract)
 class AbstractAdmin(admin.ModelAdmin):

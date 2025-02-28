@@ -152,21 +152,3 @@ class SourcesListCreateView(ListAPIView):
             )
 
         return queryset
-#
-#
-# class Archive_documentsListCreateView(ListAPIView):
-#     serializer_class = Archive_documentsSerializer
-#     pagination_class = CustomPagination
-#
-#     def get_queryset(self):
-#         queryset = Archive_documents.objects.all().order_by('order')
-#         search_query = self.request.GET.get('search', '')
-#
-#         if search_query:
-#             queryset = queryset.filter(
-#                 Q(title__icontains=search_query) |
-#                 Q(title_uz__icontains=search_query) |
-#                 Q(title_en__icontains=search_query)
-#             )
-#
-#         return queryset
