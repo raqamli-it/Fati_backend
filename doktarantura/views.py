@@ -1,6 +1,13 @@
 from rest_framework import generics
 from .models import Qabul_tartibi, Malakaviy_imtihon, Doktarantura
 from .serializers import Qabul_tartibiSerializer, Malakaviy_imtihonSerializer, DoktaranturaSerializer
+from rest_framework.pagination import PageNumberPagination
+
+
+class CustomPagination(PageNumberPagination):
+    page_size = 6
+    page_size_query_param = 'page_size'
+    max_page_size = 1000
 
 
 class Qabul_tartibiListView(generics.ListAPIView):
@@ -16,3 +23,4 @@ class Malakaviy_imtihonListView(generics.ListAPIView):
 class DoktaranturaListView(generics.ListAPIView):
     queryset = Doktarantura.objects.all().order_by('order')
     serializer_class = DoktaranturaSerializer
+    pagination_class = CustomPagination
