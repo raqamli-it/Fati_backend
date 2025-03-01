@@ -71,7 +71,7 @@ class Xodimlar(models.Model):
 class Audio(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     audio = models.FileField(upload_to='Audio', blank=True, null=True)
-    image = models.ImageField(upload_to='Audio/iamge', blank=True, null=True)
+    image = models.ImageField(upload_to='Audio/image', blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -114,7 +114,7 @@ class Rasmlar(models.Model):
 class Video(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     video = models.FileField(upload_to='Video', blank=True, null=True)
-    image = models.ImageField(upload_to='Video/iamge', blank=True, null=True)
+    image = models.ImageField(upload_to='Video/image', blank=True, null=True)
     link = models.URLField(blank=True, null=True)
 
     def __str__(self):
