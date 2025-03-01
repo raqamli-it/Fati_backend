@@ -5,7 +5,7 @@ from django.db import models
 class Xamkor_tashkilot(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
-    file = models.FileField(upload_to='images', blank=True, null=True)
+    file = models.FileField(upload_to='Xamkor_tashkilot/images', blank=True, null=True)
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -21,7 +21,7 @@ class Xamkor_tashkilot(models.Model):
 class Xamkor_loihalar(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     content = RichTextField(blank=True, null=True)
-    img_file = models.ImageField(upload_to='images', blank=True, null=True)
+    img_file = models.ImageField(upload_to='Xamkor_loihalar/images', blank=True, null=True)
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -47,7 +47,7 @@ class Xalqaro_sayohatlar(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
     subcontent = RichTextField(blank=True, null=True)
-    file = models.FileField(upload_to='images', blank=True, null=True)
+    file = models.FileField(upload_to='Xalqaro_sayohatlar/images', blank=True, null=True)
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -63,7 +63,7 @@ class Xalqaro_sayohatlar(models.Model):
 class Tadqiqot(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
-    img_file = models.ImageField(upload_to='images', blank=True, null=True)
+    img_file = models.ImageField(upload_to='Tadqiqot/images', blank=True, null=True)
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

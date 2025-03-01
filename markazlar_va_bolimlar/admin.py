@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Xodimlar, Markazlar, Bolimlar, Tadqiqot, Photo, Video
+from .models import Xodimlar, Markazlar, Bolimlar, Tadqiqot, Audio, Audiolar, Rasm, Rasmlar, Video, Videolar
 
 
 @admin.register(Markazlar)
@@ -20,8 +20,7 @@ class Bolimlaradmin(admin.ModelAdmin):
 class XodimlarAdmin(admin.ModelAdmin):
     list_display = ('ful_name', 'order', 'created_at', 'updated_at')
     search_fields = ('ful_name',)
-    fields = ['ful_name_uz', 'ful_name_en', 'activity_uz', 'activity_en', 'about_uz', 'about_en', 'works_uz',
-              'works_en', 'image', 'file', 'bolimlar', 'markazlar', 'order']
+    fields = ['ful_name_uz', 'ful_name_en', 'about_uz', 'about_en', 'image', 'bolimlar', 'markazlar', 'order']
 
 
 @admin.register(Tadqiqot)
@@ -31,15 +30,40 @@ class TadqiqotAdmin(admin.ModelAdmin):
     fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'bolimlar', 'markazlar', 'order')
 
 
-@admin.register(Photo)
-class PhotoAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'updated_at')
+class Audiolaradmin(admin.TabularInline):
+    model = Audiolar
+    fields = ['audio',]
+
+
+@admin.register(Audio)
+class AudioAdmin(admin.ModelAdmin):
+    list_display = ('title', 'audio',)
     search_fields = ('title',)
-    fields = ('title_uz', 'title_en', 'image', 'bolimlar', 'markazlar')
+    inlines = [Audiolaradmin]
+    fields = ['title_uz', 'title_en', 'audio', 'image']
+
+
+class Rasmlaradmin(admin.TabularInline):
+    model = Rasmlar
+    fields = ['image']
+
+
+@admin.register(Rasm)
+class RasmAdmin(admin.ModelAdmin):
+    list_display = ('title', 'image')
+    search_fields = ('title',)
+    inlines = [Rasmlaradmin]
+    fields = ['title_uz', 'title_en', 'image']
+
+
+class Videolaradmin(admin.TabularInline):
+    model = Videolar
+    fields = ['video']
 
 
 @admin.register(Video)
-class VideoAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'updated_at')
+class RasmAdmin(admin.ModelAdmin):
+    list_display = ('title', )
     search_fields = ('title',)
-    fields = ('title_uz', 'title_en', 'video', 'link', 'bolimlar', 'markazlar')
+    inlines = [Videolaradmin]
+    fields = ['title_uz', 'title_en', 'video', 'image', 'link']

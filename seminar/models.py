@@ -15,8 +15,9 @@ class Seminar_turlari(models.Model):
 
 
 class Seminar(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, blank=True, null=True)
     content = RichTextField(blank=True, null=True)
+    image = models.ImageField(upload_to='Seminar/image', blank=True, null=True)
     seminar_id = models.ForeignKey(Seminar_turlari, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):

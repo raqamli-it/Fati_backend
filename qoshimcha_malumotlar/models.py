@@ -5,7 +5,7 @@ from ckeditor.fields import RichTextField
 class Institut_tarixi(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
-    image = models.ImageField(upload_to='images', blank=True, null=True)
+    image = models.ImageField(upload_to='Institut_tarixi/images', blank=True, null=True)
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -20,7 +20,7 @@ class Institut_tarixi(models.Model):
 
 class Direktorlar(models.Model):
     title = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='media/Direktorlar')
+    image = models.ImageField(upload_to='Direktorlar/image')
     about = models.ForeignKey(Institut_tarixi, on_delete=models.CASCADE,
                               related_name='Direktorlar', blank=True, null=True)
 
@@ -64,7 +64,7 @@ class Xabarlar(models.Model):
 
 
 class Karusel(models.Model):
-    file = models.ImageField(upload_to='images', blank=True, null=True)
+    file = models.ImageField(upload_to='Karusel/images', blank=True, null=True)
     link = models.URLField(blank=True, null=True)
 
     class Meta:
@@ -78,7 +78,7 @@ class Rahbariyat(models.Model):
     degree = models.CharField(max_length=255, blank=True, null=True)
     contact = models.CharField(max_length=255, blank=True, null=True)
     days = models.DateField(blank=True, null=True)
-    image = models.ImageField(upload_to='images', blank=True, null=True)
+    image = models.ImageField(upload_to='Rahbariyat/images', blank=True, null=True)
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -94,7 +94,7 @@ class Rahbariyat(models.Model):
 class Tashkiliy_tuzulma(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
-    file = models.ImageField(upload_to='images', blank=True, null=True)
+    file = models.ImageField(upload_to='Tashkiliy_tuzulma/images', blank=True, null=True)
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -110,7 +110,7 @@ class Tashkiliy_tuzulma(models.Model):
 class Yangiliklar(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
-    image = models.ImageField(upload_to='images', blank=True, null=True)
+    image = models.ImageField(upload_to='Yangiliklar/images', blank=True, null=True)
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -125,7 +125,7 @@ class Yangiliklar(models.Model):
 
 class Havolalar(models.Model):
     title = models.CharField(max_length=255)
-    file = models.ImageField(upload_to='images', blank=True, null=True)
+    file = models.ImageField(upload_to='Havolalar/images', blank=True, null=True)
     link = models.URLField(blank=True, null=True)
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)

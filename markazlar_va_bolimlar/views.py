@@ -1,8 +1,8 @@
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView
-from .models import Xodimlar, Markazlar, Bolimlar, Photo, Video
-from .serializers import (XodimlarSerializer, BolimlarSerializer, PhotoSerializer,
-                          VideoSerializer, MarkazlarSerializer, BolimlarListSerializers, MarkazlarListSerializers)
+from .models import Xodimlar, Markazlar, Bolimlar, Audio, Rasm, Video
+from .serializers import (XodimlarSerializer, BolimlarSerializer, MarkazlarSerializer, BolimlarListSerializers,
+                          MarkazlarListSerializers, AudioSerializer, RasmSerializer, VideoSerializer)
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 
@@ -32,21 +32,22 @@ def MarkazlarDetail(request, pk):
 
 
 @api_view(['GET'])
-def PhotoDetail(request, pk):
-    photo = get_object_or_404(Photo, pk=pk)
-    serializer = PhotoSerializer(photo, context={'request': request})
-    return Response(serializer.data)
-
-
-@api_view(['GET'])
-def VideoDetail(request, pk):
-    video = get_object_or_404(Video, pk=pk)
-    serializer = VideoSerializer(video, context={'request': request})
-    return Response(serializer.data)
-
-
-@api_view(['GET'])
 def XodimlarDetail(request, pk):
     xodim = get_object_or_404(Xodimlar, pk=pk)
     serializer = XodimlarSerializer(xodim, context={'request': request})
     return Response(serializer.data)
+
+
+class AudioCreateListAPIView(ListAPIView):
+    queryset = Audio.objects.all()
+    serializer_class = AudioSerializer
+
+
+class RasmCreateListAPIView(ListAPIView):
+    queryset = Rasm.objects.all()
+    serializer_class = RasmSerializer
+
+
+class VideoCreateListAPIView(ListAPIView):
+    queryset = Video.objects.all()
+    serializer_class = VideoSerializer

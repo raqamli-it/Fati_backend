@@ -6,7 +6,7 @@ class Requirements(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     content = RichTextField(blank=True, null=True)
     sub_content = RichTextField(blank=True, null=True)
-    image = models.ImageField(upload_to='media/talablar', blank=True, null=True)
+    image = models.ImageField(upload_to='talablar/image', blank=True, null=True)
     order = models.IntegerField(default=0)
 
     def __str__(self):
@@ -20,7 +20,7 @@ class Requirements(models.Model):
 class Editorial(models.Model):
     title = models.CharField(max_length=255, null=True)
     content = RichTextField(blank=True, null=True)
-    image = models.ImageField(upload_to='media/tahririyat', blank=True, null=True)
+    image = models.ImageField(upload_to='tahririyat/image', blank=True, null=True)
     order = models.IntegerField(default=0)
 
     def __str__(self):
@@ -34,8 +34,8 @@ class Editorial(models.Model):
 class Archive(models.Model):
     title = models.CharField(max_length=255, null=True)
     year = models.CharField(max_length=255, blank=True, null=True)
-    image = models.FileField(upload_to='media/Arxiv/image', blank=True, null=True)
-    file = models.FileField(blank=True, null=True)
+    image = models.FileField(upload_to='Arxiv/image', blank=True, null=True)
+    file = models.FileField(upload_to='Arxiv/file', blank=True, null=True)
     order = models.IntegerField(default=0)
 
     def __str__(self):
@@ -49,7 +49,7 @@ class Archive(models.Model):
 class Sources(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='Manbalar/image', blank=True, null=True)
-    file = models.FileField(blank=True, null=True)
+    file = models.FileField(upload_to='Manbalar/file', blank=True, null=True)
     order = models.IntegerField(default=0)
 
     def __str__(self):
@@ -64,7 +64,7 @@ class Sources(models.Model):
 class Literature(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='Adabiyot/image', blank=True, null=True)
-    file = models.FileField(blank=True, null=True)
+    file = models.FileField(upload_to='Adabiyot/image', blank=True, null=True)
     order = models.IntegerField(default=0)
 
     def __str__(self):
@@ -77,8 +77,8 @@ class Literature(models.Model):
 
 class Abstract(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
-    image = models.ImageField(upload_to='media/Avtoreferat/image', blank=True, null=True)
-    file = models.FileField(upload_to='media/Avtoreferat/file/', blank=True, null=True)
+    image = models.ImageField(upload_to='Avtoreferat/image', blank=True, null=True)
+    file = models.FileField(upload_to='Avtoreferat/file', blank=True, null=True)
     order = models.IntegerField(default=0)
 
     def __str__(self):

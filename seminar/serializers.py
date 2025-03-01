@@ -12,5 +12,5 @@ class Seminar_turlariSerializer(serializers.ModelSerializer):
 class SeminarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Seminar
-        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'seminar_id', )
+        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'seminar_id')
 

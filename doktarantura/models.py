@@ -5,7 +5,7 @@ from django.db import models
 class Qabul_tartibi(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
-    file = models.FileField(upload_to='media/Qabul_tartibi/files/', blank=True, null=True)
+    file = models.FileField(upload_to='Qabul_tartibi/file', blank=True, null=True)
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -21,7 +21,7 @@ class Qabul_tartibi(models.Model):
 class Malakaviy_imtihon(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
-    file = models.FileField(upload_to='media/Malakaviy_imtihon/files/', blank=True, null=True)
+    file = models.FileField(upload_to='Malakaviy_imtihon/file', blank=True, null=True)
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -39,7 +39,7 @@ class Doktarantura(models.Model):
     labor_activity = RichTextField(blank=True, null=True)
     scientific_activity = RichTextField(blank=True, null=True)
     works = RichTextField(blank=True, null=True)
-    file = models.FileField(upload_to='media/Doktarantura/files/', blank=True, null=True)
+    file = models.FileField(upload_to='Doktarantura/file', blank=True, null=True)
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

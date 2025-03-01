@@ -19,7 +19,7 @@ class Ilmiy_kengash_majlis(models.Model):
 class Yosh_olimlar(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
-    file = models.FileField(upload_to='images', blank=True, null=True)
+    file = models.FileField(upload_to='Yosh_olimlar/images', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
