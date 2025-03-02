@@ -85,12 +85,11 @@ class VideolarSerializer(serializers.ModelSerializer):
 
 
 class VideoSerializer(serializers.ModelSerializer):
-    videolar = RasmlarSerializer(many=True, read_only=True, source='Videolar')
+    videolar = VideolarSerializer(many=True, read_only=True, source='Videolar')
 
     class Meta:
         model = Video
         fields = ['id', 'title_uz', 'title_en', 'image', 'videolar']
-
 
 
 

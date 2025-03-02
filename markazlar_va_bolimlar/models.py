@@ -77,8 +77,8 @@ class Audio(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Audiolar'
-        verbose_name_plural = 'Audiolar'
+        verbose_name = 'Audio'
+        verbose_name_plural = 'Audio'
 
 
 class Audiolar(models.Model):
@@ -92,18 +92,18 @@ class Audiolar(models.Model):
 
 class Rasm(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
-    image = models.ImageField(upload_to='Rasmlar', blank=True, null=True)
+    image = models.ImageField(upload_to='Rasm', blank=True, null=True)
 
     def __str__(self):
         return self.title
 
     class Meta:
-        verbose_name = 'Rasmlar'
-        verbose_name_plural = 'Rasmlar'
+        verbose_name = 'Rasm'
+        verbose_name_plural = 'Rasm'
 
 
 class Rasmlar(models.Model):
-    image = models.ImageField(upload_to='Rasmlar/image', blank=True, null=True)
+    image = models.ImageField(upload_to='Rasm/image', blank=True, null=True)
     image_id = models.ForeignKey(Rasm, on_delete=models.CASCADE, related_name='Rasmlar', blank=True, null=True)
 
     class Meta:
@@ -121,8 +121,8 @@ class Video(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Videolar'
-        verbose_name_plural = 'Videolar'
+        verbose_name = 'Video'
+        verbose_name_plural = 'Video'
 
 
 class Videolar(models.Model):
