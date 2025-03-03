@@ -57,11 +57,11 @@ class AudiolarSerializer(serializers.ModelSerializer):
 
 
 class AudioSerializer(serializers.ModelSerializer):
-    audiolar = AudiolarSerializer(many=True, read_only=True, source='Audiolar')
+    # audiolar = AudiolarSerializer(many=True, read_only=True, source='Audiolar')
 
     class Meta:
         model = Audio
-        fields = ['id', 'title_uz', 'title_en', 'audio', 'image', 'audiolar']
+        fields = ['id', 'title_uz', 'title_en', 'audio', 'image',]
 
 
 class RasmlarSerializer(serializers.ModelSerializer):
@@ -85,11 +85,11 @@ class VideolarSerializer(serializers.ModelSerializer):
 
 
 class VideoSerializer(serializers.ModelSerializer):
-    videolar = VideolarSerializer(many=True, read_only=True, source='Videolar')
+    # videolar = VideolarSerializer(many=True, read_only=True, source='Videolar')
 
     class Meta:
         model = Video
-        fields = ['id', 'title_uz', 'title_en', 'image', 'videolar']
+        fields = ['id', 'title_uz', 'title_en', 'video', 'image',]
 
 
 

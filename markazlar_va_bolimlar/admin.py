@@ -1,62 +1,35 @@
 from django.contrib import admin
-from .models import Xodimlar, Markazlar, Bolimlar, Tadqiqot, Audio, Audiolar, Rasm, Rasmlar, Video, Videolar
+from .models import Xodimlar, Markazlar, Bolimlar, Tadqiqot, Audio, Rasm, Rasmlar, Video
 from django.utils.html import format_html
 
 
 @admin.register(Markazlar)
 class Markazlaradmin(admin.ModelAdmin):
-    list_display = ('get_image', 'title', 'order', 'created_at', 'updated_at')
+    list_display = ('title', 'order', 'created_at', 'updated_at')
     search_fields = ('title',)
     fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order')
-
-    def get_image(self, obj):
-        if obj.image:
-            return format_html('<img src="{}" style="max-width: 100px; max-height: 100px;" />'.format(obj.image.url))
-        return '-'
-
-    get_image.short_description = 'Image'
 
 
 @admin.register(Bolimlar)
 class Bolimlaradmin(admin.ModelAdmin):
-    list_display = ('get_image', 'title', 'order', 'created_at', 'updated_at')
+    list_display = ('title', 'order', 'created_at', 'updated_at')
     search_fields = ('title',)
     fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order')
-
-    def get_image(self, obj):
-        if obj.image:
-            return format_html('<img src="{}" style="max-width: 100px; max-height: 100px;" />'.format(obj.image.url))
-        return '-'
-
-    get_image.short_description = 'Image'
 
 
 @admin.register(Xodimlar)
 class XodimlarAdmin(admin.ModelAdmin):
-    list_display = ('get_image', 'ful_name', 'order', 'created_at', 'updated_at')
+    list_display = ('ful_name', 'order', 'created_at', 'updated_at')
     search_fields = ('ful_name',)
     fields = ['ful_name_uz', 'ful_name_en', 'about_uz', 'about_en', 'image', 'bolimlar', 'markazlar', 'order']
-
-    def get_image(self, obj):
-        if obj.image:
-            return format_html('<img src="{}" style="max-width: 100px; max-height: 100px;" />'.format(obj.image.url))
-        return '-'
-
-    get_image.short_description = 'Image'
 
 
 @admin.register(Tadqiqot)
 class TadqiqotAdmin(admin.ModelAdmin):
-    list_display = ('get_image', 'title', 'order', 'created_at', 'updated_at')
+    list_display = ('title', 'order', 'created_at', 'updated_at')
     search_fields = ('title',)
     fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'bolimlar', 'markazlar', 'order')
 
-    def get_image(self, obj):
-        if obj.image:
-            return format_html('<img src="{}" style="max-width: 100px; max-height: 100px;" />'.format(obj.image.url))
-        return '-'
-
-    get_image.short_description = 'Image'
 
 #
 # class Audiolaradmin(admin.TabularInline):
