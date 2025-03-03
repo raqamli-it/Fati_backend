@@ -58,17 +58,17 @@ class TadqiqotAdmin(admin.ModelAdmin):
 
     get_image.short_description = 'Image'
 
-
-class Audiolaradmin(admin.TabularInline):
-    model = Audiolar
-    fields = ['audio', ]
+#
+# class Audiolaradmin(admin.TabularInline):
+#     model = Audiolar
+#     fields = ['audio', ]
 
 
 @admin.register(Audio)
 class AudioAdmin(admin.ModelAdmin):
     list_display = ('title', 'get_image', 'get_audio')
     search_fields = ('title',)
-    inlines = [Audiolaradmin]
+    # inlines = [Audiolaradmin]
     fields = ['title_uz', 'title_en', 'audio', 'image']
 
     def get_audio(self, obj):
@@ -106,18 +106,18 @@ class RasmAdmin(admin.ModelAdmin):
         return '-'
 
     get_image.short_description = 'Image'
-
-
-class Videolaradmin(admin.TabularInline):
-    model = Videolar
-    fields = ['video']
+#
+#
+# class Videolaradmin(admin.TabularInline):
+#     model = Videolar
+#     fields = ['video']
 
 
 @admin.register(Video)
 class RasmAdmin(admin.ModelAdmin):
     list_display = ('title', 'get_image')
     search_fields = ('title',)
-    inlines = [Videolaradmin]
+    # inlines = [Videolaradmin]
     fields = ['title_uz', 'title_en', 'video', 'image', 'link']
 
     def get_image(self, obj):
