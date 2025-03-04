@@ -73,12 +73,12 @@ class CategorySerializer(serializers.ModelSerializer):
 class XodimlarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Xodimlar
-        fields = ('id', 'full_name_uz', 'full_name_en', 'image', 'category')
+        fields = ('id', 'full_name_uz', 'full_name_en', 'image',)
 
 
 class Xodimlar_turlariSerializer(serializers.ModelSerializer):
-    kadirlar = XodimlarSerializer(many=True,)
+    category = XodimlarSerializer(many=True, read_only=True, source='Xodimlar')
 
     class Meta:
         model = Xodimlar_turlari
-        fields = ('id', 'title_uz', 'title_en', 'kadirlar')
+        fields = ('id', 'title_uz', 'title_en', 'category')
