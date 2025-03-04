@@ -3,9 +3,14 @@ from modeltranslation.decorators import register
 from .models import *
 
 
-@register(Direktorlar)
-class DerektorlarTranslationOptions(TranslationOptions):
+@register(Xodimlar_turlari)
+class Xodimlar_turlariTranslationOptions(TranslationOptions):
     fields = ('title', )
+
+
+@register(Xodimlar)
+class XodimlarTranslationOptions(TranslationOptions):
+    fields = ('full_name',)
 
 
 @register(Institut_tarixi)

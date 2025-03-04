@@ -2,21 +2,15 @@
 from rest_framework import serializers
 
 from .models import Institut_tarixi, Aloqa, Karusel, Rahbariyat, Tashkiliy_tuzulma, Yangiliklar, \
-     Havolalar, Direktorlar, Xabarlar, Kadirlar_bolim, Category
-
-
-class DirektorSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Direktorlar
-        fields = ('id', 'title_uz', 'title_en', 'image', 'about', )
+     Havolalar, Xabarlar, Kadirlar_bolim, Category, Xodimlar_turlari, Xodimlar
 
 
 class Institut_tarixiSerializer(serializers.ModelSerializer):
-    direktorlar = DirektorSerializer(many=True, read_only=True, source='Direktorlar')
+    # direktorlar = DirektorSerializer(many=True, read_only=True, source='Direktorlar')
 
     class Meta:
         model = Institut_tarixi
-        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order', 'direktorlar')
+        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order',)
 
 
 class AloqaSerializer(serializers.ModelSerializer):
@@ -74,3 +68,17 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ('id', 'title', 'kadirlar')
+
+
+class XodimlarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Xodimlar
+        fields = ('id', 'full_name_uz', 'full_name_en', 'image', 'category')
+
+
+class Xodimlar_turlariSerializer(serializers.ModelSerializer):
+    kadirlar = XodimlarSerializer(many=True,)
+
+    class Meta:
+        model = Xodimlar_turlari
+        fields = ('id', 'title_uz', 'title_en', 'kadirlar')

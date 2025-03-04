@@ -18,15 +18,25 @@ class Institut_tarixi(models.Model):
         verbose_name_plural = 'Institut tarixi'
 
 
-class Direktorlar(models.Model):
+class Xodimlar_turlari(models.Model):
     title = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='Direktorlar/image')
-    about = models.ForeignKey(Institut_tarixi, on_delete=models.CASCADE,
-                              related_name='Direktorlar', blank=True, null=True)
+
+    def __str__(self):
+        return self.title
 
     class Meta:
-        verbose_name = 'Direktor'
-        verbose_name_plural = 'Direktor'
+        verbose_name = 'Xodimlar turlari'
+        verbose_name_plural = 'Xodimlar turlari'
+
+
+class Xodimlar(models.Model):
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    image = models.ImageField(upload_to='Xodimlar/image', blank=True, null=True)
+    category = models.ForeignKey(Xodimlar_turlari, on_delete=models.CASCADE, related_name='Xodimlar', blank=True)
+
+    class Meta:
+        verbose_name = 'Xodimlar'
+        verbose_name_plural = 'Xodimlar'
 
 
 class Aloqa(models.Model):

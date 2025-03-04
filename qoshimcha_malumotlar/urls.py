@@ -2,7 +2,7 @@ from django.urls import path
 from .views import Institut_tarixiListView, \
     AloqaListView, KaruselListView, \
     RahbariyatListView, Tashkiliy_tuzulmaListView, YangiliklarListView, \
-    yangiliklardetail, HavolalarListView, XabarlarCreateView, Kadirlar_bolimiListView
+    yangiliklardetail, HavolalarListView, XabarlarCreateView, Kadirlar_bolimiListView, Xodimlar_turlariListView
 
 urlpatterns = [
     path('institut-tarixi/', Institut_tarixiListView.as_view(), name='institut_tarixi-list'),
@@ -15,4 +15,5 @@ urlpatterns = [
     path('yangiliklar/<int:pk>/', yangiliklardetail, name='yangiliklar-detail'),
     path('havolalar/', HavolalarListView.as_view(), name='havolalar-list'),
     path('kadirlar-bolimi/', Kadirlar_bolimiListView.as_view(), name='kadirlar-bolimi-list'),
+    path('xodimlar-turlari/', Xodimlar_turlariListView.as_view(), name='xodimlar-turlari-list'),
 ]

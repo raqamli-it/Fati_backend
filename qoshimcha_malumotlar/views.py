@@ -4,10 +4,10 @@ from rest_framework import generics
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from .models import Institut_tarixi, Aloqa, Karusel, Rahbariyat, \
-    Tashkiliy_tuzulma, Yangiliklar, Havolalar, Xabarlar, Category
+    Tashkiliy_tuzulma, Yangiliklar, Havolalar, Xabarlar, Category, Xodimlar_turlari
 from .serializers import Institut_tarixiSerializer, \
     AloqaSerializer, KaruselSerializer, RahbariyatSerializer, Tashkiliy_tuzulmaSerializer, YangiliklarSerializer, \
-    HavolalarSerializer, XabarlarSerializer, CategorySerializer
+    HavolalarSerializer, XabarlarSerializer, CategorySerializer, Xodimlar_turlariSerializer
 
 
 class Institut_tarixiListView(ListAPIView):
@@ -60,3 +60,8 @@ class HavolalarListView(ListAPIView):
 class Kadirlar_bolimiListView(ListAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+
+class Xodimlar_turlariListView(ListAPIView):
+    queryset = Xodimlar_turlari.objects.all()
+    serializer_class = Xodimlar_turlariSerializer
