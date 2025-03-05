@@ -21,7 +21,8 @@ class Bolimlaradmin(admin.ModelAdmin):
 class XodimlarAdmin(admin.ModelAdmin):
     list_display = ('ful_name', 'order', 'created_at', 'updated_at')
     search_fields = ('ful_name',)
-    fields = ['ful_name_uz', 'ful_name_en', 'about_uz', 'about_en', 'image', 'bolimlar', 'markazlar', 'order']
+    fields = ['ful_name_uz', 'ful_name_en', 'position_uz', 'position_en', 'email_uz', 'email_en', 'about_uz',
+              'about_en', 'image', 'bolimlar', 'markazlar', 'order']
 
 
 @admin.register(Tadqiqot)

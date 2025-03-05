@@ -41,7 +41,7 @@ class Tashkiliy_tuzulmaListView(ListAPIView):
 
 
 class YangiliklarListView(ListAPIView):
-    queryset = Yangiliklar.objects.all().order_by('order')
+    queryset = Yangiliklar.objects.all().order_by('-created_at')
     serializer_class = YangiliklarSerializer
 
 

@@ -42,7 +42,6 @@ class AbstractListCreateView(ListAPIView):
 
 class EditorialListCreateView(ListAPIView):
     serializer_class = EditorialSerializer
-    pagination_class = CustomPagination
 
     def get_queryset(self):
         queryset = Editorial.objects.all().order_by('order')
