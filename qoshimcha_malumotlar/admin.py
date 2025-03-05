@@ -15,9 +15,8 @@ class XodimlarTurlariAdmin(admin.ModelAdmin):
 class XodimlarAdmin(admin.ModelAdmin):
     list_display = ('full_name', )
     search_fields = ('full_name',)
-    fields = ('full_name', 'image', 'category')
+    fields = ('full_name', 'year', 'image', 'category')
     list_filter = ['category']
-
 
 
 @admin.register(Institut_tarixi)

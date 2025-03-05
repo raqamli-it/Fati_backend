@@ -59,7 +59,7 @@ class HavolalarSerializer(serializers.ModelSerializer):
 class Kadirlar_bolimiSerializer(serializers.ModelSerializer):
     class Meta:
         model = Kadirlar_bolim
-        fields = ('id', 'full_name', 'position', 'image', 'category')
+        fields = ('id', 'full_name', 'year', 'position', 'image', 'category')
 
 
 class CategorySerializer(serializers.ModelSerializer):
