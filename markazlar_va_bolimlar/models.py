@@ -54,7 +54,7 @@ class Xodimlar(models.Model):
     image = models.ImageField(upload_to='Xodimlar/image', blank=True, null=True)
     ful_name = models.CharField(max_length=50, blank=True, null=True)
     position = models.CharField(max_length=255, blank=True, null=True)
-    email = models.CharField(max_length=255, blank=True, null=True)
+    email = models.EmailField(max_length=255, blank=True, null=True)
     about = RichTextField(blank=True, null=True)
     bolimlar = models.ForeignKey(Bolimlar, on_delete=models.CASCADE, related_name='xodimlar', blank=True, null=True)
     markazlar = models.ForeignKey(Markazlar, on_delete=models.CASCADE, related_name='xodim', blank=True, null=True)
