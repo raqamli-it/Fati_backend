@@ -12,8 +12,19 @@ class Ilmiy_kengash_majlis(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Ilmiy kengash majlis'
-        verbose_name_plural = 'Ilmiy kengash majlis'
+        verbose_name = 'Instut ilmiy kengash'
+        verbose_name_plural = 'Instut ilmiy kengash'
+
+
+class Xodimlar(models.Model):
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    image = models.ImageField(upload_to='Xodimlar',  blank=True, null=True)
+    center_id = models.ForeignKey(Ilmiy_kengash_majlis, related_name='xodimlar', on_delete=models.CASCADE, blank=True,
+                                  null=True)
+
+    class Meta:
+        verbose_name = 'Xodimlar'
+        verbose_name_plural = 'Xodimlar'
 
 
 class Yosh_olimlar(models.Model):
@@ -41,8 +52,23 @@ class Azolar(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Azolar'
-        verbose_name_plural = 'Azolar'
+        verbose_name = 'Ilmiy daraja beruchi kengash'
+        verbose_name_plural = 'Ilmiy daraja beruchi kengash'
+
+
+class Kadirlar(models.Model):
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    image = models.ImageField(upload_to='Kadirlar', blank=True, null=True)
+    workplace = models.CharField(max_length=255, blank=True, null=True)
+    shifri = models.CharField(max_length=255, blank=True, null=True)
+    position = models.CharField(max_length=255, blank=True, null=True)
+    degree = models.CharField(max_length=255, blank=True, null=True)
+    academic_title = models.CharField(max_length=255, blank=True, null=True)
+    center_id = models.ForeignKey(Azolar, on_delete=models.CASCADE, related_name='kadirlar', blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Kadirlar'
+        verbose_name_plural = 'Kadirlar'
 
 
 class Elonlar(models.Model):

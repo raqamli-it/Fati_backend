@@ -1,6 +1,6 @@
 from modeltranslation.translator import TranslationOptions
 from modeltranslation.decorators import register
-from .models import Ilmiy_kengash_majlis, Yosh_olimlar
+from .models import Ilmiy_kengash_majlis, Yosh_olimlar, Xodimlar, Kadirlar
 from .models import Azolar, Elonlar
 
 
@@ -22,6 +22,16 @@ class AzolarTranslationOptions(TranslationOptions):
 @register(Elonlar)
 class ElonlarTranslationOptions(TranslationOptions):
     fields = ('title', 'content',)
+
+
+@register(Xodimlar)
+class XodimlarTranslationOptions(TranslationOptions):
+    fields = ('full_name',)
+
+
+@register(Kadirlar)
+class KadirlarTranslationOptions(TranslationOptions):
+    fields = ('full_name', 'position', 'degree', 'academic_title', 'workplace',)
 
 
 
