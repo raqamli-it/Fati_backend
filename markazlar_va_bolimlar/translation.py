@@ -20,7 +20,7 @@ class TadqiqotTranslationOptions(TranslationOptions):
 
 @register(Xodimlar)
 class XodimlarTranslationOptions(TranslationOptions):
-    fields = ('ful_name', 'about', 'email', 'position')
+    fields = ('ful_name', 'about', 'degree', 'position')
 
 
 @register(Video)

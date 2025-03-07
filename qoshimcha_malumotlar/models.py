@@ -3,7 +3,7 @@ from ckeditor.fields import RichTextField
 
 
 class Institut_tarixi(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, blank=True, null=True)
     content = RichTextField(blank=True, null=True)
     image = models.ImageField(upload_to='Institut_tarixi/images', blank=True, null=True)
     order = models.IntegerField(default=0)
@@ -119,9 +119,10 @@ class Tashkiliy_tuzulma(models.Model):
 
 
 class Yangiliklar(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, blank=True, null=True)
     content = RichTextField(blank=True, null=True)
     image = models.ImageField(upload_to='Yangiliklar/images', blank=True, null=True)
+    link = models.URLField(blank=True, null=True)
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
