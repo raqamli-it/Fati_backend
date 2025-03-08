@@ -19,10 +19,11 @@ class Bolimlaradmin(admin.ModelAdmin):
 
 @admin.register(Xodimlar)
 class XodimlarAdmin(admin.ModelAdmin):
-    list_display = ('ful_name', 'order', 'created_at', 'updated_at')
-    search_fields = ('ful_name',)
-    fields = ['ful_name_uz', 'ful_name_en', 'position_uz', 'position_en', 'degree_uz', 'degree_en', 'about_uz',
+    list_display = ('full_name', 'order', 'created_at', 'updated_at')
+    search_fields = ('full_name',)
+    fields = ['full_name_uz', 'full_name_en', 'position_uz', 'position_en', 'degree_uz', 'degree_en', 'about_uz',
               'about_en', 'image', 'bolimlar', 'markazlar', 'order']
+    list_filter = ['bolimlar', 'markazlar']
 
 
 @admin.register(Tadqiqot)
@@ -30,7 +31,7 @@ class TadqiqotAdmin(admin.ModelAdmin):
     list_display = ('title', 'order', 'created_at', 'updated_at')
     search_fields = ('title',)
     fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'bolimlar', 'markazlar', 'order')
-
+    list_filter = ['bolimlar', 'markazlar']
 
 #
 # class Audiolaradmin(admin.TabularInline):

@@ -52,7 +52,7 @@ class Tadqiqot(models.Model):
 
 class Xodimlar(models.Model):
     image = models.ImageField(upload_to='Xodimlar/image', blank=True, null=True)
-    ful_name = models.CharField(max_length=50, blank=True, null=True)
+    full_name = models.CharField(max_length=50, blank=True, null=True)
     position = models.CharField(max_length=255, blank=True, null=True)
     degree = models.CharField(max_length=255, blank=True, null=True)
     about = RichTextField(blank=True, null=True)
@@ -63,7 +63,7 @@ class Xodimlar(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.ful_name
+        return self.full_name
 
     class Meta:
         verbose_name = 'Xodim'
