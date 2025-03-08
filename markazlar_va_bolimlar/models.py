@@ -15,7 +15,7 @@ class Markazlar(models.Model):
         verbose_name_plural = 'Markazlar'
 
     def __str__(self):
-        return f'{self.title}'
+        return self.title or 'No title'
 
 
 class Bolimlar(models.Model):
@@ -31,7 +31,7 @@ class Bolimlar(models.Model):
         verbose_name_plural = 'Bo\'limlar'
 
     def __str__(self):
-        return f'{self.title}'
+        return self.title or 'No title'
 
 
 class Tadqiqot(models.Model):
@@ -44,6 +44,9 @@ class Tadqiqot(models.Model):
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title or 'No title'
 
     class Meta:
         verbose_name = 'Tadqiqot'
@@ -63,7 +66,7 @@ class Xodimlar(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.full_name or 'null'
+        return self.full_name or 'No full_name'
 
     class Meta:
         verbose_name = 'Xodim'
