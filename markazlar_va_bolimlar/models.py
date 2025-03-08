@@ -63,7 +63,7 @@ class Xodimlar(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.full_name
+        return self.full_name or 'null'
 
     class Meta:
         verbose_name = 'Xodim'
