@@ -6,6 +6,7 @@ class Markazlar(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     content = RichTextField(blank=True, null=True)
     image = models.ImageField(upload_to='Markazlar/image', blank=True, null=True)
+    file = models.ImageField(upload_to='Bolimlar/image', blank=True, null=True)
     order = models.IntegerField(default=0, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -22,6 +23,7 @@ class Bolimlar(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     content = RichTextField(blank=True, null=True)
     image = models.ImageField(upload_to='Bolimlar/image', blank=True, null=True)
+    file = models.ImageField(upload_to='Bolimlar/image', blank=True, null=True)
     order = models.IntegerField(default=0, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -55,7 +57,8 @@ class Tadqiqot(models.Model):
 
 class Xodimlar(models.Model):
     image = models.ImageField(upload_to='Xodimlar/image', blank=True, null=True)
-    full_name = models.CharField(max_length=50, blank=True, null=True)
+    full_name = models.CharField(max_length=100, blank=True, null=True)
+    surname = models.CharField(max_length=100, blank=True, null=True)
     position = models.CharField(max_length=255, blank=True, null=True)
     degree = models.CharField(max_length=255, blank=True, null=True)
     about = RichTextField(blank=True, null=True)

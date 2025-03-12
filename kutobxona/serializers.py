@@ -27,18 +27,18 @@ class SourcesSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Sources
-        fields = ['id', 'title_uz', 'title_en', 'image', 'file',]
+        fields = ['id', 'title_uz', 'title_en', 'title_two_uz', 'title_two_en', 'image', 'file',]
 
 
 class LiteratureSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Literature
-        fields = ['id', 'title_uz', 'title_en', 'image', 'file',]
+        fields = ['id', 'title_uz', 'title_en', 'title_two_uz', 'title_two_en', 'image', 'file',]
 
 
 class abstractSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Abstract
-        fields = ['id', 'title_uz', 'title_en', 'image', 'file']
+        fields = ['id', 'title_uz', 'title_en', 'title_two_uz', 'title_two_en', 'image', 'file']

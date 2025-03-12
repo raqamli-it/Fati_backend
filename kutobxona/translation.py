@@ -15,7 +15,7 @@ class RequirementsTranslationOptions(TranslationOptions):
 
 @register(Abstract)
 class AvtoreferatTranslationOptions(TranslationOptions):
-    fields = ('title',)
+    fields = ('title', 'title_two')
 
 
 @register(Editorial)
@@ -25,9 +25,9 @@ class TahrirchiTranslationOptions(TranslationOptions):
 
 @register(Sources)
 class SourcesTranslationOptions(TranslationOptions):
-    fields = ('title',)
+    fields = ('title', 'title_two')
 
 
 @register(Literature)
 class LiteratureTranslationOptions(TranslationOptions):
-    fields = ('title',)
+    fields = ('title', 'title_two')

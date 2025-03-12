@@ -48,6 +48,7 @@ class Archive(models.Model):
 
 class Sources(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
+    title_two = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='Manbalar/image', blank=True, null=True)
     file = models.FileField(upload_to='Manbalar/file', blank=True, null=True)
     order = models.IntegerField(default=0)
@@ -63,6 +64,7 @@ class Sources(models.Model):
 
 class Literature(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
+    title_two = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='Adabiyot/image', blank=True, null=True)
     file = models.FileField(upload_to='Adabiyot/image', blank=True, null=True)
     order = models.IntegerField(default=0)
@@ -77,6 +79,7 @@ class Literature(models.Model):
 
 class Abstract(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
+    title_two = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='Avtoreferat/image', blank=True, null=True)
     file = models.FileField(upload_to='Avtoreferat/file', blank=True, null=True)
     order = models.IntegerField(default=0)

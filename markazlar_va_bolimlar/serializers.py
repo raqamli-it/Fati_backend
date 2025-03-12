@@ -5,7 +5,7 @@ from .models import Xodimlar, Markazlar, Bolimlar, Tadqiqot, Audio, Audiolar, Ra
 class XodimlarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Xodimlar
-        fields = ['id', 'full_name_uz', 'full_name_en', 'position_uz', 'position_en', 'degree_uz', 'degree_en',
+        fields = ['id', 'full_name_uz', 'full_name_en', 'surname_uz', 'surname_en', 'position_uz', 'position_en', 'degree_uz', 'degree_en',
                   'about_uz', 'about_en', 'image', 'order',]
 
 
@@ -35,7 +35,7 @@ class MarkazlarSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Markazlar
-        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order',
+        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'file', 'order',
                   'xodim', 'tadqiqotlar',]
 
 
@@ -47,7 +47,7 @@ class BolimlarSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Bolimlar
-        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order',
+        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'file', 'order',
                   'xodimlar', 'tadqiqot',]
 
 

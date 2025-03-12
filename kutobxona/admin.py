@@ -29,18 +29,18 @@ class ArchiveAdmin(admin.ModelAdmin):
 class SourcesAdmin(admin.ModelAdmin):
     list_display = ('title', 'order')
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'image', 'file', 'order']
+    fields = ['title_uz', 'title_en', 'title_two_uz', 'title_two_en', 'image', 'file', 'order']
 
 
 @admin.register(Literature)
 class LiteratureAdmin(admin.ModelAdmin):
     list_display = ('title', 'order')
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'image', 'file', 'order']
+    fields = ['title_uz', 'title_en', 'title_two_uz', 'title_two_en', 'image', 'file', 'order']
 
 
 @admin.register(Abstract)
 class AbstractAdmin(admin.ModelAdmin):
     list_display = ('title', 'order')
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'image', 'file', 'order']
+    fields = ['title_uz', 'title_en', 'title_two_uz', 'title_two_en', 'image', 'file', 'order']

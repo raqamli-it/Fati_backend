@@ -7,21 +7,21 @@ from django.utils.html import format_html
 class Markazlaradmin(admin.ModelAdmin):
     list_display = ('title', 'order', 'created_at', 'updated_at')
     search_fields = ('title',)
-    fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order')
+    fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'file', 'order')
 
 
 @admin.register(Bolimlar)
 class Bolimlaradmin(admin.ModelAdmin):
     list_display = ('title', 'order', 'created_at', 'updated_at')
     search_fields = ('title',)
-    fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order')
+    fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'file', 'order')
 
 
 @admin.register(Xodimlar)
 class XodimlarAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'order', 'created_at', 'updated_at')
     search_fields = ('full_name',)
-    fields = ['full_name_uz', 'full_name_en', 'position_uz', 'position_en', 'degree_uz', 'degree_en', 'about_uz',
+    fields = ['full_name_uz', 'full_name_en', 'surname_uz', 'surname_en', 'position_uz', 'position_en', 'degree_uz', 'degree_en', 'about_uz',
               'about_en', 'image', 'bolimlar', 'markazlar', 'order']
     list_filter = ('bolimlar', 'markazlar')  # Filter qo'shish
 
