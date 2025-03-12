@@ -1,5 +1,3 @@
-
-
 from rest_framework.generics import ListAPIView
 from .models import (Requirements, Editorial, Archive, Abstract, Literature, Sources)
 from .serializers import (RequirementsSerializer, EditorialSerializer, ArchiveSerializer, abstractSerializer,
@@ -141,6 +139,7 @@ class SourcesListCreateView(ListAPIView):
 
     def get_queryset(self):
         queryset = Sources.objects.all().order_by('order')
+
         search_query = self.request.GET.get('search', '')
 
         if search_query:
