@@ -5,7 +5,7 @@ from .models import Azolar, Elonlar, Xodimlar, Kadirlar
 
 class Xodimlaradmin(admin.TabularInline):
     model = Xodimlar
-    fields = ('full_name_uz', 'full_name_en', 'image')  # Only include fields that exist in the model
+    fields = ('full_name_uz', 'full_name_en', 'position_uz', 'position_en', 'image')
 
 
 @admin.register(Ilmiy_kengash_majlis)

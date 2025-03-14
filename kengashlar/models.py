@@ -9,7 +9,7 @@ class Ilmiy_kengash_majlis(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.title
+        return self.title if self.title else "No title"
 
     class Meta:
         verbose_name = 'Instut ilmiy kengash'
@@ -18,6 +18,7 @@ class Ilmiy_kengash_majlis(models.Model):
 
 class Xodimlar(models.Model):
     full_name = models.CharField(max_length=255, blank=True, null=True)
+    position = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='Xodimlar',  blank=True, null=True)
     center_id = models.ForeignKey(Ilmiy_kengash_majlis, related_name='xodimlar', on_delete=models.CASCADE, blank=True,
                                   null=True)
@@ -35,7 +36,7 @@ class Yosh_olimlar(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.title
+        return self.title or 'NO title'
 
     class Meta:
         verbose_name = 'Yosh olim'
@@ -49,7 +50,7 @@ class Azolar(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.title
+        return self.title or 'No title'
 
     class Meta:
         verbose_name = 'Ilmiy daraja beruchi kengash'
@@ -79,7 +80,7 @@ class Elonlar(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.title or "No Title"
+        return self.title or "No title"
 
     class Meta:
         verbose_name = 'Elonlar'

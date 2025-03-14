@@ -6,7 +6,7 @@ from rest_framework import serializers
 class XodimlarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Xodimlar
-        fields = ('id', 'full_name_uz', 'full_name_en', 'image')
+        fields = ('id', 'full_name_uz', 'full_name_en', 'position_uz', 'position_en', 'image')
         ref_name = 'KengashlarXodimlarSerializer'
 
 
