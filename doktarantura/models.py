@@ -35,7 +35,8 @@ class Malakaviy_imtihon(models.Model):
 
 
 class Doktarantura(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, blank=True, null=True)
+    full_name = models.CharField(max_length=100,blank=True, null=True)
     labor_activity = RichTextField(blank=True, null=True)
     scientific_activity = RichTextField(blank=True, null=True)
     works = RichTextField(blank=True, null=True)

@@ -45,7 +45,7 @@ class AudioAdmin(admin.ModelAdmin):
     list_display = ('title', 'get_image', 'get_audio')
     search_fields = ('title',)
     # inlines = [Audiolaradmin]
-    fields = ['title_uz', 'title_en', 'audio', 'image']
+    fields = ['title_uz', 'title_en', 'audio', 'image', 'order']
 
     def get_audio(self, obj):
         if obj.audio:
@@ -94,7 +94,7 @@ class RasmAdmin(admin.ModelAdmin):
     list_display = ('title', 'get_image')
     search_fields = ('title',)
     # inlines = [Videolaradmin]
-    fields = ['title_uz', 'title_en', 'video', 'image', 'link']
+    fields = ['title_uz', 'title_en', 'video', 'image', 'link', 'order']
 
     def get_image(self, obj):
         if obj.image:

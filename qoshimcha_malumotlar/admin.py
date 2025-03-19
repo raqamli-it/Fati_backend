@@ -57,7 +57,7 @@ class Tashkiliy_tuzulmaAdmin(admin.ModelAdmin):
 class YangiliklarAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at', 'updated_at', 'order',)
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'link', 'order']
+    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'link', 'order', 'created_at']
 
 
 @admin.register(Havolalar)

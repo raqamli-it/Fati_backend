@@ -62,7 +62,7 @@ class AudioSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Audio
-        fields = ['id', 'title_uz', 'title_en', 'audio', 'image',]
+        fields = ['id', 'title_uz', 'title_en', 'audio', 'image', 'order']
 
 
 class RasmlarSerializer(serializers.ModelSerializer):
@@ -90,7 +90,7 @@ class VideoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Video
-        fields = ['id', 'title_uz', 'title_en', 'video', 'image',]
+        fields = ['id', 'title_uz', 'title_en', 'video', 'image', 'link', 'order']
 
 
 

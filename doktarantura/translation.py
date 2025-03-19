@@ -15,4 +15,4 @@ class Malakaviy_imtihonTranslationOptions(TranslationOptions):
 
 @register(Doktarantura)
 class DoktaranturaTranslationOptions(TranslationOptions):
-    fields = ('title', 'labor_activity', 'scientific_activity', 'works')
+    fields = ('title', 'labor_activity', 'scientific_activity', 'works', 'full_name')
