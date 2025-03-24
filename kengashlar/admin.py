@@ -1,9 +1,21 @@
 from .models import Ilmiy_kengash_majlis, Yosh_olimlar
 from django.contrib import admin
-from .models import Azolar, Elonlar, Xodimlar, Kadirlar
+from .models import Azolar, Elonlar, Xodimlar, Kadirlar, Text, Content
 
 
-class Xodimlaradmin(admin.TabularInline):
+class TextAdmin(admin.TabularInline):
+    model = Text
+    extra = 1
+    fields = ('content_uz', 'content_en',)
+
+
+class ContentAdmin(admin.TabularInline):
+    model = Content
+    extra = 1
+    fields = ('content_uz', 'content_en',)
+
+
+class XodimlarAdmin(admin.TabularInline):
     model = Xodimlar
     fields = ('full_name_uz', 'full_name_en', 'position_uz', 'position_en', 'image')
 
@@ -12,7 +24,7 @@ class Xodimlaradmin(admin.TabularInline):
 class Ilmiy_kengash_majlisAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at', 'updated_at',)
     search_fields = ('title',)
-    inlines = [Xodimlaradmin]
+    inlines = [XodimlarAdmin, ContentAdmin]
     fields = ('title_uz', 'title_en', 'content_uz', 'content_en',)
 
 
@@ -33,7 +45,7 @@ class Kadirlaradmin(admin.TabularInline):
 class AzolarAdmin(admin.ModelAdmin):
     list_display = ['title', 'created_at', 'updated_at',]
     search_fields = ('title',)
-    inlines = [Kadirlaradmin]
+    inlines = [Kadirlaradmin, TextAdmin]
     fields = ['title_uz', 'title_en', 'content_uz', 'content_en',]
 
 

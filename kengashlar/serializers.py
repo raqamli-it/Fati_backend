@@ -1,6 +1,18 @@
 
-from .models import Ilmiy_kengash_majlis, Yosh_olimlar, Azolar, Elonlar, Xodimlar, Kadirlar
+from .models import Ilmiy_kengash_majlis, Yosh_olimlar, Azolar, Elonlar, Xodimlar, Kadirlar, Content, Text
 from rest_framework import serializers
+
+
+class ContentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Xodimlar
+        fields = ('id', 'content_uz', 'content_en',)
+
+
+class TextSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Xodimlar
+        fields = ('id', 'content_uz', 'content_en',)
 
 
 class XodimlarSerializer(serializers.ModelSerializer):
@@ -11,11 +23,12 @@ class XodimlarSerializer(serializers.ModelSerializer):
 
 
 class Ilmiy_kengash_majlisSerializer(serializers.ModelSerializer):
-    xodimlar = XodimlarSerializer(many=True, read_only=True)  # Remove `source='xodimlar'`
+    xodimlar = XodimlarSerializer(many=True, read_only=True)
+    content_id = ContentSerializer(many=True)
 
     class Meta:
         model = Ilmiy_kengash_majlis
-        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'xodimlar')
+        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'xodimlar', 'content_id')
 
 
 class Yosh_olimlarSerializer(serializers.ModelSerializer):
@@ -34,10 +47,11 @@ class KadirlarSerializer(serializers.ModelSerializer):
 
 class AzolarSerializer(serializers.ModelSerializer):
     kadirlar = KadirlarSerializer(many=True, read_only=True)
+    text_id = TextSerializer(many=True)
 
     class Meta:
         model = Azolar
-        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'kadirlar']
+        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'kadirlar', 'text_id']
 
 
 class ElonlarSerializer(serializers.ModelSerializer):

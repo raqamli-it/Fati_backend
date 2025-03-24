@@ -28,6 +28,12 @@ class Xodimlar(models.Model):
         verbose_name_plural = 'Xodimlar'
 
 
+class Content(models.Model):
+    content = RichTextField(blank=True, null=True)
+    center_id = models.ForeignKey(Ilmiy_kengash_majlis, on_delete=models.CASCADE, related_name='content_id',
+                                  blank=True, null=True)
+
+
 class Yosh_olimlar(models.Model):
     title = models.CharField(max_length=255)
     content = RichTextField(blank=True, null=True)
@@ -70,6 +76,12 @@ class Kadirlar(models.Model):
     class Meta:
         verbose_name = 'Kadirlar'
         verbose_name_plural = 'Kadirlar'
+
+
+class Text(models.Model):
+    content = RichTextField(blank=True, null=True)
+    center_id = models.ForeignKey(Azolar, on_delete=models.CASCADE, related_name='text_id',
+                                  blank=True, null=True)
 
 
 class Elonlar(models.Model):
