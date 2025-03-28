@@ -19,7 +19,8 @@ class Institut_tarixi(models.Model):
 
 
 class Xodimlar_turlari(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, blank=True, null=True)
+    order = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
@@ -33,7 +34,9 @@ class Xodimlar(models.Model):
     full_name = models.CharField(max_length=255, blank=True, null=True)
     year = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='Xodimlar/image', blank=True, null=True)
-    category = models.ForeignKey(Xodimlar_turlari, on_delete=models.CASCADE, related_name='Xodimlar', blank=True)
+    order = models.IntegerField(default=0)
+    category = models.ForeignKey(Xodimlar_turlari, on_delete=models.CASCADE, related_name='Xodimlar', blank=True,
+                                 null=True)
 
     class Meta:
         verbose_name = 'Xodimlar'

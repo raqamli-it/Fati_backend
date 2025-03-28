@@ -5,8 +5,9 @@ from .models import Xodimlar, Markazlar, Bolimlar, Tadqiqot, Audio, Audiolar, Ra
 class XodimlarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Xodimlar
-        fields = ['id', 'full_name_uz', 'full_name_en', 'surname_uz', 'surname_en', 'position_uz', 'position_en', 'degree_uz', 'degree_en',
-                  'about_uz', 'about_en', 'image', 'order',]
+        fields = ['id', 'full_name_uz', 'full_name_en', 'surname_uz', 'surname_en', 'position_uz', 'position_en',
+                  'degree_uz', 'degree_en', 'phone', 'email', 'about_uz', 'about_en', 'works_uz', 'works_en', 'image',
+                  'order',]
 
 
 class TadqiqotSerializer(serializers.ModelSerializer):

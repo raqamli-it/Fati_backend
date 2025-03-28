@@ -5,13 +5,13 @@ from rest_framework import serializers
 
 class ContentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Xodimlar
+        model = Content
         fields = ('id', 'content_uz', 'content_en',)
 
 
 class TextSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Xodimlar
+        model = Text
         fields = ('id', 'content_uz', 'content_en',)
 
 

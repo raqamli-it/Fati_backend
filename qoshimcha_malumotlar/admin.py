@@ -6,16 +6,16 @@ from .models import Institut_tarixi, Aloqa, Karusel, Rahbariyat, \
 
 @admin.register(Xodimlar_turlari)
 class XodimlarTurlariAdmin(admin.ModelAdmin):
-    list_display = ('title',)
+    list_display = ('title', 'order')
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en',]
+    fields = ['title_uz', 'title_en', 'order']
 
 
 @admin.register(Xodimlar)
 class XodimlarAdmin(admin.ModelAdmin):
-    list_display = ('full_name', )
+    list_display = ('full_name', 'category', 'order')
     search_fields = ('full_name',)
-    fields = ('full_name', 'year', 'image', 'category')
+    fields = ('full_name', 'year', 'image', 'category', 'order')
     list_filter = ['category']
 
 
