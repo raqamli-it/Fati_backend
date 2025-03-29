@@ -51,6 +51,6 @@ class AzolarAdmin(admin.ModelAdmin):
 
 @admin.register(Elonlar)
 class ElonlarAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'updated_at',)
+    list_display = ('title', 'created_at', 'updated_at', 'order')
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'image']
+    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order']

@@ -92,7 +92,7 @@ class RasmAdmin(admin.ModelAdmin):
 
 @admin.register(Video)
 class RasmAdmin(admin.ModelAdmin):
-    list_display = ('title', 'get_image')
+    list_display = ('title', 'get_image', 'order')
     search_fields = ('title',)
     # inlines = [Videolaradmin]
     fields = ['title_uz', 'title_en', 'video', 'image', 'link', 'order']
