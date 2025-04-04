@@ -7,14 +7,14 @@ from django.utils.html import format_html
 class Markazlaradmin(admin.ModelAdmin):
     list_display = ('title', 'order', 'created_at', 'updated_at')
     search_fields = ('title',)
-    fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'file', 'order')
+    fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'content_two_uz', 'content_two_en', 'image', 'file', 'order')
 
 
 @admin.register(Bolimlar)
 class Bolimlaradmin(admin.ModelAdmin):
     list_display = ('title', 'order', 'created_at', 'updated_at')
     search_fields = ('title',)
-    fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'file', 'order')
+    fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'content_two_uz', 'content_two_en', 'image', 'file', 'order')
 
 
 @admin.register(Xodimlar)

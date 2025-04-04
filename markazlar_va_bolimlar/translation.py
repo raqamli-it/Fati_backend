@@ -5,12 +5,12 @@ from .models import Xodimlar, Markazlar, Bolimlar, Tadqiqot, Video, Rasm, Audio
 
 @register(Markazlar)
 class Markazlar_bolimlarTranslationOptions(TranslationOptions):
-    fields = ('title', 'content',)
+    fields = ('title', 'content', 'content_two')
 
 
 @register(Bolimlar)
 class Markazlar_bolimlarTranslationOptions(TranslationOptions):
-    fields = ('title', 'content',)
+    fields = ('title', 'content', 'content_two')
 
 
 @register(Tadqiqot)

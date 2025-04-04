@@ -36,7 +36,7 @@ class MarkazlarSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Markazlar
-        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'file', 'order',
+        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'content_two_uz', 'content_two_en', 'image', 'file', 'order',
                   'xodim', 'tadqiqotlar',]
 
 
@@ -48,7 +48,7 @@ class BolimlarSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Bolimlar
-        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'file', 'order',
+        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'content_two_uz', 'content_two_en', 'image', 'file', 'order',
                   'xodimlar', 'tadqiqot',]
 
 

@@ -5,6 +5,7 @@ from django.db import models
 class Markazlar(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     content = RichTextField(blank=True, null=True)
+    content_two = RichTextField(blank=True, null=True)
     image = models.ImageField(upload_to='Markazlar/image', blank=True, null=True)
     file = models.ImageField(upload_to='Bolimlar/image', blank=True, null=True)
     order = models.IntegerField(default=0, blank=True, null=True)
@@ -22,6 +23,7 @@ class Markazlar(models.Model):
 class Bolimlar(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     content = RichTextField(blank=True, null=True)
+    content_two = RichTextField(blank=True, null=True)
     image = models.ImageField(upload_to='Bolimlar/image', blank=True, null=True)
     file = models.ImageField(upload_to='Bolimlar/image', blank=True, null=True)
     order = models.IntegerField(default=0, blank=True, null=True)

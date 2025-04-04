@@ -81,7 +81,9 @@ class Kadirlar(models.Model):
 class Text(models.Model):
     content = RichTextField(blank=True, null=True)
     center_id = models.ForeignKey(Azolar, on_delete=models.CASCADE, related_name='text_id',
-                                  blank=True, null=True)
+    blank=True, null=True)
+
+   
 
 
 class Elonlar(models.Model):
@@ -94,6 +96,7 @@ class Elonlar(models.Model):
 
     def __str__(self):
         return self.title or "No title"
+   
 
     class Meta:
         verbose_name = 'Elonlar'
