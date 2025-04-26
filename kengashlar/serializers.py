@@ -41,11 +41,11 @@ class XodimSerializer(serializers.ModelSerializer):
         fields = ('id', 'fullname', 'position', 'image')
 
 class Yosh_olimlarSerializer(serializers.ModelSerializer):
-    xodimlar = XodimSerializer(many=True, read_only=True)
+    yosh_xodimlar = XodimSerializer(many=True, read_only=True)
 
     class Meta:
         model = Yosh_olimlar
-        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'file', 'xodimlar')
+        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'file', 'yosh_xodimlar')
 
 
 class KadirlarSerializer(serializers.ModelSerializer):
