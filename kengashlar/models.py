@@ -48,7 +48,15 @@ class Yosh_olimlar(models.Model):
         verbose_name = 'Yosh olim'
         verbose_name_plural = 'Yosh olimlar'
 
+class YoshXodim(models.Model):
+    yosh_olim = models.ForeignKey(Yosh_olimlar, on_delete=models.CASCADE, related_name='yosh_xodimlar')
+    fullname = models.CharField(max_length=255)
+    position = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='Xodimlar/images/', blank=True, null=True)
 
+    def __str__(self):
+        return self.fullname
+ 
 class Azolar(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     content = RichTextField(blank=True, null=True)

@@ -1,5 +1,5 @@
 
-from .models import Ilmiy_kengash_majlis, Yosh_olimlar, Azolar, Elonlar, Xodimlar, Kadirlar, Content, Text
+from .models import Ilmiy_kengash_majlis, Yosh_olimlar, Azolar, Elonlar, Xodimlar, Kadirlar, Content, Text, YoshXodim
 from rest_framework import serializers
 
 
@@ -31,10 +31,21 @@ class Ilmiy_kengash_majlisSerializer(serializers.ModelSerializer):
         fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'xodimlar', 'content_id')
 
 
+# class Yosh_olimlarSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Yosh_olimlar
+#         fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'file',)
+class XodimSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = YoshXodim
+        fields = ('id', 'fullname', 'position', 'image')
+
 class Yosh_olimlarSerializer(serializers.ModelSerializer):
+    xodimlar = XodimSerializer(many=True, read_only=True)
+
     class Meta:
         model = Yosh_olimlar
-        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'file',)
+        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'file', 'xodimlar')
 
 
 class KadirlarSerializer(serializers.ModelSerializer):

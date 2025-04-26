@@ -1,4 +1,4 @@
-from .models import Ilmiy_kengash_majlis, Yosh_olimlar
+from .models import Ilmiy_kengash_majlis, Yosh_olimlar, YoshXodim
 from django.contrib import admin
 from .models import Azolar, Elonlar, Xodimlar, Kadirlar, Text, Content
 
@@ -28,12 +28,22 @@ class Ilmiy_kengash_majlisAdmin(admin.ModelAdmin):
     fields = ('title_uz', 'title_en', 'content_uz', 'content_en',)
 
 
+# @admin.register(Yosh_olimlar)
+# class Yosh_olimlarAdmin(admin.ModelAdmin):
+#     list_display = ('title', 'created_at', 'updated_at',)
+#     search_fields = ('title',)
+#     fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'file',)
+
+class XodimInline(admin.TabularInline):
+    model = YoshXodim
+    extra = 1  # yangi qator qo'shish uchun 1 ta bo'sh joy
+
 @admin.register(Yosh_olimlar)
 class Yosh_olimlarAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at', 'updated_at',)
     search_fields = ('title',)
-    fields = ('title_uz', 'title_en', 'content_uz', 'content_en', 'file',)
-
+    fields = ('title', 'content', 'file',)  # E'tibor bering, modelda title_uz yo'q edi.
+    inlines = [XodimInline]
 
 class Kadirlaradmin(admin.TabularInline):
     model = Kadirlar
