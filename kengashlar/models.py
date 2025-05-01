@@ -95,6 +95,7 @@ class Text(models.Model):
 
 
 class Elonlar(models.Model):
+    fullname = models.CharField(max_length=255, blank=True, null=True)
     title = models.CharField(max_length=255, blank=True, null=True)
     content = RichTextField(blank=True, null=True)
     image = models.ImageField(upload_to='Elonlar/image', blank=True, null=True)

@@ -68,5 +68,5 @@ class AzolarSerializer(serializers.ModelSerializer):
 class ElonlarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Elonlar
-        fields = ('id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order')
+        fields = ('id', 'title_uz', 'title_en', 'fullname', 'content_uz', 'content_en', 'image', 'order')
 
