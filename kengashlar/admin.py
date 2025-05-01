@@ -63,4 +63,4 @@ class AzolarAdmin(admin.ModelAdmin):
 class ElonlarAdmin(admin.ModelAdmin):
     list_display = ('title', 'fullname',  'created_at', 'updated_at', 'order')
     search_fields = ('title',)
-    fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order']
+    fields = ['fullname', 'title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order']
