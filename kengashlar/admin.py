@@ -53,7 +53,7 @@ class Kadirlaradmin(admin.TabularInline):
 
 @admin.register(Azolar)
 class AzolarAdmin(admin.ModelAdmin):
-    list_display = [ 'fullname', 'title', 'created_at', 'updated_at',]
+    list_display = [ 'title', 'created_at', 'updated_at',]
     search_fields = ('title',)
     inlines = [Kadirlaradmin, TextAdmin]
     fields = ['title_uz', 'title_en', 'content_uz', 'content_en',]
@@ -61,6 +61,6 @@ class AzolarAdmin(admin.ModelAdmin):
 
 @admin.register(Elonlar)
 class ElonlarAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at', 'updated_at', 'order')
+    list_display = ('title', 'fullname',  'created_at', 'updated_at', 'order')
     search_fields = ('title',)
     fields = ['title_uz', 'title_en', 'content_uz', 'content_en', 'image', 'order']
