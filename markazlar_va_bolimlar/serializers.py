@@ -29,27 +29,29 @@ class MarkazlarListSerializers(serializers.ModelSerializer):
 
 
 class MarkazlarSerializer(serializers.ModelSerializer):
-    xodim = XodimlarSerializer(many=True, read_only=True)
-    tadqiqotlar = TadqiqotSerializer(many=True, read_only=True)
-    # photos = PhotoSerializer(many=True, read_only=True)
-    # videos = VideoSerializer(many=True, read_only=True)
+    xodimlar_markaz = XodimlarSerializer(many=True, read_only=True)
+    tadqiqot_markaz = TadqiqotSerializer(many=True, read_only=True)
 
     class Meta:
         model = Markazlar
-        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'content_two_uz', 'content_two_en', 'image', 'file', 'order',
-                  'xodim', 'tadqiqotlar',]
+        fields = [
+            'id', 'title', 'content', 'content_two', 'image', 'file', 'order',
+            'xodimlar_markaz', 'tadqiqot_markaz'
+        ]
+
 
 
 class BolimlarSerializer(serializers.ModelSerializer):
-    xodimlar = XodimlarSerializer(many=True, read_only=True)
-    tadqiqot = TadqiqotSerializer(many=True, read_only=True)
-    # photo = PhotoSerializer(many=True, read_only=True)
-    # video = VideoSerializer(many=True, read_only=True)
+    xodimlar_bolim = XodimlarSerializer(many=True, read_only=True)
+    tadqiqot_bolim = TadqiqotSerializer(many=True, read_only=True)
 
     class Meta:
         model = Bolimlar
-        fields = ['id', 'title_uz', 'title_en', 'content_uz', 'content_en', 'content_two_uz', 'content_two_en', 'image', 'file', 'order',
-                  'xodimlar', 'tadqiqot',]
+        fields = [
+            'id', 'title', 'content', 'content_two', 'image', 'file', 'order',
+            'xodimlar_bolim', 'tadqiqot_bolim'
+        ]
+
 
 
 class AudiolarSerializer(serializers.ModelSerializer):

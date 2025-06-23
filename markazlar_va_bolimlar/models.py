@@ -42,8 +42,9 @@ class Tadqiqot(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     content = RichTextField(blank=True, null=True)
     image = models.ImageField(upload_to='Tadqiqot/image', blank=True, null=True)
-    bolimlar = models.ForeignKey(Bolimlar, on_delete=models.CASCADE, related_name='tadqiqot', blank=True, null=True)
-    markazlar = models.ForeignKey(Markazlar, on_delete=models.CASCADE, related_name='tadqiqotlar', blank=True,
+    bolimlar = models.ForeignKey(Bolimlar, on_delete=models.CASCADE, related_name='tadqiqot_bolim', blank=True,
+                                 null=True)
+    markazlar = models.ForeignKey(Markazlar, on_delete=models.CASCADE, related_name='tadqiqot_markaz', blank=True,
                                   null=True)
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -67,8 +68,11 @@ class Xodimlar(models.Model):
     email = models.EmailField(blank=True, null=True)
     about = RichTextField(blank=True, null=True)
     works = RichTextField(blank=True, null=True)
-    bolimlar = models.ForeignKey(Bolimlar, on_delete=models.CASCADE, related_name='xodimlar', blank=True, null=True)
-    markazlar = models.ForeignKey(Markazlar, on_delete=models.CASCADE, related_name='xodim', blank=True, null=True)
+    bolimlar = models.ForeignKey(Bolimlar, on_delete=models.CASCADE, related_name='xodimlar_bolim', blank=True,
+                                 null=True)
+    markazlar = models.ForeignKey(Markazlar, on_delete=models.CASCADE, related_name='xodimlar_markaz', blank=True,
+                                  null=True)
+
     order = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
