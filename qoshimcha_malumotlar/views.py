@@ -40,14 +40,17 @@ class Tashkiliy_tuzulmaListView(ListAPIView):
     queryset = Tashkiliy_tuzulma.objects.all().order_by('order')
     serializer_class = Tashkiliy_tuzulmaSerializer
 
+
 class YangiliklarPagination(PageNumberPagination):
-    page_size = 24
+    page_size = 12
     page_size_query_param = 'page_size'
     max_page_size = 1000
+
 
 class YangiliklarListView(ListAPIView):
     queryset = Yangiliklar.objects.all().order_by('-created_at')
     serializer_class = YangiliklarSerializer
+    pagination_class = YangiliklarPagination
 
 
 @api_view(['GET'])
