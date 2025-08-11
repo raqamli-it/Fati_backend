@@ -20,7 +20,7 @@ class Institut_tarixiTranslationOptions(TranslationOptions):
 
 @register(Rahbariyat)
 class RahbariyatTranslationOptions(TranslationOptions):
-    fields = ('title', 'position', 'degree',)
+    fields = ('title', 'position', 'degree', 'description')
 
 
 @register(Tashkiliy_tuzulma)

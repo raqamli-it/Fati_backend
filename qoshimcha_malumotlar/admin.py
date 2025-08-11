@@ -43,7 +43,7 @@ class RahbariyatAdmin(admin.ModelAdmin):
     list_display = ('title', 'position', 'created_at', 'updated_at', 'order',)
     search_fields = ('title',)
     fields = ['title_uz', 'title_en', 'position_uz', 'position_en', 'degree_uz', 'degree_en', 'contact', 'days',
-              'image', 'order',]
+              'image', 'order', 'description_uz', 'description_en']
 
 
 @admin.register(Tashkiliy_tuzulma)

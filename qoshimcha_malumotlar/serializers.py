@@ -35,7 +35,7 @@ class KaruselSerializer(serializers.ModelSerializer):
 class RahbariyatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rahbariyat
-        fields = ('id', 'title_uz', 'title_en', 'position', 'degree', 'contact', 'days', 'image', 'order',)
+        fields = ('id', 'title_uz', 'title_en', 'position', 'degree', 'contact', 'days', 'image', 'order', 'description_uz', 'description_en')
 
 
 class Tashkiliy_tuzulmaSerializer(serializers.ModelSerializer):
