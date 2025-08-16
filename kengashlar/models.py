@@ -19,6 +19,7 @@ class Ilmiy_kengash_majlis(models.Model):
 class Xodimlar(models.Model):
     full_name = models.CharField(max_length=255, blank=True, null=True)
     position = models.CharField(max_length=255, blank=True, null=True)
+    lavozim = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='Xodimlar',  blank=True, null=True)
     center_id = models.ForeignKey(Ilmiy_kengash_majlis, related_name='xodimlar', on_delete=models.CASCADE, blank=True,
                                   null=True)

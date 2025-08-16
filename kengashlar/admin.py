@@ -17,7 +17,7 @@ class ContentAdmin(admin.TabularInline):
 
 class XodimlarAdmin(admin.TabularInline):
     model = Xodimlar
-    fields = ('full_name_uz', 'full_name_en', 'position_uz', 'position_en', 'image')
+    fields = ('full_name_uz', 'full_name_en', 'position_uz', 'position_en','lavozim_uz', 'lavozim_en', 'image')
 
 
 @admin.register(Ilmiy_kengash_majlis)

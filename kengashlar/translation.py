@@ -26,7 +26,7 @@ class ElonlarTranslationOptions(TranslationOptions):
 
 @register(Xodimlar)
 class XodimlarTranslationOptions(TranslationOptions):
-    fields = ('full_name', 'position')
+    fields = ('full_name', 'position', 'lavozim')
 
 
 @register(Content)
